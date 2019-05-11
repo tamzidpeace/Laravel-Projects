@@ -11,6 +11,17 @@
 |
 */
 
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+
+    $data = [
+      'title'=>'test',
+      'content'=>'mail test 1'
+    ];
+
+    Mail::send('emails.test', $data, function ($message) {
+        $message->to('tamjedpeace3@gmail.com', 'arafat')->subject('mail testing');
+    });
 });
