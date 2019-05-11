@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f021766d-cb88-40c3-a727-c082c92b96bc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../codehackinglive-master/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../codehackinglive-master/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../login/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../login/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mail/.idea/mail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../mail/.idea/mail.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mail/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mail/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mail/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mail/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mail/app/Http/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mail/app/Http/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mail/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../mail/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mail/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../mail/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mail/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mail/config/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mail/resources/views/emails/test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../mail/resources/views/emails/test.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CodeHacking.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CodeHacking.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +19,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -36,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="20" column="55" lean-forward="true" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+            <state relative-caret-position="168">
+              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
               </folding>
@@ -45,11 +46,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/users/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="24" column="60" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
+            <state relative-caret-position="386">
+              <caret line="26" column="70" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/users/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="17" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -75,10 +85,13 @@
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/resources/views/admin/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/app.scss" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" />
       </list>
     </option>
   </component>
@@ -145,12 +158,13 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/mtdowling/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="28" />
-    <option name="width" value="1366" />
-    <option name="height" value="740" />
+    <option name="x" value="1366" />
+    <option name="width" value="1280" />
+    <option name="height" value="1024" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -176,15 +190,7 @@
             <path>
               <item name="CodeHacking" type="b2602c69:ProjectViewProjectNode" />
               <item name="CodeHacking" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CodeHacking" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CodeHacking" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CodeHacking" type="b2602c69:ProjectViewProjectNode" />
@@ -265,16 +271,18 @@
       <updated>1557415786326</updated>
       <workItem from="1557415790209" duration="5329000" />
       <workItem from="1557501846638" duration="5764000" />
+      <workItem from="1557568630513" duration="3839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11093000" />
+    <option name="totallyTimeSpent" value="14932000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="28" width="1366" height="740" extended-state="6" />
+    <frame x="1366" y="0" width="1280" height="1024" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2219697" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24149108" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Gulp" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -288,7 +296,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49918962" visible="true" weight="0.34471545" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49918962" visible="true" weight="0.16351502" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5008104" side_tool="true" weight="0.32925472" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -324,9 +332,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/users/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/create.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_09_160210_create_roles_table.php">
@@ -383,6 +388,13 @@
         <state relative-caret-position="-4355" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="26" column="70" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -390,20 +402,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="207" column="44" selection-start-line="207" selection-start-column="44" selection-end-line="207" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminUsersController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="55" lean-forward="true" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+        <state relative-caret-position="168">
+          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="24" column="60" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
+        <state relative-caret-position="126">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="17" selection-end-column="29" />
         </state>
       </provider>
     </entry>
