@@ -10,14 +10,13 @@
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Role</th>
-            <th scope="col">Active</th>
+            <th scope="col">Status</th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
         </tr>
         </thead>
         <tbody>
         @if ($users)
-
             @foreach($users as $user)
                 <tr>
                     <td>{{$user->id}}</td>
