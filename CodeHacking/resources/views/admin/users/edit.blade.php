@@ -48,12 +48,23 @@
                 {!! Form::file('photo_id', null, ['class' => 'form-control']) !!}
             </div>
 
-            <div class="form-group-lg">
+            <div class="form-group-lg" style="padding: 5px">
                 {!!  Form::submit('Create User', ['class' => 'btn btn-primary btn-block']) !!}
             </div>
 
+            <div style="padding: 5px;">
+                {!! Form::close() !!}
 
-            {!! Form::close() !!}
+                {!! Form::open(['action' => ['AdminUsersController@destroy', $user->id], 'method' => 'delete']) !!}
+
+
+                <div class="form-group">
+                    {!!  Form::submit('Delete User', ['class' => 'btn btn-danger btn-block']) !!}
+                </div>
+
+                {!! Form::close() !!}
+            </div>
+
 
         </div>
 
