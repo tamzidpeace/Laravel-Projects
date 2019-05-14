@@ -17,21 +17,21 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr>
-			@if ($posts)
-			@foreach($posts as $post)
-				<td>{{$post->id}}</td>
-				<td>{{$post->user->name}}</td>
-				<td>{{$post->title}}</td>
-				<td>{{$post->body}}</td>
-				<td>{{$post->category_id}}</td>
-				<td>{{$post->photo_id}}</td>
-				<td>{{$post->created_at->diffForHumans()}}</td>
-				<td>{{$post->updated_at->diffForHumans()}}</td>
-			@endforeach
-			@endif
 		
-		</tr>
+		@if ($posts)
+			@foreach($posts as $post)
+				<tr>
+					<td>{{$post->id}}</td>
+					<td>{{$post->user->name}}</td>
+					<td>{{$post->title}}</td>
+					<td>{{$post->body}}</td>
+					<td>{{$post->category_id}}</td>
+					<td><img height="50" src="{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}" alt=""></td>
+					<td>{{$post->created_at->diffForHumans()}}</td>
+					<td>{{$post->updated_at->diffForHumans()}}</td>
+				</tr>
+				@endforeach
+				@endif
 		</tbody>
 	</table>
 @stop
