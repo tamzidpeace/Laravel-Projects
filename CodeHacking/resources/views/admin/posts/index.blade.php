@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+	
+	@if(Session::has('deleted_Post'))
+		<p class="bg-danger">{{session('deleted_Post')}}</p>
+	@endif
+	
 	<h1>Posts</h1>
 	
 	<table class="table">
@@ -23,7 +28,7 @@
 				<tr>
 					<td>{{$post->id}}</td>
 					<td>{{$post->user->name}}</td>
-					<td>{{$post->title}}</td>
+					<td> <a href="{{route('admin.posts.edit', $post->id)}}">{{$post->title}}</a> </td>
 					<td>{{$post->body}}</td>
 					<td>{{$post->category ? $post->category->name : 'N/A'}}</td>
 					<td><img height="50" src="{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}" alt=""></td>
