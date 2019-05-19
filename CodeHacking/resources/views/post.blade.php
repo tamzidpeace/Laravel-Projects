@@ -8,7 +8,7 @@
 	
 	<!-- Author -->
 	<p class="lead">
-		by <a href="{{$post->user->name}}"></a>
+		by <a href="#">{{$post->user->name}}</a>
 	</p>
 	
 	<hr>
@@ -19,7 +19,8 @@
 	<hr>
 	
 	<!-- Preview Image -->
-	<img class="img-responsive" src="{{$post->photo ? $post->photo->file : "http://placehold.it/400x400"}}" alt="http://placehold.it/400x400">
+	<img class="img-responsive" src="{{$post->photo ? $post->photo->file : "http://placehold.it/400x400"}}"
+	     alt="http://placehold.it/400x400">
 	
 	<hr>
 	
@@ -36,10 +37,10 @@
 		<h4>Leave a Comment:</h4>
 		
 		
-		{!! Form::open(['method'=>'']) !!}
+		{!! Form::open(['method'=>'POST', 'action'=>'PostCommentsController@store']) !!}
 		
 		
-		<input type="hidden" name="post_id" value="">
+		<input type="hidden" name="post_id" value="{{$post->id}}">
 		
 		
 		<div class="form-group">

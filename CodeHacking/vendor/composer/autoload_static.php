@@ -276,6 +276,7 @@ class ComposerStaticInit9a3b4f9caced99ecacc6547c255a3d73
     );
 
     public static $classMap = array (
+        'AddPhotoColumnToComment' => __DIR__ . '/../..' . '/database/migrations/2019_05_19_053728_add_photo_column_to_comment.php',
         'AddPhotoIdToUsers' => __DIR__ . '/../..' . '/database/migrations/2019_05_11_155122_add_photo_id_to_users.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2019_05_14_150826_create_categories_table.php',
         'CreateCommentRepliesTable' => __DIR__ . '/../..' . '/database/migrations/2019_05_15_072732_create_comment_replies_table.php',
