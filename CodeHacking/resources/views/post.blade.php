@@ -33,28 +33,33 @@
 	
 	
 	<!-- Comments Form -->
-	<div class="well">
-		<h4>Leave a Comment:</h4>
+	@if (Auth::check())
 		
 		
-		{!! Form::open(['method'=>'POST', 'action'=>'PostCommentsController@store']) !!}
+		<div class="well">
+			<h4>Leave a Comment:</h4>
+			
+			
+			{!! Form::open(['method'=>'POST', 'action'=>'PostCommentsController@store']) !!}
+			{!! csrf_field() !!}
+			
+			<input type="hidden" name="post_id" value="{{$post->id}}">
+			
+			
+			<div class="form-group">
+				{!! Form::label('body', 'Body:') !!}
+				{!! Form::textarea('body', null, ['class'=>'form-control','rows'=>3])!!}
+			</div>
+			
+			<div class="form-group">
+				{!! Form::submit('Submit comment', ['class'=>'btn btn-primary']) !!}
+			</div>
+			{!! Form::close() !!}
 		
 		
-		<input type="hidden" name="post_id" value="{{$post->id}}">
-		
-		
-		<div class="form-group">
-			{!! Form::label('body', 'Body:') !!}
-			{!! Form::textarea('body', null, ['class'=>'form-control','rows'=>3])!!}
 		</div>
-		
-		<div class="form-group">
-			{!! Form::submit('Submit comment', ['class'=>'btn btn-primary']) !!}
-		</div>
-		{!! Form::close() !!}
 	
-	
-	</div>
+	@endif
 	
 	<hr>
 	
@@ -63,17 +68,22 @@
 	
 	<!-- Comment -->
 	<div class="media">
-		<a class="pull-left" href="#">
-			<img height="64" class="media-object" src="" alt="">
-		</a>
+		
+		
 		<div class="media-body">
 			<h4 class="media-heading">
-				<small></small>
+				<small>Comments</small>
 			</h4>
-			<p></p>
-			
-			
-			<!-- Nested Comment -->
+			@foreach($comments as $comment)
+				<a class="" href="#">
+					<img height="64" class="media-object" src="{{$comment->photo}}" alt="">
+				</a>
+				<p>{{$comment->body}}</p>
+		@endforeach
+		
+		
+		
+		<!-- Nested Comment -->
 			<div id="nested-comment" class=" media">
 				<a class="pull-left" href="#">
 					<img height="64" class="media-object" src="" alt="">
