@@ -28,6 +28,7 @@ class HomeController extends Controller
         $id = Auth::user()->id;
         $user = User::findOrFail($id);
         $listings = $user->listings;
-        return view('home')->with('listings', $listings);
+        $serial = 1;
+        return view('home')->with('listings', $listings)->with('serial', $serial);
     }
 }

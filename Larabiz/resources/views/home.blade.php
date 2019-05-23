@@ -30,10 +30,10 @@
 								<tbody>
 								@foreach($listings as $list)
 									<tr>
-										<td>{{$list->id}}</td>
+										<td>{{$serial++}}</td>
 										<td><a href="/list/{{$list->id}}">{{$list->name}}</a></td>
 										<td>
-											<a src="#" class="btn btn-info">Update</a>
+											<a href="/list/{{$list->id}}/edit" class="btn btn-info">Update</a>
 										</td>
 										<td>
 											{!! Form::open(['action' => ['ListingsController@destroy', $list->id], 'method' => 'delete']) !!}

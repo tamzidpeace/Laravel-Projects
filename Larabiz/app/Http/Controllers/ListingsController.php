@@ -13,9 +13,18 @@ class ListingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
-        //
+        $listings = Listing::orderBy('created_at', 'desc')->paginate(2);
+
+        return view('pages.custom_welcome')->with('listings', $listings);
+
     }
 
     /**
@@ -80,7 +89,8 @@ class ListingsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $list = Listing::find($id);
+        return view('pages.edit')->with('list', $list);
     }
 
     /**
@@ -92,7 +102,28 @@ class ListingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required',
+            'address' => 'required',
+            'website' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'bio' => 'required',
+        ]);
+
+        $list = Listing::find($id);
+
+        $list->name = $request->name;
+        $list->address = $request->address;
+        $list->email = $request->email;
+        $list->website = $request->website;
+        $list->phone = $request->phone;
+        $list->bio = $request->bio;
+
+        $list->save();
+
+        return redirect('/home')->with('success', 'List updated!');
     }
 
     /**
