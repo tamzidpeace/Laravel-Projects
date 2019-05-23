@@ -57,7 +57,7 @@ class ListingsController extends Controller
         $list->bio = $request->bio;
         $list->save();
 
-        return redirect('home')->with('success', 'List Added');
+        return redirect('home')->with('success', 'List Added!');
     }
 
     /**
@@ -68,7 +68,8 @@ class ListingsController extends Controller
      */
     public function show($id)
     {
-        //
+        $list = Listing::find($id);
+        return view('pages.show')->with('id', $id)->with('list', $list);
     }
 
     /**
@@ -102,6 +103,7 @@ class ListingsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Listing::findOrFail($id)->delete();
+        return back()->with('success', 'List item deleted!');
     }
 }

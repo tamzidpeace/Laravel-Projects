@@ -31,12 +31,18 @@
 								@foreach($listings as $list)
 									<tr>
 										<td>{{$list->id}}</td>
-										<td><a href="#">{{$list->name}}</a></td>
+										<td><a href="/list/{{$list->id}}">{{$list->name}}</a></td>
 										<td>
-											<button type="submit" class="btn btn-info">Update</button>
+											<a src="#" class="btn btn-info">Update</a>
 										</td>
 										<td>
-											<button type="submit" class="btn btn-danger">Delete</button>
+											{!! Form::open(['action' => ['ListingsController@destroy', $list->id], 'method' => 'delete']) !!}
+											
+											<div class="form-group">
+												{!!  Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+											</div>
+											
+											{!! Form::close() !!}
 										</td>
 									</tr>
 								@endforeach
