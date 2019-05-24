@@ -2,7 +2,7 @@
 
 @section('content')
 	
-	<h1>New Album</h1>
+	<h1>New Album <a class="btn btn-primary pull-right" href="/album">Go Back</a></h1>
 	
 	{!! Form::open(['action' => 'AlbumsController@store', 'method' => 'post', 'files'=> 'true']) !!}
 	

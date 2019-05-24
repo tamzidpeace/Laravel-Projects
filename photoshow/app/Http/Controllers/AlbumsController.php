@@ -9,7 +9,9 @@ class AlbumsController extends Controller
 {
     public function index()
     {
-        return view('albums.index');
+        $albums = Album::all();
+        $count = 1;
+        return view('albums.index')->with('albums', $albums)->with('count', $count);
     }
 
     public function create()
@@ -21,7 +23,7 @@ class AlbumsController extends Controller
     {
 
         $file = $request->file('cover_image');
-        $name = time() . $file->getClientOriginalName();
+        $name = time() . '_'. $file->getClientOriginalName();
         $file->move('images/cover_images', $name);
 
         $album = new Album();
