@@ -20,3 +20,5 @@ Route::get('/album/create', 'AlbumsController@create');
 Route::post('/album', 'AlbumsController@store');
 Route::get('/album/{id}/show', 'AlbumsController@show');
 Route::delete('/album/{id}/show', 'AlbumsController@destroy');
+Route::get('/album/{id}/edit', 'AlbumsController@edit');
+Route::patch('/album/{id}', 'AlbumsController@update');

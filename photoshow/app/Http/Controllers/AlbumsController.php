@@ -43,7 +43,37 @@ class AlbumsController extends Controller
         return view('albums.view_album')->with('album', $album);
     }
 
-    public function destroy($id) {
+    public function edit($id)
+    {
+        $album = Album::find($id);
+        return view('albums.edit')->with('album', $album)->with('id', $id);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $album = Album::find($id);
+
+        $album->name = $request->name;
+        $album->description = $request->description;
+
+        //delete previous image file
+        unlink('images/cover_images/' . $album->cover_image);
+
+        //rename and move new image to cover_images directory
+        $file = $request->file('cover_image');
+        $name = time() . '_' . $file->getClientOriginalName();
+        $file->move('images/cover_images', $name);
+
+        $album->cover_image = $name;
+
+        $album->save();
+
+        return redirect('/album');
+        //return $album;
+    }
+
+    public function destroy($id)
+    {
         $album = Album::find($id);
         unlink('images/cover_images/' . $album->cover_image);
         $album->delete();

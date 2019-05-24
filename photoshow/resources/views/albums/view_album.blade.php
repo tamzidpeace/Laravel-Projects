@@ -12,20 +12,19 @@
 		</div>
 		
 		<div style="margin-top: 30px; margin-left: 530px;" class="">
-			<a class="btn btn-info" href="">Update Album</a>
-			{{--<a class="btn btn-danger" href="">Remove Album</a>--}}
-			
+			<a class="btn btn-primary" href="/album/{{$album->id}}/edit">Update Album</a>
+		</div>
+		
+		<div style="margin-top: 5px; margin-left: 530px;">
 			{!! Form::open(['action' => ['AlbumsController@destroy', $album->id], 'method' => 'delete']) !!}
 			
-			<div class="form-group">
+			<div class="form-group" style="margin-left: 150px; margin-top: -40px;">
 				{!!  Form::submit('Remove Album', ['class' => 'btn btn-danger']) !!}
 			</div>
 			
 			{!! Form::close() !!}
-		
 		</div>
+	
 	</div>
-
-
 
 @stop
