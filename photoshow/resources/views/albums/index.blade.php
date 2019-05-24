@@ -14,19 +14,19 @@
 						<img class="img-thumbnail" style="height: 200px; width: 200px;"
 						     src="{{'/images/cover_images/' . $album->cover_image}}"
 						     alt="">
-						<a href="#"><h3>{{$album->name}}</h3></a>
+						<a href="/album/{{$album->id}}/show"><h3>{{$album->name}}</h3></a>
 					</div>
 				@elseif($count++ % 3 == 2)
 					<div class="col-sm-4">
 						<img class="img-thumbnail" style="height: 200px; width: 200px;"
 						     src="{{'/images/cover_images/' . $album->cover_image}}" alt="">
-						<a href="#"><h3>{{$album->name}}</h3></a>
+						<a href="/album/{{$album->id}}/show"><h3>{{$album->name}}</h3></a>
 					</div>
 				@else
 					<div class="col-sm-4">
 						<img class="img-thumbnail" style="height: 200px; width: 200px;"
 						     src="{{'/images/cover_images/' . $album->cover_image}}" alt="">
-						<a href="#"><h3>{{$album->name}}</h3></a>
+						<a href="/album/{{$album->id}}/show"><h3>{{$album->name}}</h3></a>
 					</div>
 				
 				

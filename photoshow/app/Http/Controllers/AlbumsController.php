@@ -23,7 +23,7 @@ class AlbumsController extends Controller
     {
 
         $file = $request->file('cover_image');
-        $name = time() . '_'. $file->getClientOriginalName();
+        $name = time() . '_' . $file->getClientOriginalName();
         $file->move('images/cover_images', $name);
 
         $album = new Album();
@@ -34,6 +34,19 @@ class AlbumsController extends Controller
 
         $album->save();
 
+        return redirect('/album');
+    }
+
+    public function show($id)
+    {
+        $album = Album::find($id);
+        return view('albums.view_album')->with('album', $album);
+    }
+
+    public function destroy($id) {
+        $album = Album::find($id);
+        unlink('images/cover_images/' . $album->cover_image);
+        $album->delete();
         return redirect('/album');
     }
 }

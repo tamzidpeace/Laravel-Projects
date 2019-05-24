@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/album', 'AlbumsController@index');
 Route::get('/album/create', 'AlbumsController@create');
 Route::post('/album', 'AlbumsController@store');
+Route::get('/album/{id}/show', 'AlbumsController@show');
+Route::delete('/album/{id}/show', 'AlbumsController@destroy');
