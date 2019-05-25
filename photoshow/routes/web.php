@@ -22,3 +22,6 @@ Route::get('/album/{id}/show', 'AlbumsController@show');
 Route::delete('/album/{id}/show', 'AlbumsController@destroy');
 Route::get('/album/{id}/edit', 'AlbumsController@edit');
 Route::patch('/album/{id}', 'AlbumsController@update');
+
+Route::resource('photo', 'PhotosController');
+Route::get('/photo/creates/{id}', 'PhotosController@creates');

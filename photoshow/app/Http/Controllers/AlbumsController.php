@@ -40,7 +40,12 @@ class AlbumsController extends Controller
     public function show($id)
     {
         $album = Album::find($id);
-        return view('albums.view_album')->with('album', $album);
+        $photos = $album->photos;
+        $count = 1;
+        return view('albums.view_album')
+            ->with('album', $album)
+            ->with('photos', $photos)
+            ->with('count', $count);
     }
 
     public function edit($id)
@@ -57,14 +62,16 @@ class AlbumsController extends Controller
         $album->description = $request->description;
 
         //delete previous image file
-        unlink('images/cover_images/' . $album->cover_image);
+        if ($request->cover_image) {
+            unlink('images/cover_images/' . $album->cover_image);
 
-        //rename and move new image to cover_images directory
-        $file = $request->file('cover_image');
-        $name = time() . '_' . $file->getClientOriginalName();
-        $file->move('images/cover_images', $name);
+            //rename and move new image to cover_images directory
+            $file = $request->file('cover_image');
+            $name = time() . '_' . $file->getClientOriginalName();
+            $file->move('images/cover_images', $name);
 
-        $album->cover_image = $name;
+            $album->cover_image = $name;
+        }
 
         $album->save();
 
