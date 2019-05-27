@@ -19,4 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//admin routes
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/user', 'AdminController@user');
+
+//hospital routes
+Route::get('/hospital/registration', 'HospitalController@registration');
+Route::post('/hospital/registration', 'HospitalController@store');

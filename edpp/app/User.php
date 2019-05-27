@@ -28,20 +28,35 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function role() {
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 
-    public function isAdmin() {
-        
+    public function isAdmin()
+    {
+
         $role = 'N/A';
 
-        if($this->role) 
+        if ($this->role)
             $role = $this->role->name;
 
-        if($role == 'admin') {
+        if ($role == 'admin')
             return true;
-        } else return false;
+        else
+            return false;
+    }
 
+    public function isHospital()
+    {
+        $role = 'N/A';
+
+        if ($this->role)
+            $role = $this->role->name;
+
+        if ($role == 'hospital')
+            return true;
+        else
+            return false;
     }
 }

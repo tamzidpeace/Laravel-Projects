@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Home</a>
+                <a class="navbar-brand" href="/">Dashboard</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -125,7 +125,7 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">All Users</a>
+                                    <a href="/admin/user">All Users</a>
                                 </li>
 
                                 <li>
@@ -277,9 +277,9 @@
                                     <a href="login.html">Login Page</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
+                            <!-- /.nav-seconamend-level -->
+                        </li>name
+                    </ul>name
 
 
                 </div>

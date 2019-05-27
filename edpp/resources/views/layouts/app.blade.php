@@ -71,6 +71,10 @@
             </div>
         </nav>
 
+        {{-- flash message --}}
+
+        @include('includes.flash')
+
         @yield('content')
     </div>
 
