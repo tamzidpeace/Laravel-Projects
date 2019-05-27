@@ -22,4 +22,9 @@ class Hospital extends Model
     {
         return $this->belongsTo(App::Role);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

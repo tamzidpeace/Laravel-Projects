@@ -63,7 +63,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -129,7 +129,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="">Create User</a>
+                                    <a href="/admin/requests">Pending Requests</a>
                                 </li>
 
                             </ul>
@@ -332,7 +332,7 @@
 
 
 
-
+   
 
     <!-- Page Content -->
     <div id="page-wrapper">
@@ -340,7 +340,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header"></h1>
-
+                    @include('includes.flash')
                     @yield('content')
                 </div>
                 <!-- /.col-lg-12 -->

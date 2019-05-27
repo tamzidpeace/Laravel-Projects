@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Hospital;
 
 class AdminController extends Controller
 {
@@ -24,5 +25,25 @@ class AdminController extends Controller
     public function user() {
         $users = User::all();
         return view('admin.user')->with('users', $users);
+    }
+
+    public function requests() {
+
+        $hospitals = Hospital::all()->where('status', 'pending');
+
+        return view('admin.requests')->with('hospitals', $hospitals);
+    }
+
+    public function accept($id) {
+        $hospital = Hospital::find($id);
+        $user_id = $hospital->user_id;
+        $user = User::find($user_id);
+        
+        $hospital->status = 'registered';
+        $user->role_id = $hospital->role_id;
+
+        $hospital->save();
+        $user->save();
+        return back()->with('success', 'Request accepted');
     }
 }

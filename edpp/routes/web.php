@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //admin routes
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/user', 'AdminController@user');
+Route::get('/admin/requests', 'AdminController@requests');
+Route::patch('/admin/{id}/hospital', 'AdminController@accept');
 
 //hospital routes
 Route::get('/hospital/registration', 'HospitalController@registration');
