@@ -10,6 +10,11 @@ class HospitalController extends Controller
 {
     //
 
+    public function __construct() 
+    {
+        $this->middleware('isHospital');
+    }
+
     public function registration()
     {
         $user = Auth::user();
@@ -46,5 +51,9 @@ class HospitalController extends Controller
         $hospital->save();
 
         return redirect('home')->with('success', 'Your request has been submitted');
+    }
+
+    public function dashboard() {
+        return view('hospital.dashboard');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class HospitalMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,14 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $user = Auth::user();
-        
-        if(!$user->isAdmin()) {
-            return redirect('/home')->with('warning', 'Opps! you are not an Admin!');
-        }
+        //checking if the user has role for hospital
 
+        $user = Auth::user();
+
+        if(!$user->isHospital()) {
+            return redirect('/home')->with('warning', 'You do not have hospital perminssion');
+        }
+        
         return $next($request);
     }
 }

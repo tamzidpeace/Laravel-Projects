@@ -28,11 +28,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
+    // start of middleware functions
     public function isAdmin()
     {
 
@@ -60,5 +56,38 @@ class User extends Authenticatable
             return false;
     }
 
+    public function isDoctor()
+    {
+        $role = 'N/A';
+
+        if ($this->role)
+            $role = $this->role->name;
+
+        if ($role == 'doctor')
+            return true;
+        else
+            return false;
+    }
+
+    public function isPatient()
+    {
+        $role = 'N/A';
+
+        if ($this->role)
+            $role = $this->role->name;
+
+        if ($role == 'patient')
+            return true;
+        else
+            return false;
+    }
+    // end of middleware functions
+
+
     
+    //others functions
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

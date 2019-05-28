@@ -30,3 +30,4 @@ Route::delete('/admin/{id}/hospital', 'AdminController@reject');
 //hospital routes
 Route::get('/hospital/registration', 'HospitalController@registration');
 Route::post('/hospital/registration', 'HospitalController@store');
+Route::get('/hospital/dashboard', 'HospitalController@dashboard');

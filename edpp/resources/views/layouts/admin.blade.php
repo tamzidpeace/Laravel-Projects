@@ -140,15 +140,15 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Hospitals<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">All Hospitals</a>
+                                    <a href="admin/hospitals">All Hospitals</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Registered Hospitals</a>
+                                    <a href="admin/hospitals/registerd">Registered Hospitals</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Blocked Hospitals</a>
+                                    <a href="admin/hospitals/blocked">Blocked Hospitals</a>
                                 </li>
 
                             </ul>
