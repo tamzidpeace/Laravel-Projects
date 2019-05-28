@@ -25,6 +25,7 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/admin/user', 'AdminController@user');
 Route::get('/admin/requests', 'AdminController@requests');
 Route::patch('/admin/{id}/hospital', 'AdminController@accept');
+Route::delete('/admin/{id}/hospital', 'AdminController@reject');
 
 //hospital routes
 Route::get('/hospital/registration', 'HospitalController@registration');

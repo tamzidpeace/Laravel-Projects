@@ -13,7 +13,8 @@
                 <tr>
                     <th>Name</th>
                     <th>Address</th>
-                    <th>Action</th>
+                    <th>Accept</th>
+                    <th>Reject</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,11 +24,22 @@
                     <td>{{$hospital->name}}</td>
                     <td>{{$hospital->address}}</td>
                     <td>
-
+                        {{-- accept button --}}
                         {!! Form::open(['action' => ['AdminController@accept', $hospital->id], 'method' =>'patch']) !!}
 
                         <div class="form-group">
-                            {!! Form::submit('Accept', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Accept Request', ['class' => 'btn btn-primary']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+                    </td>
+
+                    {{-- reject button --}}
+                    <td>
+                        {!! Form::open(['action' => ['AdminController@reject', $hospital->id], 'method' =>'delete']) !!}
+
+                        <div class="form-group">
+                            {!! Form::submit('Reject it', ['class' => 'btn btn-danger']) !!}
                         </div>
 
                         {!! Form::close() !!}

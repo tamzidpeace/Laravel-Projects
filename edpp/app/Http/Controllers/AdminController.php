@@ -42,8 +42,33 @@ class AdminController extends Controller
         $hospital->status = 'registered';
         $user->role_id = $hospital->role_id;
 
+        //updating information in both user and hospital table
         $hospital->save();
         $user->save();
         return back()->with('success', 'Request accepted');
+    }
+
+    // public function block($id) {
+    //     $hospital = Hospital::find($id);
+
+    //     $hospital->status = "block";
+        
+    //     $hospital->save();
+        
+    //     return back()->with('warning', 'Hospital has been ');
+    // }
+
+    public function reject($id) {
+        
+        $hospital = Hospital::find($id);
+        $hospitalImagePath = 'images/hospital_image/' . $hospital->photo;
+
+        //removing image from public folder
+        unlink($hospitalImagePath);
+        
+        //removing hospital request entry
+        $hospital->delete();
+
+        return back()->with('warning', 'Hospital request removed');
     }
 }

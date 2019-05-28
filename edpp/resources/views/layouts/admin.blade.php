@@ -137,18 +137,18 @@
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Hospitals<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">All Posts</a>
+                                    <a href="">All Hospitals</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Create Post</a>
+                                    <a href="">Registered Hospitals</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Comments</a>
+                                    <a href="">Blocked Hospitals</a>
                                 </li>
 
                             </ul>
