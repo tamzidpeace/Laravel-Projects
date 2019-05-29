@@ -81,6 +81,15 @@ class User extends Authenticatable
         else
             return false;
     }
+
+    public function isNewUser()
+    {
+
+        if (!$this->role)
+            return true;
+        else
+            return false;
+    }
     // end of middleware functions
 
 
@@ -89,5 +98,14 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function doctors() {
+        return $this->hasMany(Doctor::class);
+    }
+
+    public function hospitals()
+    {
+        return $this->hasMany(Hospital::class);
     }
 }

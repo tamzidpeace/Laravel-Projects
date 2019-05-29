@@ -15,7 +15,7 @@
                     @endif
 
                     <a class="btn btn-primary" href="/hospital/registration">Hostpital Registation</a>
-                    <a class="btn btn-primary" href="#">Doctor Registation</a>
+                    <a class="btn btn-primary" href="/doctor/registration">Doctor Registation</a>
                     <a class="btn btn-primary" href="#">Patient Registation</a>
                 </div>
             </div>

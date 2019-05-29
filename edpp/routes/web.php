@@ -37,6 +37,10 @@ Route::patch('/admin/hospital/{id}/unblock', 'AdminHospitalController@unblock');
 
 
 //hospital routes
-Route::get('/hospital/registration', 'HospitalController@registration');
-Route::post('/hospital/registration', 'HospitalController@store');
+Route::get('/hospital/registration', 'HospitalController@registration')->middleware('isNewUser');
+Route::post('/hospital/registration', 'HospitalController@store')->middleware('isNewUser');
 Route::get('/hospital', 'HospitalController@dashboard');
+
+//doctor routes
+Route::get('/doctor/registration', 'DoctorController@registration')->middleware('isNewUser');
+Route::post('/doctor/registration', 'DoctorController@store')->middleware('isNewUser');
