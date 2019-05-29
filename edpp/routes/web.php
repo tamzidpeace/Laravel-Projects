@@ -54,3 +54,4 @@ Route::get('/hospital', 'HospitalController@dashboard');
 //doctor routes
 Route::get('/doctor/registration', 'DoctorController@registration')->middleware('isNewUser');
 Route::post('/doctor/registration', 'DoctorController@store')->middleware('isNewUser');
+Route::get('/doctor', 'DoctorController@dashboard');

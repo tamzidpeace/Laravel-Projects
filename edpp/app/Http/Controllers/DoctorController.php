@@ -10,6 +10,15 @@ class DoctorController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        return $this->middleware('isDoctor')->except(['registration', 'store',]);
+    }
+
+    public function dashboard() {
+        return view('doctor.dashboard');
+    }
+
     public function registration()
     {
         $user = Auth::user();
