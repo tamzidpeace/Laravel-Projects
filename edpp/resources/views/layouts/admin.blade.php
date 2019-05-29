@@ -160,13 +160,13 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Doctor<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 
-                                <li> <a href="#">All Doctors</a> </li>
+                                <li> <a href="/admin/doctors">All Doctors</a> </li>
 
-                                <li> <a href="#">New Doctors Requests</a> </li>
+                                <li> <a href="/admin/new-doctors-requests">New Doctors Requests</a> </li>
 
-                                <li> <a href="#">Registered Doctors</a> </li>
+                                <li> <a href="/admin/registered-doctors">Registered Doctors</a> </li>
 
-                                <li> <a href="#">Blocked Doctores</a> </li>
+                                <li> <a href="/admin/blocked-doctors">Blocked Doctores</a> </li>
 
                             </ul>
                             <!-- /.nav-second-level -->

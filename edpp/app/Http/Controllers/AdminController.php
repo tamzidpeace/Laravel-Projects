@@ -48,16 +48,6 @@ class AdminController extends Controller
         return back()->with('success', 'Request accepted');
     }
 
-    // public function block($id) {
-    //     $hospital = Hospital::find($id);
-
-    //     $hospital->status = "block";
-        
-    //     $hospital->save();
-        
-    //     return back()->with('warning', 'Hospital has been ');
-    // }
-
     public function reject($id) {
         
         $hospital = Hospital::find($id);

@@ -35,6 +35,16 @@ Route::get('/admin/hospitals/blocked', 'AdminHospitalController@blockedHospitals
 Route::patch('/admin/hospital/{id}/block', 'AdminHospitalController@block');
 Route::patch('/admin/hospital/{id}/unblock', 'AdminHospitalController@unblock');
 
+//admin doctor routes
+Route::get('/admin/doctors', 'AdminDoctorController@allDoctors');
+Route::get('/admin/new-doctors-requests', 'AdminDoctorController@pendingDoctors');
+Route::get( '/admin/registered-doctors', 'AdminDoctorController@registeredDoctors');
+Route::get( '/admin/blocked-doctors', 'AdminDoctorController@blockedDoctors');
+Route::patch('/admin/{id}/doctor', 'AdminDoctorController@accept');
+Route::patch('/admin/{id}/block-doctor', 'AdminDoctorController@block');
+Route::patch('/admin/{id}/unblock-doctor', 'AdminDoctorController@unblock');
+Route::delete('/admin/{id}/doctor', 'AdminDoctorController@rejectOrRemove');
+
 
 //hospital routes
 Route::get('/hospital/registration', 'HospitalController@registration')->middleware('isNewUser');
