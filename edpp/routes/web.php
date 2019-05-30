@@ -34,6 +34,7 @@ Route::get('/admin/hospitals/registered', 'AdminHospitalController@registeredHos
 Route::get('/admin/hospitals/blocked', 'AdminHospitalController@blockedHospitals');
 Route::patch('/admin/hospital/{id}/block', 'AdminHospitalController@block');
 Route::patch('/admin/hospital/{id}/unblock', 'AdminHospitalController@unblock');
+Route::get('/admin/hospital/{id}/detailes', 'AdminHospitalController@detailes');
 
 //admin doctor routes
 Route::get('/admin/doctors', 'AdminDoctorController@allDoctors');
@@ -44,6 +45,7 @@ Route::patch('/admin/{id}/doctor', 'AdminDoctorController@accept');
 Route::patch('/admin/{id}/block-doctor', 'AdminDoctorController@block');
 Route::patch('/admin/{id}/unblock-doctor', 'AdminDoctorController@unblock');
 Route::delete('/admin/{id}/doctor', 'AdminDoctorController@rejectOrRemove');
+Route::get('/admin/doctor/{id}/detailes', 'AdminDoctorController@detailes');
 
 
 //hospital routes

@@ -110,4 +110,10 @@ class AdminDoctorController extends Controller
 
         return back()->with('success', 'Hospital is unblocked!');
     }
+
+    public function detailes($id) {
+        
+        $doctor = Doctor::find($id);
+        return view('admin.doctors.doctor_detailes', compact('doctor'));
+    }
 }

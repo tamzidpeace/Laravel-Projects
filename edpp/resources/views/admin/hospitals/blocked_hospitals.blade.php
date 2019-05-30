@@ -19,7 +19,7 @@
                 @foreach ($hospitals as $hospital)
 
                 <tr>
-                    <td>{{$hospital->name}}</td>
+                    <td><a href="/admin/hospital/{{$hospital->id}}/detailes">{{$hospital->name}}</a></td>
                     <td>{{$hospital->address}}</td>
                     <td>
                     {!! Form::open(['action' => ['AdminHospitalController@unblock', $hospital->id], 'method' =>'patch']) !!}

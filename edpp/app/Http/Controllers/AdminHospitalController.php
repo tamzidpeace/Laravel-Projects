@@ -64,4 +64,11 @@ class AdminHospitalController extends Controller
 
         return back()->with('success', 'Hospital is unblocked!');
     }
+
+    public function detailes($id)
+    {
+
+        $hospital = Hospital::find($id);
+        return view('admin.hospitals.hospital_details', compact( 'hospital'));
+    }
 }
