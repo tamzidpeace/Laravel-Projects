@@ -279,8 +279,8 @@
                                 </li>
                             </ul>
                             <!-- /.nav-seconamend-level -->
-                        </li>name
-                    </ul>name
+                        </li>
+                    </ul>
 
 
                 </div>

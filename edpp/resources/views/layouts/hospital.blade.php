@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin</title>
+    <title>Hospital</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Dashboard</a>
+                <a class="navbar-brand" href="/home">Dashboard</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -118,18 +118,51 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="/hospital"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Doctors<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+
                                 <li>
-                                    <a href="">All Users</a>
+                                    <a href="/hospital/doctor/all-doctors">All Doctors</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Pending Requests</a>
+                                    <a href="#">Registered Doctors</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">Blocked Doctors</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">Pending Requests</a>
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Booking<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
+                                <li>
+                                    <a href="#">All Booking</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">Incoming Booking</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">Fast Booking</a>
+                                </li>
+
+                                <li>
+                                    <a href="#">Pending Requests</a>
                                 </li>
 
                             </ul>

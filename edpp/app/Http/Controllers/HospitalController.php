@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Hospital;
+use App\Doctor;
 
 class HospitalController extends Controller
 {
@@ -55,5 +56,11 @@ class HospitalController extends Controller
 
     public function dashboard() {
         return view('hospital.dashboard');
+    }
+
+    public function allDoctors() {
+        
+        $doctors = Doctor::all();
+        return view('hospital.doctors.all_doctors', compact('doctors'));
     }
 }

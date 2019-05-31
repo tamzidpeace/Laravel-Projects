@@ -18,6 +18,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//logout route
+Route::get('/logout', 'Auth\LoginController@logout');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 //admin routes
@@ -52,6 +55,7 @@ Route::get('/admin/doctor/{id}/detailes', 'AdminDoctorController@detailes');
 Route::get('/hospital/registration', 'HospitalController@registration')->middleware('isNewUser');
 Route::post('/hospital/registration', 'HospitalController@store')->middleware('isNewUser');
 Route::get('/hospital', 'HospitalController@dashboard');
+Route::get('/hospital/doctor/all-doctors', 'HospitalController@allDoctors');
 
 //doctor routes
 Route::get('/doctor/registration', 'DoctorController@registration')->middleware('isNewUser');
