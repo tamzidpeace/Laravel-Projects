@@ -5,12 +5,18 @@
 
 <table class="table table-hover">
     <tr>
-        <th>name</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Request</th>
     </tr>
 
     @foreach ($doctors as $doctor)
     <tr>
         <td>{{ $doctor->name }}</td>
+        <td>{{ $doctor->email }}</td>
+
+        
+
     </tr>
     @endforeach
 

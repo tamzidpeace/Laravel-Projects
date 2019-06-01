@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Doctor;
+use App\Hospital;
 
 class DoctorController extends Controller
 {
@@ -59,5 +60,14 @@ class DoctorController extends Controller
         $doctor->save();
 
         return redirect('/home')->with('success', 'Your request for doctor role has been submitted, please wait for confirmation');
+    }
+
+    public function allHospitals() {
+        $hospitals = Hospital::all()->where('status', 'registered');
+        return view('doctor.hospital.all_hospitals', compact('hospitals'));
+    }
+
+    public function workingHospitals() {
+
     }
 }

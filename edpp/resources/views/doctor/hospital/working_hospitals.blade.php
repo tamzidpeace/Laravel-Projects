@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <h1>Doctor Dashboard</h1>
+        <h1>Working Hospitals</h1>
     </div>
 </div>
 

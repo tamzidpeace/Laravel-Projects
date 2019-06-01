@@ -61,3 +61,5 @@ Route::get('/hospital/doctor/all-doctors', 'HospitalController@allDoctors');
 Route::get('/doctor/registration', 'DoctorController@registration')->middleware('isNewUser');
 Route::post('/doctor/registration', 'DoctorController@store')->middleware('isNewUser');
 Route::get('/doctor', 'DoctorController@dashboard');
+Route::get('/doctor/all-hospitals', 'DoctorController@allHospitals');
+Route::get('/doctor/working-hospitals', 'DoctorController@workingHospitals');
