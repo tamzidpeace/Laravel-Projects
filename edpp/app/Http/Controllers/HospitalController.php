@@ -95,7 +95,53 @@ class HospitalController extends Controller
         $user = Auth::user();
         $hospital_id = $user->hospital->id;
         $doctors = Hospital::find($hospital_id)->blockedDoctors()->get();
-        
+
         return view('hospital.doctors.blocked_doctors', compact('doctors'));
+    }
+
+    public function accept($id)
+    {
+        $user = Auth::user();
+        $hospital = Hospital::get()->where('user_id', $user->id)->first();
+        $doctor = Doctor::findOrFail($id);
+
+        $doctor->hospitals()->newPivotStatement()
+            ->where([['doctor_id', '=', $id], ['hospital_id', '=', $hospital->id]])->update(['status' => 'registered']);
+
+        return back()->with('success', 'Doctor registration complete');
+    }
+
+    public function reject($id)
+    {
+        $user = Auth::user();
+        $hospital = Hospital::get()->where('user_id', $user->id)->first();
+        $doctor = Doctor::findOrFail($id);
+
+        $doctor->hospitals()->newPivotStatement()
+            ->where([['doctor_id', '=', $id], ['hospital_id', '=', $hospital->id]])->delete();
+
+        return back()->with('danger', 'Doctor request rejected');
+    }
+
+    public function block($id) {
+        $user = Auth::user();
+        $hospital = Hospital::get()->where('user_id', $user->id)->first();
+        $doctor = Doctor::findOrFail($id);
+
+        $doctor->hospitals()->newPivotStatement()
+            ->where([['doctor_id', '=', $id], ['hospital_id', '=', $hospital->id]])->update(['status' => 'blocked']);
+
+        return back()->with('info', 'Doctor Blocked');
+    }
+
+    public function unblock($id) {
+        $user = Auth::user();
+        $hospital = Hospital::get()->where('user_id', $user->id)->first();
+        $doctor = Doctor::findOrFail($id);
+
+        $doctor->hospitals()->newPivotStatement()
+            ->where([['doctor_id', '=', $id], ['hospital_id', '=', $hospital->id]])->update(['status' => 'registered']);
+
+        return back()->with('success', 'Doctor Unblocked');
     }
 }

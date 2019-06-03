@@ -59,6 +59,11 @@ Route::get('/hospital/doctor/all-doctors', 'HospitalController@allDoctors');
 Route::get('/hospital/doctor/pending-doctors', 'HospitalController@pendingDoctors');
 Route::get('/hospital/doctor/registered-doctors', 'HospitalController@registeredDoctors');
 Route::get('/hospital/doctor/blocked-doctors', 'HospitalController@blockedDoctors');
+Route::patch('/hospital/doctor/{id}/accept', 'HospitalController@accept');
+Route::delete('/hospital/doctor/{id}/reject', 'HospitalController@reject');
+Route::patch('/hospital/doctor/{id}/block', 'HospitalController@block');
+Route::patch('/hospital/doctor/{id}/unblock', 'HospitalController@unblock');
+
 
 //doctor routes
 Route::get('/doctor/registration', 'DoctorController@registration')->middleware('isNewUser');
@@ -67,3 +72,4 @@ Route::get('/doctor', 'DoctorController@dashboard');
 Route::get('/doctor/all-hospitals', 'DoctorController@allHospitals');
 Route::get('/doctor/working-hospitals', 'DoctorController@workingHospitals');
 Route::post('/doctor/working-request/{id}', 'DoctorController@workingRequest');
+

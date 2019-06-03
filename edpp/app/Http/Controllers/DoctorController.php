@@ -93,9 +93,6 @@ class DoctorController extends Controller
             return back()->with('warning', 'You are already working in this hospital or your request is pending!');
         }
 
-        //find you after whole day search(update the record of pivot table)
-        //$findDoctor->hospitals()->newPivotStatement()->where('id', 7)->update(['status' => 'ok']);
-
         //deleteing attempt
         //$findDoctor->hospitals()->newPivotStatement()->where('id', id)->delete();
     }
