@@ -27,4 +27,9 @@ class Hospital extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // setting up many to many relationship
+    public function doctors() {
+        return $this->belongsToMany(Doctor::class)->wherePivot('status', 'pending')->withPivot('status');
+    }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Doctor;
 use App\Hospital;
+use App\DoctorHospital;
 
 class DoctorController extends Controller
 {
@@ -16,7 +17,8 @@ class DoctorController extends Controller
         return $this->middleware('isDoctor')->except(['registration', 'store',]);
     }
 
-    public function dashboard() {
+    public function dashboard()
+    {
         return view('doctor.dashboard');
     }
 
@@ -62,12 +64,37 @@ class DoctorController extends Controller
         return redirect('/home')->with('success', 'Your request for doctor role has been submitted, please wait for confirmation');
     }
 
-    public function allHospitals() {
+    public function allHospitals()
+    {
         $hospitals = Hospital::all()->where('status', 'registered');
         return view('doctor.hospital.all_hospitals', compact('hospitals'));
     }
 
-    public function workingHospitals() {
+    public function workingRequest($id)
+    {
+        $user = Auth::user();
+        $user_id = $user->id;
+        $doctor = Doctor::get()->where('user_id', $user_id)->first();
+        $doctor_id = $doctor->id;
 
+        // return back()->with('success', 'Your request has send to that hospital!');
+        $findHospital = Hospital::find($id);
+        $findDoctor = Doctor::find($doctor_id);
+
+        //save relationship in pivot table
+        //$findDoctor->hospitals()->save($findHospital, ['status' => 'pending']);
+
+
+        //find you after whole day search(update the record of pivot table)
+        //$findDoctor->hospitals()->newPivotStatement()->where('id', 7)->update(['status' => 'ok']);
+
+        //deleteing attempt
+        //$findDoctor->hospitals()->newPivotStatement()->where('id', id)->delete();
+        
+
+        return 'ok';
     }
+
+    public function workingHospitals()
+    { }
 }

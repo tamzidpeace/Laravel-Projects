@@ -63,4 +63,12 @@ class HospitalController extends Controller
         $doctors = Doctor::all();
         return view('hospital.doctors.all_doctors', compact('doctors'));
     }
+
+    public function pendingRequests() {
+        $user = Auth::user();
+        $hospital_id = $user->hospital->id;
+        $doctors = Hospital::find($hospital_id)->doctors()->get()->first();
+        $doctors2 = Hospital::find($hospital_id)->doctors()->get();
+        return $doctors2;
+    }
 }

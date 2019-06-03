@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +56,7 @@ Route::get('/hospital/registration', 'HospitalController@registration')->middlew
 Route::post('/hospital/registration', 'HospitalController@store')->middleware('isNewUser');
 Route::get('/hospital', 'HospitalController@dashboard');
 Route::get('/hospital/doctor/all-doctors', 'HospitalController@allDoctors');
+Route::get('/hospital/doctor/pending-requests', 'HospitalController@pendingRequests');
 
 //doctor routes
 Route::get('/doctor/registration', 'DoctorController@registration')->middleware('isNewUser');
@@ -63,3 +64,4 @@ Route::post('/doctor/registration', 'DoctorController@store')->middleware('isNew
 Route::get('/doctor', 'DoctorController@dashboard');
 Route::get('/doctor/all-hospitals', 'DoctorController@allHospitals');
 Route::get('/doctor/working-hospitals', 'DoctorController@workingHospitals');
+Route::post('/doctor/working-request/{id}', 'DoctorController@workingRequest');
