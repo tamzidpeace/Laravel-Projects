@@ -130,15 +130,15 @@
                                 </li>
 
                                 <li>
-                                    <a href="#">Registered Doctors</a>
+                                    <a href="/hospital/doctor/registered-doctors">Registered Doctors</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Blocked Doctors</a>
+                                    <a href="/hospital/doctor/blocked-doctors">Blocked Doctors</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Pending Requests</a>
+                                    <a href="/hospital/doctor/pending-doctors">Pending Doctors</a>
                                 </li>
 
                             </ul>

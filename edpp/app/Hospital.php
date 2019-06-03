@@ -29,7 +29,23 @@ class Hospital extends Model
     }
 
     // setting up many to many relationship
-    public function doctors() {
+    public function doctors()
+    {
+        return $this->belongsToMany(Doctor::class)->withPivot('status');
+    }
+
+    public function pendingDoctors()
+    {
         return $this->belongsToMany(Doctor::class)->wherePivot('status', 'pending')->withPivot('status');
+    }
+
+    public function registeredDoctors()
+    {
+        return $this->belongsToMany(Doctor::class)->wherePivot('status', 'registered')->withPivot('status');
+    }
+
+    public function blockedDoctors()
+    {
+        return $this->belongsToMany(Doctor::class)->wherePivot('status', 'blocked')->withPivot('status');
     }
 }

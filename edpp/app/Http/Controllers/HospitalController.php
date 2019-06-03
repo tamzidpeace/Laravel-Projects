@@ -11,9 +11,9 @@ class HospitalController extends Controller
 {
     //
 
-    public function __construct() 
+    public function __construct()
     {
-        $this->middleware('isHospital')->except(['registration','store']);
+        $this->middleware('isHospital')->except(['registration', 'store']);
     }
 
     public function registration()
@@ -54,21 +54,48 @@ class HospitalController extends Controller
         return redirect('home')->with('success', 'Your request has been submitted');
     }
 
-    public function dashboard() {
+    public function dashboard()
+    {
         return view('hospital.dashboard');
     }
 
-    public function allDoctors() {
-        
-        $doctors = Doctor::all();
+    public function allDoctors()
+    {
+
+        $user = Auth::user();
+        $hospital_id = $user->hospital->id;
+        $doctors = Hospital::find($hospital_id)->doctors()->get();
+
         return view('hospital.doctors.all_doctors', compact('doctors'));
     }
 
-    public function pendingRequests() {
+    // get all pending doctors
+    public function pendingDoctors()
+    {
         $user = Auth::user();
         $hospital_id = $user->hospital->id;
-        $doctors = Hospital::find($hospital_id)->doctors()->get()->first();
-        $doctors2 = Hospital::find($hospital_id)->doctors()->get();
-        return $doctors2;
+        $doctors = Hospital::find($hospital_id)->pendingDoctors()->get();
+
+        return view('hospital.doctors.pending_doctors', compact('doctors'));
+    }
+
+    //get all registered doctors
+    public function registeredDoctors()
+    {
+        $user = Auth::user();
+        $hospital_id = $user->hospital->id;
+        $doctors = Hospital::find($hospital_id)->registeredDoctors()->get();
+
+        return view('hospital.doctors.registered_doctors', compact('doctors'));
+    }
+
+    //get all blocked doctors
+    public function blockedDoctors()
+    {
+        $user = Auth::user();
+        $hospital_id = $user->hospital->id;
+        $doctors = Hospital::find($hospital_id)->blockedDoctors()->get();
+        
+        return view('hospital.doctors.blocked_doctors', compact('doctors'));
     }
 }

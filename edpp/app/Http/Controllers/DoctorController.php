@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Database\QueryException;
 use App\Doctor;
 use App\Hospital;
 use App\DoctorHospital;
+use Mockery\Exception;
 
 class DoctorController extends Controller
 {
@@ -77,22 +79,25 @@ class DoctorController extends Controller
         $doctor = Doctor::get()->where('user_id', $user_id)->first();
         $doctor_id = $doctor->id;
 
-        // return back()->with('success', 'Your request has send to that hospital!');
-        $findHospital = Hospital::find($id);
         $findDoctor = Doctor::find($doctor_id);
+        $findHospital = Hospital::find($id);
 
         //save relationship in pivot table
-        //$findDoctor->hospitals()->save($findHospital, ['status' => 'pending']);
+        try {
+            $findDoctor->hospitals()->save($findHospital, ['status' => 'pending']);
 
+            return back()->with('success', 'Your request has send to that hospital!');
+        } catch (QueryException $e) {
+            //var_dump($e->errorInfo);
+            //abort(500, 'Something went wrong'); 
+            return back()->with('warning', 'You are already working in this hospital or your request is pending!');
+        }
 
         //find you after whole day search(update the record of pivot table)
         //$findDoctor->hospitals()->newPivotStatement()->where('id', 7)->update(['status' => 'ok']);
 
         //deleteing attempt
         //$findDoctor->hospitals()->newPivotStatement()->where('id', id)->delete();
-        
-
-        return 'ok';
     }
 
     public function workingHospitals()

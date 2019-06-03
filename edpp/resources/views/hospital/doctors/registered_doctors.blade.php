@@ -1,7 +1,7 @@
 @extends('layouts.hospital')
 
 @section('content')
-<h1>Blocked Doctors</h1>
+<h1>Registered Doctors</h1>
 
 <div class="container">
     <div class="row">
@@ -20,5 +20,5 @@
         </table>
     </div>
 </div>
-    
+
 @endsection

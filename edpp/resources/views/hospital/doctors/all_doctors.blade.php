@@ -15,7 +15,7 @@
         <td>{{ $doctor->name }}</td>
         <td>{{ $doctor->email }}</td>
 
-        
+        <td>{{ $doctor->pivot->status }}</td>
 
     </tr>
     @endforeach
