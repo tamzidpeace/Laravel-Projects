@@ -22,7 +22,7 @@
                     !!}
                     
                     <div class="form-group">
-                        {!! Form::submit('Accept Request', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit('Accept Request', ['class' => 'btn btn-success']) !!}
                     </div>
                     
                     {!! Form::close() !!}

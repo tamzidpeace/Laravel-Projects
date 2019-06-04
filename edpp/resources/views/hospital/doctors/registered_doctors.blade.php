@@ -21,7 +21,7 @@
                     !!}
                     
                     <div class="form-group">
-                        {!! Form::submit('Block Doctor', ['class' => 'btn btn-info']) !!}
+                        {!! Form::submit('Block Doctor', ['class' => 'btn btn-warning']) !!}
                     </div>
                     
                     {!! Form::close() !!}

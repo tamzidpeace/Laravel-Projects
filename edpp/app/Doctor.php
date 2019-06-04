@@ -30,6 +30,6 @@ class Doctor extends Model
 
     public function hospitals()
     {
-        return $this->belongsToMany(Hospital::class)->wherePivot('status', 'pending')->withPivot('status');
+        return $this->belongsToMany(Hospital::class)->withPivot('status');
     }
 }

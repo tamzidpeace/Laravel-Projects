@@ -137,7 +137,7 @@
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Hospitals<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Hospital<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="/admin/hospitals">All Hospitals</a>
@@ -174,14 +174,22 @@
 
 
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Patient<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">All Media</a>
+                                    <a href="">All Patients</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Upload Media</a>
+                                    <a href="">Registered Patients</a>
+                                </li>
+
+                                <li>
+                                    <a href="">Blocked Patients</a>
+                                </li>
+
+                                <li>
+                                    <a href="">New Patients Requests</a>
                                 </li>
 
                             </ul>
