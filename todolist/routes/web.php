@@ -17,3 +17,11 @@ Route::resource('todo', 'TodosController');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//mail sending route
+
+Route::get('/send/email', 'HomeController@mail');
