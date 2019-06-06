@@ -20,7 +20,12 @@
         
         <div class="form-group">
             {!! Form::label('email', 'Email') !!}
-            {!! Form::text('email' , $user->email, ['class' => 'form-control']) !!}
+            {!! Form::email('email' , $user->email, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('phone', 'Phone') !!}
+            {!! Form::number('phone' , null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
@@ -31,6 +36,11 @@
         <div class="form-group">
             {!! Form::label('photo', 'Photo') !!}
             {!! Form::file('photo' , null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('about', 'About') !!}
+            {!! Form::textarea('about' , null, ['class' => 'form-control']) !!}
         </div>
         
         <div class="form-group">

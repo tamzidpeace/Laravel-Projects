@@ -21,9 +21,10 @@
                 <div class="panel-body">
                     <h4>Name: {{$hospital->name}} </h4>
                     <h4>Email: {{$hospital->email}} </h4>
-                    {{-- <h4>Phone: {{$doctor->phone}}</h4> --}}
+                    <h4>Phone: {{$hospital->phone}}</h4>
                     <h4>Address: {{$hospital->address}} </h4>
                     <h4>Status: {{$hospital->status}} </h4>
+                    <h4>About: {{$hospital->about}}</h4>
                 </div>
             </div>
 

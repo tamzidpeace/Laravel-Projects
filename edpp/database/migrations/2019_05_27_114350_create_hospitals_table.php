@@ -22,6 +22,8 @@ class CreateHospitalsTable extends Migration
             $table->string('email')->unique();
             $table->string('status');
             $table->string('photo')->nullable();
+            $table->string('phone')->unique();
+            $table->string('about')->nullable();
             $table->timestamps();
         });
     }

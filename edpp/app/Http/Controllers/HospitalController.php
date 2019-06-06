@@ -30,6 +30,7 @@ class HospitalController extends Controller
             'name' => 'required',
             'address' => 'required',
             'email' => 'required',
+            'phone' => 'required',
         ]);
 
         $hospital = new Hospital();
@@ -48,6 +49,8 @@ class HospitalController extends Controller
         $hospital->email = $request->email;
         $hospital->status = 'pending';
         $hospital->photo = $image_file_name;
+        $hospital->phone = $request->phone;
+        $hospital->about = $request->about;
 
         $hospital->save();
 
