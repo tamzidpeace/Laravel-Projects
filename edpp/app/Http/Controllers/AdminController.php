@@ -23,6 +23,7 @@ class AdminController extends Controller
     }
 
     public function user() {
+        
         $users = User::all();
         return view('admin.user')->with('users', $users);
     }

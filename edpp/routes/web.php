@@ -51,6 +51,18 @@ Route::delete('/admin/{id}/doctor', 'AdminDoctorController@rejectOrRemove');
 Route::get('/admin/doctor/{id}/detailes', 'AdminDoctorController@detailes');
 
 
+//admin patient routes
+Route::get('/admin/patients', 'AdminPatientController@allPatients')->name('admin.patients');
+Route::get('/admin/patient/registered-patients', 'AdminPatientController@registeredPatients');
+Route::get('/admin/patient/blocked-patients', 'AdminPatientController@blockedPatients');
+Route::get('/admin/patient/pending-patients', 'AdminPatientController@newPatientsRequests');
+Route::patch('/admin/patient/{id}/accept', 'AdminPatientController@accept');
+Route::patch('/admin/patient/{id}/block', 'AdminPatientController@block');
+Route::patch('/admin/patient/{id}/unblock', 'AdminPatientController@unblock');
+Route::delete('/admin/patient/{id}/reject', 'AdminPatientController@rejectOrRemove');
+
+
+
 //hospital routes
 Route::post('/hospital/registration', 'HospitalController@store')->middleware('isNewUser');
 Route::get('/hospital/registration', 'HospitalController@registration')->middleware('isNewUser');
@@ -72,3 +84,8 @@ Route::get('/doctor', 'DoctorController@dashboard');
 Route::get('/doctor/all-hospitals', 'DoctorController@allHospitals');
 Route::get('/doctor/working-hospitals', 'DoctorController@workingHospitals');
 Route::post('/doctor/working-request/{id}', 'DoctorController@workingRequest');
+
+
+//patient routes
+Route::get('/patient/registration', 'PatientController@registration')->middleware('isNewUser');
+Route::post('/patient/registration', 'PatientController@store')->middleware('isNewUser');

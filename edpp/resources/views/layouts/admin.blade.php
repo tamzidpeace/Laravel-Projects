@@ -177,19 +177,19 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Patient<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">All Patients</a>
+                                    <a href="{{Route('admin.patients')}}">All Patients</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Registered Patients</a>
+                                    <a href="/admin/patient/registered-patients">Registered Patients</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Blocked Patients</a>
+                                    <a href="/admin/patient/blocked-patients">Blocked Patients</a>
                                 </li>
 
                                 <li>
-                                    <a href="">New Patients Requests</a>
+                                    <a href="/admin/patient/pending-patients">New Patients Requests</a>
                                 </li>
 
                             </ul>

@@ -84,7 +84,6 @@ class AdminDoctorController extends Controller
     {
         $doctor = Doctor::find($id);
 
-
         $doctor->status = 'blocked-doctor';
         $user_id = $doctor->user_id;
         $user = User::find($user_id);
