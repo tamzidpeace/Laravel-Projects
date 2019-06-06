@@ -14,7 +14,7 @@ class DoctorController extends Controller
 
     public function __construct()
     {
-        return $this->middleware('isDoctor')->except(['registration', 'store']);
+        return $this->middleware(['isDoctor', 'auth'])->except(['registration', 'store']);
     }
 
     public function dashboard()

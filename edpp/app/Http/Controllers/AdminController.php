@@ -12,7 +12,7 @@ class AdminController extends Controller
     //
 
     public function __construct() {
-        $this->middleware('isAdmin');
+        $this->middleware(['isAdmin', 'auth']);
     }
 
     public function index() {
@@ -23,7 +23,7 @@ class AdminController extends Controller
     }
 
     public function user() {
-        
+        Auth::check();
         $users = User::all();
         return view('admin.user')->with('users', $users);
     }

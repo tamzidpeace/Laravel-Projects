@@ -12,7 +12,7 @@ class PatientController extends Controller
 
     public function __construct()
     {
-        $this->middleware('isPatient')->except(['registration', 'store']);
+        $this->middleware(['isPatient', 'auth'])->except(['registration', 'store']);
     }
 
     public function registration()

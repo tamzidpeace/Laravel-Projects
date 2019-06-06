@@ -12,7 +12,7 @@ class AdminPatientController extends Controller
 
     public function __construct()
     {
-        $this->middleware('isAdmin');
+        $this->middleware(['isAdmin', 'auth']);
     }
 
     public function allPatients()

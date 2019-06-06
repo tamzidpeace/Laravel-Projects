@@ -13,7 +13,7 @@ class HospitalController extends Controller
 
     public function __construct()
     {
-        $this->middleware('isHospital')->except(['registration', 'store']);
+        $this->middleware(['isHospital', 'auth'])->except(['registration', 'store']);
     }
 
     public function registration()

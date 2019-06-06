@@ -64,8 +64,8 @@ Route::delete('/admin/patient/{id}/reject', 'AdminPatientController@rejectOrRemo
 
 
 //hospital routes
-Route::post('/hospital/registration', 'HospitalController@store')->middleware('isNewUser');
-Route::get('/hospital/registration', 'HospitalController@registration')->middleware('isNewUser');
+Route::post('/hospital/registration', 'HospitalController@store')->middleware(['isNewUser', 'auth']);
+Route::get('/hospital/registration', 'HospitalController@registration')->middleware(['isNewUser', 'auth']);
 Route::get('/hospital', 'HospitalController@dashboard');
 Route::get('/hospital/doctor/all-doctors', 'HospitalController@allDoctors');
 Route::get('/hospital/doctor/pending-doctors', 'HospitalController@pendingDoctors');
@@ -78,8 +78,8 @@ Route::delete('/hospital/doctor/{id}/reject', 'HospitalController@reject');
 
 
 //doctor routes
-Route::get('/doctor/registration', 'DoctorController@registration')->middleware('isNewUser');
-Route::post('/doctor/registration', 'DoctorController@store')->middleware('isNewUser');
+Route::get('/doctor/registration', 'DoctorController@registration')->middleware(['isNewUser', 'auth']);
+Route::post('/doctor/registration', 'DoctorController@store')->middleware(['isNewUser', 'auth']);
 Route::get('/doctor', 'DoctorController@dashboard');
 Route::get('/doctor/all-hospitals', 'DoctorController@allHospitals');
 Route::get('/doctor/working-hospitals', 'DoctorController@workingHospitals');
@@ -87,5 +87,5 @@ Route::post('/doctor/working-request/{id}', 'DoctorController@workingRequest');
 
 
 //patient routes
-Route::get('/patient/registration', 'PatientController@registration')->middleware('isNewUser');
-Route::post('/patient/registration', 'PatientController@store')->middleware('isNewUser');
+Route::get('/patient/registration', 'PatientController@registration')->middleware(['isNewUser', 'auth']);
+Route::post('/patient/registration', 'PatientController@store')->middleware(['isNewUser', 'auth']);

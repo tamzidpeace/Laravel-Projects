@@ -13,7 +13,7 @@ class AdminHospitalController extends Controller
 
     public function __construct()
     {
-        return $this->middleware('isAdmin');
+        return $this->middleware(['isAdmin', 'auth']);
     }
 
     public function allHospitals() {
