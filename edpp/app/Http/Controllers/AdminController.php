@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Hospital;
+use App\Doctor;
 
 class AdminController extends Controller
 {
@@ -20,6 +21,13 @@ class AdminController extends Controller
         //
         $user = Auth::user();
         return view('admin.index');
+    }
+
+    public function search(Request $request) {
+        
+        $doctor = Doctor::search($request->search)->get();
+        
+        return $doctor;
     }
 
     public function user() {

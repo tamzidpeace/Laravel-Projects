@@ -3,10 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Doctor extends Model
 {
     //
+
+    use Searchable;
+
+    // public function searchableAs()
+    // {
+    //     return 'name';
+    // }
 
     protected $fillable = [
         'user_id',
