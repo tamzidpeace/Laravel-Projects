@@ -23,11 +23,18 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    // used in algonia scout driver
+    // public function search(Request $request) {
+        
+    //     $doctor = Doctor::search($request->search)->get();
+        
+    //     return $doctor;
+    // }
+
     public function search(Request $request) {
-        
-        $doctor = Doctor::search($request->search)->get();
-        
-        return $doctor;
+        $search = $request->search;
+        $doctors = Doctor::where( 'name', 'LIKE', '%' . $search . '%')->get();
+        return $doctors;
     }
 
     public function user() {
