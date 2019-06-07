@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Hospital;
 use App\Doctor;
+use App\Patient;
 
 class AdminController extends Controller
 {
@@ -32,14 +33,39 @@ class AdminController extends Controller
     //     return $doctor;
     // }
 
-    public function search(Request $request)
+    public function hospitalSearch(Request $request) {
+        $this->validate($request, ['search' => 'required']);
+
+        $search = $request->search;
+        $hospitals = Hospital::where('name', 'LIKE', '%' . $search . '%')->get();
+        if (count($hospitals) > 0)
+            return view('admin.hospitals.hospital_search', compact( 'hospitals'));
+        else
+            return view( 'admin.hospitals.hospital_search', compact( 'hospitals'));
+    }
+
+    public function doctorSearch(Request $request)
     {
+        $this->validate($request, ['search' => 'required']);
+
         $search = $request->search;
         $doctors = Doctor::where('name', 'LIKE', '%' . $search . '%')->get();
         if (count($doctors) > 0)
-            return view('admin.doctors.doctor_search', compact('doctors'))->with('success', 'Available Doctors');
+            return view('admin.doctors.doctor_search', compact('doctors'));
         else
-            return view('admin.doctors.doctor_search', compact('doctors'))->with('info', 'Nothing Found!');
+            return view('admin.doctors.doctor_search', compact('doctors'));
+    }
+
+    public function patientSearch(Request $request)
+    {
+        $this->validate($request, ['search' => 'required']);
+
+        $search = $request->search;
+        $patients = Patient::where('name', 'LIKE', '%' . $search . '%')->get();
+        if (count( $patients) > 0)
+            return view('admin.patient.patient_search', compact( 'patients'));
+        else
+            return view('admin.patient.patient_search', compact( 'patients'));
     }
 
     public function user()
