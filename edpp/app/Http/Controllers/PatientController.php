@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Patient;
+use App\BloodGroup;
+use App\Gender;
 
 class PatientController extends Controller
 {
@@ -18,7 +20,9 @@ class PatientController extends Controller
     public function registration()
     {
         $user = Auth::user();
-        return view('patient.registration', compact('user'));
+        $blood_groups = BloodGroup::pluck('name', 'id')->all();
+        $genders = Gender::pluck('name', 'id')->all();
+        return view('patient.registration', compact(['user', 'blood_groups', 'genders']));
     }
 
     public function store(Request $request)
@@ -29,6 +33,9 @@ class PatientController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
+            'age' => 'required',
+            'sex' => 'required',
+            'blood_group' => 'required',
         ]);
 
         $user = Auth::user();
@@ -42,7 +49,10 @@ class PatientController extends Controller
 
         $patient->user_id = $user->id;
         $patient->role_id = 4;
+        $patient->blood_group_id = $request->blood_group;
         $patient->name = $request->name;
+        $patient->age = $request->age;
+        $patient->gender_id = $request->sex;
         $patient->email = $request->email;
         $patient->phone = $request->phone;
         $patient->address = $request->address;

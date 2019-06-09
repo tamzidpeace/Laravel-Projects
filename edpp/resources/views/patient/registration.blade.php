@@ -17,6 +17,21 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('age', 'Age') !!}
+            {!! Form::number('age', 00, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('sex', 'Sex') !!}
+            {!! Form::select('sex', ['' => 'Choice Option'] + $genders, null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('blood_group', 'Blood Group') !!}
+            {!! Form::select('blood_group', ['' => 'Choice Option'] + $blood_groups ,null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
             {!! Form::label('email', 'Email') !!}
             {!! Form::email('email' , $user->email, ['class' => 'form-control']) !!}
         </div>
