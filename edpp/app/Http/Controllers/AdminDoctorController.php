@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Doctor;
 use App\User;
+use App\Specialist;
 
 class AdminDoctorController extends Controller
 {
@@ -110,9 +111,56 @@ class AdminDoctorController extends Controller
         return back()->with('success', 'Hospital is unblocked!');
     }
 
-    public function detailes($id) {
-        
+    public function detailes($id)
+    {
+
         $doctor = Doctor::find($id);
         return view('admin.doctors.doctor_detailes', compact('doctor'));
+    }
+
+    // specialist section
+
+    public function showSpecialistsList()
+    {
+
+        $specialists = Specialist::all();
+        return view('admin.doctors.specialists', compact('specialists'));
+    }
+
+    public function addNewSpecialistType(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $name = $request->name;
+        $specialist = new Specialist;
+        $specialist->name = $name;
+
+        $specialist->save();
+
+        return back()->with('success', 'New Specialist Type Added!');
+    }
+
+    public function editSpecialistItem($id) {
+        $specialist = Specialist::findOrFail($id);
+        return view('admin.doctors.update_specialist_item', compact('specialist'));
+    }
+
+    public function updateSpecialistItem(Request $request, $id)
+    {
+        $specialist = Specialist::findOrFail($id);
+        $specialist->name = $request->name;
+        $specialist->save();
+        return redirect('admin/doctor/specialists')->with('success', 'Item Updated!');
+    }
+
+    public function removeSpecialistItem($id)
+    {
+        $specialist = Specialist::findOrFail($id);
+
+        $specialist->delete();
+
+        return back()->with('info', 'Item removed!');
     }
 }

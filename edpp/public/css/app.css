@@ -11395,6 +11395,14 @@ button.close {
   margin-left: 15px;
 }
 
+.specialist {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .home {
   text-align: center;
 }

@@ -52,6 +52,11 @@ Route::patch('/admin/{id}/block-doctor', 'AdminDoctorController@block');
 Route::patch('/admin/{id}/unblock-doctor', 'AdminDoctorController@unblock');
 Route::delete('/admin/{id}/doctor', 'AdminDoctorController@rejectOrRemove');
 Route::get('/admin/doctor/{id}/detailes', 'AdminDoctorController@detailes');
+Route::get('/admin/doctor/specialists', 'AdminDoctorController@showSpecialistsList');
+Route::post('/admin/doctor/specialist/add', 'AdminDoctorController@addNewSpecialistType');
+Route::get('/admin/doctor/specialist/edit/{id}', 'AdminDoctorController@editSpecialistItem');
+Route::patch('/admin/doctor/specialist/update/{id}', 'AdminDoctorController@updateSpecialistItem');
+Route::delete('/admin/doctor/specialist/remove/{id}', 'AdminDoctorController@removeSpecialistItem');
 
 
 //admin patient routes

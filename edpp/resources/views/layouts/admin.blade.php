@@ -155,7 +155,7 @@
                             <!-- /.nav-second-level -->
                         </li>
 
-
+                        {{-- doctor section --}}
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Doctor<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -168,10 +168,13 @@
 
                                 <li> <a href="/admin/blocked-doctors">Blocked Doctores</a> </li>
 
+                                <li><a href="/admin/doctor/specialists">Specialists</a></li>
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
 
+                        {{-- patient section --}}
 
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Patient<span class="fa arrow"></span></a>
@@ -195,11 +198,6 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-
-
-
-
-
 
 
                         <li>
