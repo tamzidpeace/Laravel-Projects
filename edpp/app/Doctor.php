@@ -40,4 +40,8 @@ class Doctor extends Model
     {
         return $this->belongsToMany(Hospital::class)->withPivot('status');
     }
+
+    public function specialist() {
+        return $this->belongsTo(Specialist::class);
+    }
 }

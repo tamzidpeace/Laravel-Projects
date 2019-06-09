@@ -7,6 +7,7 @@ use App\Hospital;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Database\QueryException;
+use App\Specialist;
 
 class DoctorController extends Controller
 {
@@ -25,7 +26,8 @@ class DoctorController extends Controller
     public function registration()
     {
         $user = Auth::user();
-        return view('doctor.registration')->with('user', $user);
+        $specialists = Specialist::pluck('name', 'id')->all();
+        return view('doctor.registration', compact(['user','specialists']));
     }
 
     public function store(Request $request)
@@ -39,6 +41,7 @@ class DoctorController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
+            'specialist' => 'required'
         ]);
 
         $user = Auth::user();
@@ -53,6 +56,7 @@ class DoctorController extends Controller
         $doctor->user_id = $user->id;
         $doctor->role_id = 3;
         $doctor->name = $request->name;
+        $doctor->specialist_id = $request->specialist;
         $doctor->email = $request->email;
         $doctor->phone = $request->phone;
         $doctor->address = $request->address;

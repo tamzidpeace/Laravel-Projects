@@ -152,6 +152,7 @@ class AdminDoctorController extends Controller
         $specialist = Specialist::findOrFail($id);
         $specialist->name = $request->name;
         $specialist->save();
+        echo "<script type=\"text/javascript\"> alert('hi');  </script>";
         return redirect('admin/doctor/specialists')->with('success', 'Item Updated!');
     }
 

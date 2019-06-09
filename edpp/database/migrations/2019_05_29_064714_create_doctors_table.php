@@ -17,6 +17,7 @@ class CreateDoctorsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->index();
             $table->integer('role_id')->index();
+            $table->integer('specialist_id')->index();
             $table->string('name');
             $table->string('email')->unique();
             $table->integer('phone')->unique();

@@ -17,6 +17,11 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('specialist', 'Specialist') !!}
+            {!! Form::select('specialist', ['' => 'Choose Option'] + $specialists, null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
             {!! Form::label('email', 'Email') !!}
             {!! Form::email('email' , $user->email, ['class' => 'form-control']) !!}
         </div>
