@@ -68,6 +68,7 @@ Route::patch('/admin/patient/{id}/accept', 'AdminPatientController@accept');
 Route::patch('/admin/patient/{id}/block', 'AdminPatientController@block');
 Route::patch('/admin/patient/{id}/unblock', 'AdminPatientController@unblock');
 Route::delete('/admin/patient/{id}/reject', 'AdminPatientController@rejectOrRemove');
+Route::get('/admin/patient/{id}/details', 'AdminPatientController@details');
 
 
 

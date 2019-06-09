@@ -19,6 +19,7 @@
 
                 <div class="panel-body">
                     <h4>Name: {{$doctor->name}} </h4>
+                    <h4>Specialist: {{$doctor->specialist->name}} </h4>
                     <h4>Email: {{$doctor->email}} </h4>
                     <h4>Phone: {{$doctor->phone}}</h4>
                     <h4>Address: {{$doctor->address}} </h4>

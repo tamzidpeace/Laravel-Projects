@@ -14,7 +14,7 @@
 
             @foreach ($hospitals as $hospital)
             <tr>
-                <td>{{$hospital->name}}</td>
+                <td><a href="/admin/hospital/{{$hospital->id}}/detailes">{{$hospital->name}}</a></td>
                 <td>{{$hospital->phone}}</td>
             </tr>
             @endforeach

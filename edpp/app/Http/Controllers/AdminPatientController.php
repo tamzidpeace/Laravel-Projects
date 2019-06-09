@@ -108,4 +108,9 @@ class AdminPatientController extends Controller
 
         return back()->with('info', 'Patient is unblocked!');
     }
+
+    public function details($id) {
+        $patient = Patient::findOrFail($id);
+        return view('admin.patient.patient_details', compact('patient'));
+    }
 }

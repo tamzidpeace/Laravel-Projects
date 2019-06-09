@@ -17,7 +17,7 @@
             @foreach ($patients as $patient)
 
             <tr>
-                <td>{{$patient->name}}</td>
+                <td><a href="/admin/patient/{{$patient->id}}/details">{{$patient->name}}</a></td>
                 <td>{{$patient->phone}}</td>
                 <td>
                     {{-- accept button --}}
