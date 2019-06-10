@@ -102,3 +102,4 @@ Route::post('/patient/registration', 'PatientController@store')->middleware(['is
 
 //web routes
 Route::get('/edpp/doctors', 'WebController@index');
+Route::get('/edpp/doctors/search-results', 'WebController@doctorSearch');

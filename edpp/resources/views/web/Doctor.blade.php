@@ -9,7 +9,7 @@
 
     <div class="row">
         {{-- search form --}}
-        {!! Form::open(['action' => 'AdminController@doctorSearch', 'method' =>'GET'])
+        {!! Form::open(['action' => 'WebController@doctorSearch', 'method' =>'GET'])
         !!}
 
         {{-- testing input group --}}
@@ -71,7 +71,6 @@
             </div>
         </div>
     </div> {{-- end of sidebar --}}
-</div>
 </div>
 {{-- end of specialist section --}}
 
