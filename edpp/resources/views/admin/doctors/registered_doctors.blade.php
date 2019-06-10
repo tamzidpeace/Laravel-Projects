@@ -8,7 +8,7 @@
     <div class="row">
         <table class="table table-hover">
             <thead>
-                <tr>
+                <tr class="success">
                     <th>Doctor Name</th>
                     <th>Accept</th>
                     <th>Reject</th>

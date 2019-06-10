@@ -31,8 +31,8 @@
     <div class="row specialist-list">
         <div class="col-md-8">
             <h3>All Specialists Type List</h3>
-            <table class="table">
-                <tr>
+            <table class="table table-hover">
+                <tr class="info">
                     <th>ID</th>
                     <th>Specialist in</th>
                     <th>Update</th>
