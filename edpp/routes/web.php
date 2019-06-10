@@ -98,3 +98,7 @@ Route::post('/doctor/working-request/{id}', 'DoctorController@workingRequest');
 //patient routes
 Route::get('/patient/registration', 'PatientController@registration')->middleware(['isNewUser', 'auth']);
 Route::post('/patient/registration', 'PatientController@store')->middleware(['isNewUser', 'auth']);
+
+
+//web routes
+Route::get('/edpp/doctors', 'WebController@index');

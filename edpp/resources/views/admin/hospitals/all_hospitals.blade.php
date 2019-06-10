@@ -7,26 +7,32 @@
 
 <div class="container">
     <div class="row">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Hospital Name</th>
-                    <th>Address</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($hospitals as $hospital)
 
-                <tr>
-                    <td><a href="/admin/hospital/{{$hospital->id}}/detailes">{{$hospital->name}}</a></td>
-                    <td>{{$hospital->address}}</td>
-                    <td>{{$hospital->status}}</td>
-                </tr>
+        <div class="col-md-8">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr class="info">
+                        <th>Hospital Name</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($hospitals as $hospital)
 
-                @endforeach
+                    <tr class="warning">
+                        <td><a href="/admin/hospital/{{$hospital->id}}/detailes">{{$hospital->name}}</a></td>
+                        <td>{{$hospital->address}}</td>
+                        <td>{{$hospital->status}}</td>
+                    </tr>
 
-            </tbody>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+
+
     </div>
 </div>
 
