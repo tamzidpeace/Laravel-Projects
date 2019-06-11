@@ -22,6 +22,16 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('degree', 'Degree') !!}
+            {!! Form::text('degree', null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('gender', 'Gender') !!}
+            {!! Form::select('gender', ['' => 'Choose Option'] + $genders, null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
             {!! Form::label('email', 'Email') !!}
             {!! Form::email('email' , $user->email, ['class' => 'form-control']) !!}
         </div>
@@ -44,6 +54,11 @@
         <div class="form-group">
             {!! Form::label('photo', 'Photo') !!}
             {!! Form::file('photo' , null, ['class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('about', 'About') !!}
+            {!! Form::textarea('about' , null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">

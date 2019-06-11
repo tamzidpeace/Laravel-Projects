@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \Illuminate\Database\QueryException;
 use App\Specialist;
+use App\Gender;
 
 class DoctorController extends Controller
 {
@@ -27,7 +28,8 @@ class DoctorController extends Controller
     {
         $user = Auth::user();
         $specialists = Specialist::pluck('name', 'id')->all();
-        return view('doctor.registration', compact(['user','specialists']));
+        $genders = Gender::pluck('name', 'id')->all();
+        return view('doctor.registration', compact(['user','specialists', 'genders']));
     }
 
     public function store(Request $request)
@@ -41,7 +43,9 @@ class DoctorController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
-            'specialist' => 'required'
+            'specialist' => 'required',
+            'gender' => 'required',
+            'degree' => 'required',
         ]);
 
         $user = Auth::user();
@@ -57,11 +61,14 @@ class DoctorController extends Controller
         $doctor->role_id = 3;
         $doctor->name = $request->name;
         $doctor->specialist_id = $request->specialist;
+        $doctor->gender_id = $request->gender;
+        $doctor->degree = $request->degree;
         $doctor->email = $request->email;
         $doctor->phone = $request->phone;
         $doctor->address = $request->address;
         $doctor->status = 'pending-doctor';
         $doctor->photo = $image_file_name;
+        $doctor->about = $request->about;
 
         $doctor->save();
 

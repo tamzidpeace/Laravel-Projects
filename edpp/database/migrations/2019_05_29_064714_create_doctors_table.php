@@ -18,12 +18,15 @@ class CreateDoctorsTable extends Migration
             $table->integer('user_id')->index();
             $table->integer('role_id')->index();
             $table->integer('specialist_id')->index();
+            $table->integer('gender_id')->index();
+            $table->string('degree');
             $table->string('name');
             $table->string('email')->unique();
             $table->integer('phone')->unique();
             $table->string('address');
             $table->string('status');
             $table->string('photo')->nulable();
+            $table->text('about')->nullable();
             $table->timestamps();
         });
     }
