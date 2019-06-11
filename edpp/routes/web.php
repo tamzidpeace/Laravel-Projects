@@ -105,3 +105,5 @@ Route::get('/edpp/doctors', 'WebController@index');
 Route::get('/edpp/doctors/search-results', 'WebController@doctorSearch');
 Route::get('/edpp/doctors/search-results-by-specialist/{id}', 'WebController@doctorBySpecialist');
 Route::get( '/edpp/doctor/details/{id}', 'WebController@doctorDetailsAndAppointment');
+//contact
+Route::get('/edpp/contact-report', 'WebController@contact');

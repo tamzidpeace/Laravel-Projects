@@ -13,7 +13,7 @@ class WebController extends Controller
     {
         $doctors = Doctor::all();
         $specialists = Specialist::all();
-        return view('web.Doctor', compact(['doctors', 'specialists']));
+        return view( 'web.doctor.Doctor', compact(['doctors', 'specialists']));
     }
 
     public function doctorSearch(Request $request)
@@ -24,20 +24,25 @@ class WebController extends Controller
         $search = $request->search;
         $doctors = Doctor::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered-doctor']])->get();
         if (count($doctors) > 0)
-            return view('web.doctor_search', compact('doctors'));
+            return view( 'web.doctor.doctor_search', compact('doctors'));
         else
-            return view('web.doctor_search', compact('doctors'));
+            return view( 'web.doctor.doctor_search', compact('doctors'));
     }
 
     public function doctorBySpecialist($id)
     {
         $doctors = Specialist::find($id)->doctors->where('status', 'registered-doctor');
 
-        return view('web.doctor_search', compact('doctors'));
+        return view( 'web.doctor.doctor_search', compact('doctors'));
     }
 
     public function doctorDetailsAndAppointment($id) {
         $doctor = Doctor::find($id);
-        return view('web.doctor_details_and_appointment', compact('doctor'));
+        return view('web.doctor.doctor_details_and_appointment', compact('doctor'));
+    }
+
+    //about
+    public function contact() {
+        return view('web.others.contact');
     }
 }

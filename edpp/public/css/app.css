@@ -11490,3 +11490,26 @@ h4 {
   font-weight: bold;
 }
 
+.contact-head {
+  height: 150px;
+  background-color: #00838f;
+  margin-top: -22px;
+}
+
+.contact {
+  position: relative;
+  text-align: center;
+}
+
+.contact h1 {
+  color: white;
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.contact h3 {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
