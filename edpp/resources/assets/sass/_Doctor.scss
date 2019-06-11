@@ -1,3 +1,5 @@
+// doctor page
+
 .doctor-head {
     height: 150px;
     background-color: #00838f;
@@ -32,10 +34,63 @@
 
 .sidebar {
     margin-top: 50px;
-    font-weight: bold;  
+    font-weight: bold;
 }
 
 #sidebar-title {
     background-color: #00838f;
     color: white;
+}
+
+//doctor search page
+.single-doctor {}
+
+.single-doctor-image {
+    height: 150px;
+    position: absolute;
+}
+
+.doctor-othres {
+    margin-left: 170px;
+    margin-top: -210px;
+    position: absolute;
+}
+
+//doctor details and appointment page
+
+//profile part
+.doctor-profile-head {
+    height: 350px;
+    background-color: #00838f;
+    margin-top: -22px;
+}
+
+.profile-pic {
+    text-align: center;
+}
+
+.doctor-image {
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 100px;
+
+}
+
+.others {
+    color: white;
+    text-align: center;
+}
+
+.others h3,
+h4 {
+    font-weight: bold;
+}
+
+//deatils part
+
+.doctor-about,
+.doctor-chamber,
+.appointment-booking {
+    margin-top: 50px;
+    font-weight: bold;
 }

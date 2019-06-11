@@ -45,11 +45,17 @@
                     <div class="panel-body">
 
                         @for ($i = 0; $i < count($specialists); $i++) <div class="col-md-4 list-group">
-                            <a href=""><button style="font-weight:bold;" type="button" class="list-group-item">
+
+                            <a href="/edpp/doctors/search-results-by-specialist/{{$specialists[$i]->id}}"><button
+                                    style="font-weight:bold;" type="submit" class="list-group-item">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     {{$specialists[$i]->name}} </button></a>
+
+
                     </div>
                     @endfor
+
+
 
                 </div>
             </div>
