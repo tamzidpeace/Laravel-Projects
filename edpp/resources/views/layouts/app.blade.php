@@ -43,7 +43,7 @@
                         &nbsp;
 
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">Hospital</a></li>
+                            <li><a href="/edpp/hospitals">Hospital</a></li>
                             <li><a href="/edpp/doctors">Doctor</a></li>
                             <li><a href="/edpp/contact-report">Contact</a></li>
 

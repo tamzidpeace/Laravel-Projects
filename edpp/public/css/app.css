@@ -11513,3 +11513,18 @@ h4 {
   font-weight: bold;
 }
 
+.hospital-panel {
+  margin-top: 50px;
+}
+
+.hospital-image {
+  height: 170px;
+  width: 250px;
+}
+
+.hospital-deatils {
+  position: absolute;
+  margin-top: -190px;
+  margin-left: 260px;
+}
+

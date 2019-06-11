@@ -95,7 +95,6 @@ h4 {
 }
 
 //contact
-
 .contact-head {
     height: 150px;
     background-color: #00838f;
@@ -117,4 +116,20 @@ h4 {
     color: white;
     font-size: 3rem;
     font-weight: bold;
+}
+
+//hospital
+.hospital-panel {
+    margin-top: 50px;
+}
+
+.hospital-image {
+    height: 170px;
+    width: 250px;
+}
+
+.hospital-deatils {
+    position: absolute;
+    margin-top: -190px;
+    margin-left: 260px;
 }

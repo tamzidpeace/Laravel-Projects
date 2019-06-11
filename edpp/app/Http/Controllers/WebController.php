@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Doctor;
 use App\Specialist;
+use App\Hospital;
 
 class WebController extends Controller
 {
@@ -40,6 +41,16 @@ class WebController extends Controller
         $doctor = Doctor::find($id);
         return view('web.doctor.doctor_details_and_appointment', compact('doctor'));
     }
+
+    //hospital
+    public function hospitalIndex() {
+        //$hospitals = Hospital::all()->where('status', 'registered');
+        $hospitals = Hospital::where('status', 'registered')->paginate(5);
+        return view('web.hospital.hospital', compact('hospitals'));
+    }
+
+
+
 
     //about
     public function contact() {
