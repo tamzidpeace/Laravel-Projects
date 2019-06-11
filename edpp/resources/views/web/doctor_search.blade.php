@@ -40,40 +40,50 @@
                     </div>
                     <div class="panel-body">
 
-                        @foreach ($doctors as $doctor)
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <div class="single-doctor">
 
-                                    <div class="doctor-image">
-                                        <img class="thumbnail single-doctor-image" src="/images/doctor_image/{{$doctor->photo}} "
-                                            alt="">
-                                    </div>
-
-                                    <div class="doctor-othres">
-                                        <a href="/edpp/doctor/details/{{$doctor->id}}">
-                                            <h4>{{$doctor->name}}</h4>
-                                        </a>
-                                        <p id=""> Specialist: {{$doctor->specialist->name}} </p>
-                                        <p> Chambers:
-                                            @foreach ($doctor->hospitals as $chamber)
-                                            {{$chamber->name}},
-                                            @endforeach
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </li>
-                        </ul>
-                        @endforeach
-
+                        @if (count($doctors)<=0) <div class="alert alert-info alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h3> <strong>Oh snap!</strong> No Doctor Available. </h3>
                     </div>
 
+                    @endif
+
+                    @foreach ($doctors as $doctor)
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="single-doctor">
+
+                                <div class="doctor-image">
+                                    <img class="thumbnail single-doctor-image"
+                                        src="/images/doctor_image/{{$doctor->photo}} " alt="">
+                                </div>
+
+                                <div class="doctor-othres">
+                                    <a href="/edpp/doctor/details/{{$doctor->id}}">
+                                        <h4>{{$doctor->name}}</h4>
+                                    </a>
+                                    <p>Degree: {{$doctor->degree}} </p>
+                                    <p> Specialist: {{$doctor->specialist->name}} </p>
+                                    <p> Chambers:
+                                        @foreach ($doctor->hospitals as $chamber)
+                                        {{$chamber->name}},
+                                        @endforeach
+                                    </p>
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+                    @endforeach
 
                 </div>
+
+
             </div>
         </div>
     </div>
+</div>
 </div>
 
 @endsection

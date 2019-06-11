@@ -9,6 +9,7 @@
     </div>
     <div class="others">
         <h1> {{$doctor->name}} </h1>
+        <h4> {{$doctor->degree}} </h4>
         <h4> {{$doctor->specialist->name}} </h5>
 
 
@@ -28,7 +29,9 @@
                         <h3 style="font-weight:bold; color:white" class="panel-title">About {{$doctor->name}}</h3>
                     </div>
                     <div class="panel-body">
-                        <p> {{$doctor->specialist->name}} </p>
+                        <p> Specialist: {{$doctor->specialist->name}} </p>
+                        <p> Degree: {{$doctor->degree}} </p>
+                        <p> Bio: {{$doctor->about}} </p>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse mollitia aliquid officiis
                             quasi
                             qui perferendis dignissimos commodi, quod dicta neque. Aliquid dolor fugit minus pariatur
@@ -47,7 +50,7 @@
                     </div>
                     <div class="panel-body">
                         @foreach ($doctor->hospitals as $chamber)
-                            <p> {{$chamber->name}} </p>
+                        <p> {{$chamber->name}} </p>
                         @endforeach
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse mollitia aliquid officiis
                             quasi

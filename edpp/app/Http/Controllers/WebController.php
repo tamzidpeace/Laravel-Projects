@@ -22,7 +22,7 @@ class WebController extends Controller
         $this->validate($request, ['search' => 'required']);
 
         $search = $request->search;
-        $doctors = Doctor::where('name', 'LIKE', '%' . $search . '%')->get();
+        $doctors = Doctor::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered-doctor']])->get();
         if (count($doctors) > 0)
             return view('web.doctor_search', compact('doctors'));
         else
@@ -31,7 +31,7 @@ class WebController extends Controller
 
     public function doctorBySpecialist($id)
     {
-        $doctors = Specialist::find($id)->doctors;
+        $doctors = Specialist::find($id)->doctors->where('status', 'registered-doctor');
 
         return view('web.doctor_search', compact('doctors'));
     }
