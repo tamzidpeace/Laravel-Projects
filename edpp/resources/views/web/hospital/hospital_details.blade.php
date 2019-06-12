@@ -79,6 +79,7 @@
                     <div class="panel-body">
                         <p>Email: <small>{{$hospital->email}} </small> </p>
                         <p>Phone: <small>{{$hospital->phone}} </small></p>
+                        <p>Address: <small>{{$hospital->address}} </small></p>
                     </div>
                 </div>
             </div>

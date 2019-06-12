@@ -13,6 +13,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- testing --}}
+    {{-- end of testing --}}
 </head>
 
 <body>
@@ -89,9 +92,60 @@
 
         @yield('content')
     </div>
+    {{-- footer --}}
+
+    <footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
+        <div class="container">
+            <div class="row row-30">
+                <div class="col-md-4 col-xl-5">
+                    <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light"
+                                src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37"
+                                srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
+                        <p>Under Development Medical Project.</p>
+                        <p>Developing By <strong>Arafat</strong></p>
+                        <!-- Rights-->
+                        <p class="rights"><span>©  </span><span
+                                class="copyright-year">2019</span><span> </span><span>EDPP</span><span>. </span><span>No
+                                Rights Reserved.</span></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacts</h5>
+                    <dl class="contact-list">
+                        <dt>Address:</dt>
+                        <dd>Sylhet Engineering College</dd>
+                    </dl>
+                    <dl class="contact-list">
+                        <dt>Email:</dt>
+                        <dd><a href="mailto:#">tamjedpeace@gmail.com</a></dd>
+                    </dl>
+                    <dl class="contact-list">
+                        <dt>Phones:</dt>
+                        <dd><a href="tel:#">+880-1818000000</a> <span>or</span> <a href="tel:#">+880-1717000000</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-4 col-xl-3">
+                    <h5>Links</h5>
+                    <ul class="nav-list">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contacts</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    {{-- end of footer --}}
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    {{-- testing script --}}
+    {{-- end of testing script --}}
 </body>
 
 </html>
