@@ -14,7 +14,7 @@ class WebController extends Controller
     {
         $doctors = Doctor::all();
         $specialists = Specialist::all();
-        return view( 'web.doctor.Doctor', compact(['doctors', 'specialists']));
+        return view('web.doctor.Doctor', compact(['doctors', 'specialists']));
     }
 
     public function doctorSearch(Request $request)
@@ -25,35 +25,56 @@ class WebController extends Controller
         $search = $request->search;
         $doctors = Doctor::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered-doctor']])->get();
         if (count($doctors) > 0)
-            return view( 'web.doctor.doctor_search', compact('doctors'));
+            return view('web.doctor.doctor_search', compact('doctors'));
         else
-            return view( 'web.doctor.doctor_search', compact('doctors'));
+            return view('web.doctor.doctor_search', compact('doctors'));
     }
 
     public function doctorBySpecialist($id)
     {
         $doctors = Specialist::find($id)->doctors->where('status', 'registered-doctor');
 
-        return view( 'web.doctor.doctor_search', compact('doctors'));
+        return view('web.doctor.doctor_search', compact('doctors'));
     }
 
-    public function doctorDetailsAndAppointment($id) {
+    public function doctorDetailsAndAppointment($id)
+    {
         $doctor = Doctor::find($id);
         return view('web.doctor.doctor_details_and_appointment', compact('doctor'));
     }
 
     //hospital
-    public function hospitalIndex() {
+    public function hospitalIndex()
+    {
         //$hospitals = Hospital::all()->where('status', 'registered');
         $hospitals = Hospital::where('status', 'registered')->paginate(5);
         return view('web.hospital.hospital', compact('hospitals'));
+    }
+
+    public function hospitalSearch(Request $request)
+    {
+        $this->validate($request, ['search' => 'required']);
+
+        $search = $request->search;
+        $hospitals = Hospital::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered']])->paginate(5);
+        if (count($hospitals) > 0)
+            return view('web.hospital.hospital_search', compact('hospitals'));
+        else
+            return view('web.hospital.hospital_search', compact('hospitals'));
+    }
+
+    public function hospitalDetails($id) {
+        
+        $hospital = Hospital::find($id);
+        return view('web.hospital.hospital_details', compact('hospital'));
     }
 
 
 
 
     //about
-    public function contact() {
+    public function contact()
+    {
         return view('web.others.contact');
     }
 }

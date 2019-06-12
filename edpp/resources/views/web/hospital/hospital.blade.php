@@ -8,7 +8,7 @@
 
     <div class="row">
         {{-- search form --}}
-        {!! Form::open(['action' => 'WebController@doctorSearch', 'method' =>'GET'])
+        {!! Form::open(['action' => 'WebController@hospitalSearch', 'method' =>'GET'])
         !!}
 
         {{-- testing input group --}}
@@ -44,7 +44,7 @@
                             <div class="alert alert-info alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
-                                <h3> <strong>Oh snap!</strong> No Hospital Available. </h3>
+                                <h3> <strong>Oh snap!</strong>No Hospital Available.</h3>
                                 </li>
 
 
@@ -57,7 +57,7 @@
                                     </div>
 
                                     <div class="hospital-deatils">
-                                        <a href="#">
+                                        <a href="/edpp/hospital/details/{{$hospital->id}}">
                                             <h3> {{$hospital->name}} </h3>
                                         </a>
                                         <h4> Phone: {{$hospital->phone}} </h4>

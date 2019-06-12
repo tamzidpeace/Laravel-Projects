@@ -106,7 +106,10 @@ Route::get('/edpp/doctors', 'WebController@index');
 Route::get('/edpp/doctors/search-results', 'WebController@doctorSearch');
 Route::get('/edpp/doctors/search-results-by-specialist/{id}', 'WebController@doctorBySpecialist');
 Route::get( '/edpp/doctor/details/{id}', 'WebController@doctorDetailsAndAppointment');
+
 //hospital
 Route::get('/edpp/hospitals', 'WebController@hospitalIndex');
+Route::get('/edpp/hospitals/search-result', 'WebController@hospitalSearch');
+Route::get('/edpp/hospital/details/{id}', 'WebController@hospitalDetails');
 //contact
 Route::get('/edpp/contact-report', 'WebController@contact');

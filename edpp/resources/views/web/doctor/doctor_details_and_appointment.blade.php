@@ -49,13 +49,15 @@
                         <h3 style="font-weight:bold; color:white" class="panel-title">Chambers of {{$doctor->name}}</h3>
                     </div>
                     <div class="panel-body">
-                        @foreach ($doctor->hospitals as $chamber)
-                        <p> {{$chamber->name}} </p>
-                        @endforeach
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse mollitia aliquid officiis
-                            quasi
-                            qui perferendis dignissimos commodi, quod dicta neque. Aliquid dolor fugit minus pariatur
-                            sapiente. Reprehenderit placeat ipsam quas.</p>
+                        <ul>
+                            @foreach ($doctor->hospitals as $chamber)
+                            <li>
+                                <a href="/edpp/hospital/details/{{$chamber->id}}">
+                                    <p>{{$chamber->name}} </p>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

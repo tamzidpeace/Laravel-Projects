@@ -11528,3 +11528,33 @@ h4 {
   margin-left: 260px;
 }
 
+.hospital-profile {
+  height: 150px;
+  background-color: #00838f;
+  margin-top: -22px;
+  text-align: center;
+  color: white;
+}
+
+.hospital-profile h1,
+h3 {
+  font-weight: bold;
+}
+
+.single-hospital-image {
+  height: 400px;
+  width: 690px;
+  margin-top: 20px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.hospital-img-panel {
+  background-color: #00838f;
+  margin-top: 20px;
+}
+
+.hospital-img-panel-body {
+  text-align: center;
+}
+
