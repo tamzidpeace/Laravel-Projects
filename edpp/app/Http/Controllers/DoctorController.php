@@ -29,7 +29,7 @@ class DoctorController extends Controller
         $user = Auth::user();
         $specialists = Specialist::pluck('name', 'id')->all();
         $genders = Gender::pluck('name', 'id')->all();
-        return view('doctor.registration', compact(['user','specialists', 'genders']));
+        return view('doctor.registration', compact(['user', 'specialists', 'genders']));
     }
 
     public function store(Request $request)
@@ -100,7 +100,7 @@ class DoctorController extends Controller
             //var_dump($e->errorInfo);
             //abort(500, 'Something went wrong');
             //return back()->with('warning', 'You are already working in this hospital or your request is pending!');
-            return back()->withError( 'You are already working in this hospital or your request is pending!');
+            return back()->withError('You are already working in this hospital or your request is pending!');
         }
     }
 
@@ -111,7 +111,17 @@ class DoctorController extends Controller
         $doctor = Doctor::get()->where('user_id', $user_id)->first();
 
         $hospitals = $doctor->hospitals()->get();
-        
+
         return view('doctor.hospital.working_hospitals', compact('hospitals'));
+    }
+
+    public function workingState()
+    {
+        return view('doctor.booking.working_state');
+    }
+
+    public function workingStateResult(Request $request)
+    {
+        return $request;
     }
 }

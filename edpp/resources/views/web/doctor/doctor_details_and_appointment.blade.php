@@ -49,9 +49,9 @@
                         <h3 style="font-weight:bold; color:white" class="panel-title">Chambers of {{$doctor->name}}</h3>
                     </div>
                     <div class="panel-body">
-                        <ul>
+                        <ul class="list-group">
                             @foreach ($doctor->hospitals as $chamber)
-                            <li>
+                            <li class="list-group-item">
                                 <a href="/edpp/hospital/details/{{$chamber->id}}">
                                     <p>{{$chamber->name}} </p>
                                 </a>

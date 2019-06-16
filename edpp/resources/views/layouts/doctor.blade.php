@@ -153,6 +153,10 @@
                                     <a href="#">Previous Bookings</a>
                                 </li>
 
+                                <li>
+                                    <a href="/doctor/working-state">Working State</a>
+                                </li>
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

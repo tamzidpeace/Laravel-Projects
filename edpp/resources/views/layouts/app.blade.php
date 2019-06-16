@@ -48,6 +48,8 @@
                         <li><a href="#">Home</a></li>
                         <li><a href="/edpp/hospitals">Hospital</a></li>
                         <li><a href="/edpp/doctors">Doctor</a></li>
+                        <li><a href="#">Emergency</a></li>
+                        <li><a href="#">Donation</a></li>
                         <li><a href="/edpp/contact-report">Contact</a></li>
 
                     </ul>
@@ -72,6 +74,18 @@
                                                      document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
+                                    @if (Auth::user()->role_id == 1)
+                                    <a href="/admin">Dashboard</a>
+
+                                    @elseif(Auth::user()->role_id == 2)
+                                    <a href="/hospital">Dashboard</a>
+
+                                    @elseif(Auth::user()->role_id == 3)
+                                    <a href="/doctor">Dashboard</a>
+
+                                    @elseif(Auth::user()->role_id == 4)
+                                    <a href="/patient">Profile</a>
+                                    @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         style="display: none;">
@@ -101,8 +115,9 @@
                     <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light"
                                 src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37"
                                 srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
+                        <h4 style="margin-top:-10px;">About</h4>
                         <p>Under Development Medical Project.</p>
-                        <p>Developing By <strong>Arafat</strong></p>
+                        <p>Developing By <strong>Arafat</strong> With 💓</p>
                         <!-- Rights-->
                         <p class="rights"><span>©  </span><span
                                 class="copyright-year">2019</span><span> </span><span>EDPP</span><span>. </span><span>No
@@ -110,7 +125,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h5>Contacts</h5>
+                    <h4>Contacts</h4>
                     <dl class="contact-list">
                         <dt>Address:</dt>
                         <dd>Sylhet Engineering College</dd>
@@ -121,18 +136,18 @@
                     </dl>
                     <dl class="contact-list">
                         <dt>Phones:</dt>
-                        <dd><a href="tel:#">+880-1818000000</a> <span>or</span> <a href="tel:#">+880-1717000000</a>
+                        <dd><a href="tel:#">+880-1838201827</a> <span>or</span> <a href="tel:#">+880-1717000000</a>
                         </dd>
                     </dl>
                 </div>
                 <div class="col-md-4 col-xl-3">
-                    <h5>Links</h5>
+                    <h4>Links</h4>
                     <ul class="nav-list">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Projects</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">Pricing</a></li>
+                        <li style="margin-left:9px;"><a href="#">About</a></li>
+                        <li style="margin-left:9px;"><a href="#">Projects</a></li>
+                        <li style="margin-left:9px;"><a href="#">Blog</a></li>
+                        <li style="margin-left:9px;"><a href="#">Contacts</a></li>
+                        <li style="margin-left:9px;"><a href="#">Pricing</a></li>
                     </ul>
                 </div>
             </div>
