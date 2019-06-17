@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use \Illuminate\Database\QueryException;
 use App\Specialist;
 use App\Gender;
+use App\User;
+use App\Day;
 
 class DoctorController extends Controller
 {
@@ -117,11 +119,19 @@ class DoctorController extends Controller
 
     public function workingState()
     {
-        return view('doctor.booking.working_state');
+        $user = Auth::user();
+        $doctor_id = User::find($user->id)->doctor->id;
+        $hospitals = Doctor::find($doctor_id)->hospitals->pluck('name', 'id')->all();
+        $days = Day::pluck('name', 'id')->all();
+        return view('doctor.booking.working_state', compact('hospitals', 'days'));
     }
 
     public function workingStateResult(Request $request)
     {
-        return $request;
+        $user = Auth::user();
+        $doctor_id = User::find($user->id)->doctor->id;
+        $hospitals = Doctor::find($doctor_id)->hospitals->pluck('name', 'id')->all();
+        $day = Day::pluck('name', 'id')->all();
+        return $request->morningS;
     }
 }

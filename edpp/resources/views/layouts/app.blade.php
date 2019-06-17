@@ -84,7 +84,7 @@
                                     <a href="/doctor">Dashboard</a>
 
                                     @elseif(Auth::user()->role_id == 4)
-                                    <a href="/patient">Profile</a>
+                                    <a href="/patient">Dashboard</a>
                                     @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

@@ -34,5 +34,10 @@ class DatabaseSeeder extends Seeder
             ['role_id' => null, 'name' => 'doctor', 'email' => 'doctor@gmail.com', 'password' => bcrypt('111111'), 'remember_token' => str_random(10),],
             ['role_id' => null, 'name' => 'patient', 'email' => 'patient@gmail.com', 'password' => bcrypt('111111'), 'remember_token' => str_random(10),],
         ]);
+
+        DB::table('days')->insert([['name' => 'Saturday'], ['name' => 'Sunday'], ['name' => 'Monday'], ['name' => 'Tuesday'], 
+        ['name' => 'Wednesday'], ['name' => 'Thursday'],['name' => 'Friday'],]);
+
+        
     }
 }

@@ -100,8 +100,9 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function doctors() {
-        return $this->hasMany(Doctor::class);
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class);
     }
 
     public function hospital()
