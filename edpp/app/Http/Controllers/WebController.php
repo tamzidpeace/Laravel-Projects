@@ -70,7 +70,10 @@ class WebController extends Controller
     }
 
 
-
+    //home
+    public function home() {
+        return view('web.others.home');
+    }
 
     //about
     public function contact()

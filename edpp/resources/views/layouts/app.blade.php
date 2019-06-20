@@ -36,7 +36,7 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
                         {{-- {{ config('app.name', 'Laravel') }} --}}
-                        Doctor Patient Portal
+                        E-Medi Care
                     </a>
                 </div>
 
@@ -45,7 +45,7 @@
                     <ul class="nav navbar-nav navbar-option">
                         &nbsp;
 
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/edpp/home">Home</a></li>
                         <li><a href="/edpp/hospitals">Hospital</a></li>
                         <li><a href="/edpp/doctors">Doctor</a></li>
                         <li><a href="#">Emergency</a></li>
@@ -82,6 +82,7 @@
 
                                     @elseif(Auth::user()->role_id == 3)
                                     <a href="/doctor">Dashboard</a>
+                                    <a href="#">User Profile</a>
 
                                     @elseif(Auth::user()->role_id == 4)
                                     <a href="/patient">Dashboard</a>
@@ -108,7 +109,7 @@
     </div>
     {{-- footer --}}
 
-    <footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
+    <footer class="section footer-classic context-dark bg-image" style="background: #454749;">
         <div class="container">
             <div class="row row-30">
                 <div class="col-md-4 col-xl-5">

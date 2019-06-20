@@ -11624,3 +11624,84 @@ ol {
   transition: .22s ease;
 }
 
+.home-head-image img {
+  height: 500px;
+  width: 116%;
+  margin-left: -88px;
+  margin-top: -22px;
+  margin-bottom: 20px;
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+}
+
+.head-icon {
+  height: 100px;
+  width: 100px;
+}
+
+.ddeh {
+  text-align: center;
+  margin-left: 151px;
+}
+
+.home-head-icon {
+  position: absolute;
+  color: black;
+  text-align: center;
+  width: 130px;
+  margin-top: -220px;
+}
+
+.home-head-icon-2 {
+  margin-left: 240px;
+}
+
+.home-head-icon-3 {
+  margin-left: 365px;
+}
+
+.home-head-icon-4 {
+  margin-left: 490px;
+}
+
+.home-head-icon-row {
+  position: absolute;
+}
+
+.head-line {
+  background-color: black;
+  height: 2px;
+  margin-top: -75px;
+  margin-left: 17%;
+  position: absolute;
+  width: 47%;
+}
+
+.no-border {
+  border: 0px;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: 245px;
+}
+
+h5.panel-title {
+  font-weight: bold;
+}
+
+p.panel-text {
+  margin-top: 10px;
+}
+
+.read-more {
+  color: #fff;
+  background-color: #00838f;
+}
+
+.carousel {
+  margin-right: -105px;
+  margin-left: -105px;
+  margin-bottom: 20px;
+}
+
