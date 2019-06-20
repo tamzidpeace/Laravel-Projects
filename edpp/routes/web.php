@@ -70,6 +70,8 @@ Route::patch('/admin/patient/{id}/unblock', 'AdminPatientController@unblock');
 Route::delete('/admin/patient/{id}/reject', 'AdminPatientController@rejectOrRemove');
 Route::get('/admin/patient/{id}/details', 'AdminPatientController@details');
 
+// Admin Contact
+Route::get('/admin/contacts', 'ContactController@index');
 
 
 //hospital routes
@@ -117,3 +119,4 @@ Route::get('/edpp/hospitals/search-result', 'WebController@hospitalSearch');
 Route::get('/edpp/hospital/details/{id}', 'WebController@hospitalDetails');
 //contact
 Route::get('/edpp/contact-report', 'WebController@contact');
+Route::post('/edpp/contact-report', 'ContactController@store');

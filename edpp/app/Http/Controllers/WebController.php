@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Doctor;
 use App\Specialist;
 use App\Hospital;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class WebController extends Controller
 {
@@ -64,7 +66,7 @@ class WebController extends Controller
     }
 
     public function hospitalDetails($id) {
-        
+
         $hospital = Hospital::find($id);
         return view('web.hospital.hospital_details', compact('hospital'));
     }
@@ -78,6 +80,17 @@ class WebController extends Controller
     //about
     public function contact()
     {
-        return view('web.others.contact');
+
+      if( Auth::user()){
+        $user = Auth::user();
+        return view('web.others.contact')->with('user',$user);
+      }
+      else {
+           $user = array("name"=>"","email"=>"");
+           return view('web.others.contact', compact('user'));
+
+           //return $user;
+        //return view('web.others.contact', compact('user'));
     }
+  }
 }

@@ -26,10 +26,36 @@
                         <h3 style="font-weight:bold; color:white" class="panel-title">Report-Suggestion Form</h3>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse mollitia aliquid officiis
-                            quasi
-                            qui perferendis dignissimos commodi, quod dicta neque. Aliquid dolor fugit minus pariatur
-                            sapiente. Reprehenderit placeat ipsam quas.</p>
+
+                            {!! Form::open(['method' => 'POST', 'action' => 'ContactController@store',]) !!}
+
+                            <div class="form-group">
+                                {!! Form::label('name', 'Name') !!}
+                                {!! Form::text('name', $user['name'], ['class' => 'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('email', 'Email') !!}
+                                {!! Form::email('email' , $user['email'], ['class' => 'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('phone', 'Phone') !!}
+                                {!! Form::number('phone' , null, ['class' => 'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('message', 'Message') !!}
+                                {!! Form::textarea('message' , null, ['class' => 'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']) !!}
+                            </div>
+
+
+                            {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>

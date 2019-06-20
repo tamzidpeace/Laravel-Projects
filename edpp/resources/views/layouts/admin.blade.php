@@ -198,7 +198,18 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+           <!-- Contact Section -->
 
+                                   <li>
+                                       <a href="#"><i class="fa fa-wrench fa-fw"></i>Contact<span class="fa arrow"></span></a>
+                                       <ul class="nav nav-second-level">
+                                           <li>
+                                               <a href="/admin/contacts">All Reports</a>
+                                           </li>
+
+                                       </ul>
+
+                                   </li>
 
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
