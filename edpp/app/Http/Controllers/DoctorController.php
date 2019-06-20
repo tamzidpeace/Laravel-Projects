@@ -11,6 +11,7 @@ use App\Specialist;
 use App\Gender;
 use App\User;
 use App\Day;
+use App\working_state;
 
 class DoctorController extends Controller
 {
@@ -128,10 +129,26 @@ class DoctorController extends Controller
 
     public function workingStateResult(Request $request)
     {
+        $this->validate($request, [
+            'hospital' => 'required',
+            'day' => 'required',
+        ]);
+
+        $working_state = new working_state;
+
         $user = Auth::user();
-        $doctor_id = User::find($user->id)->doctor->id;
-        $hospitals = Doctor::find($doctor_id)->hospitals->pluck('name', 'id')->all();
-        $day = Day::pluck('name', 'id')->all();
-        return $request->morningS;
+        $working_state->doctor_id = User::find($user->id)->doctor->id;
+        $working_state->hospital_id = $request->hospital;
+        $working_state->day_id = $request->day;
+        $working_state->morning = $request->morningE . '-' . $request->morningS;
+        $working_state->m_visit_amount = $request->morningA;
+        $working_state->afternoon = $request->afternoonE . '-' . $request->afternoonS;
+        $working_state->a_visit_amount = $request->afternoonA;
+        $working_state->evening = $request->eveningE . '-' . $request->eveningS;
+        $working_state->e_visit_amount = $request->eveningA;
+
+        $working_state->save();
+
+        return back()->with('success', 'working state saved!');
     }
 }

@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-md-10">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div style="font-weight:bold;" class="panel-heading">Set Your Working State</div>
             <div class="panel-body">
                 {!! Form::open(['action' => 'DoctorController@workingStateResult', 'method' =>'GET'])
@@ -22,39 +22,47 @@
 
                 <div style="margin-top:20px;" class="form-inline">
                     <div class="form-group">
-                        {!! Form::label('morning', 'Morning') !!}
-                        {!! Form::time('morningS', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('morning', 'Morning') !!} <br>
+                        {!! Form::number('morningS', null, ['class' => 'form-control']) !!}
                         to
-                        {!! Form::time('morningE', null, ['class' => 'form-control']) !!}
+                        {!! Form::number('morningE', null, ['class' => 'form-control']) !!}
+                        <strong>Max Appointment</strong>
+                        {!! Form::number('morningA', null, ['class' => 'form-control']) !!}
                     </div>
                 </div>
 
                 <div style="margin-top:20px;" class="form-inline">
                     <div class="form-group">
-                        {!! Form::label('afternoon', 'Afternoon') !!}
-                        {!! Form::time('afternoonS', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('afternoon', 'Afternoon') !!} <br>
+                        {!! Form::number('afternoonS', null, ['class' => 'form-control']) !!}
                         to
-                        {!! Form::time('afternoonE', null, ['class' => 'form-control']) !!}
+                        {!! Form::number('afternoonE', null, ['class' => 'form-control']) !!}
+                        <strong>Max Appointment</strong>
+                        {!! Form::number('afternoonA', null, ['class' => 'form-control']) !!}
                     </div>
                 </div>
 
                 <div style="margin-top:20px; margin-bottom:20px;" class="form-inline">
                     <div class="form-group">
-                        {!! Form::label('evening', 'Evening') !!}
-                        {!! Form::time('eveningS', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('evening', 'Evening') !!} <br>
+                        {!! Form::number('eveningS', null, ['class' => 'form-control']) !!}
                         to
-                        {!! Form::time('eveningE', null, ['class' => 'form-control']) !!}
+                        {!! Form::number('eveningE', null, ['class' => 'form-control']) !!}
+                        <strong>Max Appointment</strong>
+                        {!! Form::number('eveningA', null, ['class' => 'form-control']) !!}
                     </div>
                 </div>
 
 
                 {{-- {{Form::checkbox('name', 'value')}} --}}
 
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit"> <span style="font-weight:bold;"
-                            class="">Search</span>
+                {!! Form::submit('Submit', ['class' => 'form-control btn-primary']) !!}
+
+                {{-- <span class="input-group-btn">
+                    <button class="btn btn-primary btn-block" type="submit"> <span style="font-weight:bold;"
+                            class="">Submit</span>
                     </button>
-                </span>
+                </span> --}}
 
                 {!! Form::close() !!}
             </div>
