@@ -97,6 +97,8 @@ Route::get('/doctor/working-hospitals', 'DoctorController@workingHospitals');
 Route::post('/doctor/working-request/{id}', 'DoctorController@workingRequest');
 //working state
 Route::get('/doctor/working-states', 'DoctorController@allWorkingState');
+Route::get('/doctor/working-state/edit/{id}', 'DoctorController@editWorkingState');
+Route::patch('/doctor/working-state/update/{id}', 'DoctorController@updateWorkingState');
 Route::get('/doctor/working-states/active', 'DoctorController@activeWorkingStates');
 Route::get('/doctor/working-states/inactive', 'DoctorController@inactiveWorkingStates');
 Route::get('/doctor/set-working-state', 'DoctorController@setWorkingState');

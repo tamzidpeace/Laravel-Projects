@@ -10,6 +10,7 @@
 
             <tr class="info">
                 <th>#</th>
+                <th>Action</th>
                 <th>Hospital</th>
                 <th>Day</th>
                 <th>Appointment Cost</th>
@@ -29,12 +30,21 @@
             </tr>
 
             @php
-                $serial = 1;
+            $serial = 1;
             @endphp
 
             @foreach ($working_states as $ws)
             <tr>
                 <td> {{$serial++}} </td>
+                {{-- edit button --}}
+                <td>
+                    {!! Form::open(['action' => ['DoctorController@editWorkingState', $ws->id], 'method' => 'get']) !!}
+
+                    {!! Form::submit('EDIT', ['class' => 'form-control btn-info']) !!}
+
+                    {!! Form::close() !!}
+                </td>
+                {{-- end of edit button --}}
                 <td> {{$ws->hospital->name}} </td>
                 <td> {{$ws->day->name}} </td>
                 <td> {{$ws->payment}} </td>

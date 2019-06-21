@@ -10,6 +10,7 @@
         <table class="table table-bordered">
             <tr>
                 <th>Hospital</th>
+                <th>Day</th>
                 <th>Time</th>
                 <th>Current Status</th>
                 <th>Action</th>
@@ -22,6 +23,7 @@
             @foreach ($morning_actives as $ma)
             <tr>
                 <td> {{$ma->hospital->name}} </td>
+                <td> {{$ma->day->name}} </td>
                 <td> {{$ma->morning}} </td>
                 <td> {{$ma->m_status}} </td>
                 <td>
@@ -34,9 +36,6 @@
                     {!! Form::close() !!}
 
                 </td>
-
-
-
             </tr>
 
             @endforeach
@@ -52,6 +51,7 @@
         <table class="table table-bordered">
             <tr>
                 <th>Hospital</th>
+                <th>Day</th>
                 <th>Time</th>
                 <th>Current Status</th>
                 <th>Action</th>
@@ -64,8 +64,10 @@
             @foreach ($afternoon_actives as $aa)
             <tr>
                 <td> {{$aa->hospital->name}} </td>
+                <td> {{$aa->day->name}} </td>
                 <td> {{$aa->afternoon}} </td>
                 <td> {{$aa->a_status}} </td>
+                {{-- inactive button --}}
                 <td>
                     {!! Form::open(['action' => ['DoctorController@stateInactive', $aa->id, $state], 'method' =>
                     'patch']) !!}
@@ -89,6 +91,7 @@
         <table class="table table-bordered">
             <tr>
                 <th>Hospital</th>
+                <th>Day</th>
                 <th>Time</th>
                 <th>Current Status</th>
                 <th>Action</th>
@@ -101,6 +104,7 @@
             @foreach ($evening_actives as $ea)
             <tr>
                 <td> {{$ea->hospital->name}} </td>
+                <td> {{$ea->day->name}} </td>
                 <td> {{$ea->evening}} </td>
                 <td> {{$ea->e_status}} </td>
                 <td>

@@ -118,18 +118,60 @@ class DoctorController extends Controller
         return view('doctor.hospital.working_hospitals', compact('hospitals'));
     }
 
-    //working states
+    //start of working states operations
     public function allWorkingState()
     {
-        $working_states = working_state::all();
+        $user = Auth::user();
+        $doctor_id = User::find($user->id)->doctor->id;
+
+        $working_states = working_state::where('doctor_id', $doctor_id)->get();
         return view('doctor.working_state.all_working_states', compact('working_states'));
+    }
+
+    public function editWorkingState($id)
+    {
+        $ws = working_state::findOrFail($id);
+        return view('doctor.working_state.edit_working_state', compact('ws'));
+    }
+
+    public function updateWorkingState(Request $request, $id)
+    {
+
+        $working_state = working_state::findOrFail($id);
+
+        $working_state->payment = $request->payment;
+
+        //morning start,end time + max visit amount    
+        $working_state->morning = $request->morningS . '-' . $request->morningE . ' am';
+        $working_state->m_visit_s = $request->morningS;
+        $working_state->m_visit_e = $request->morningE;
+        $working_state->m_visit_amount = $request->morningA;
+
+        //afternoon start,end time + max visit amount
+        $working_state->afternoon = $request->afternoonS . '-' . $request->afternoonE . ' pm';
+        $working_state->a_visit_s = $request->afternoonS;
+        $working_state->a_visit_e = $request->afternoonE;
+        $working_state->a_visit_amount = $request->afternoonA;
+
+        ////evening start,end time + max visit amount
+        $working_state->evening = $request->eveningS . '-' . $request->eveningE . ' pm';
+        $working_state->e_visit_s = $request->eveningS;
+        $working_state->e_visit_e = $request->eveningE;
+        $working_state->e_visit_amount = $request->eveningA;
+
+        $working_state->save();
+
+        return redirect('/doctor/working-states')->with('success', 'Working State Updated!');
     }
 
     public function activeWorkingStates()
     {
-        $morning_actives = working_state::where([['m_status', '=', 'active'], ['m_visit_s', '<>', 'null']])->get();
-        $afternoon_actives = working_state::where([['a_status', '=', 'active'], ['a_visit_s', '<>', 'null']])->get();
-        $evening_actives = working_state::where([['e_status', '=', 'active'], ['e_visit_s', '<>', 'null']])->get();
+        $user = Auth::user();
+        $doctor_id = User::find($user->id)->doctor->id;
+
+        $morning_actives = working_state::where([['m_status', '=', 'active'], ['m_visit_s', '<>', 'null'], ['doctor_id', '=', $doctor_id]])->get();
+        $afternoon_actives = working_state::where([['a_status', '=', 'active'], ['a_visit_s', '<>', 'null'], ['doctor_id', '=', $doctor_id]])->get();
+        $evening_actives = working_state::where([['e_status', '=', 'active'], ['e_visit_s', '<>', 'null'], ['doctor_id', '=', $doctor_id]])->get();
 
         return view(
             'doctor.working_state.active_working_states',
@@ -229,4 +271,6 @@ class DoctorController extends Controller
         $ws->save();
         return back()->with('info', 'This working state is inactive now!');
     }
+
+    // end of working states operations
 }

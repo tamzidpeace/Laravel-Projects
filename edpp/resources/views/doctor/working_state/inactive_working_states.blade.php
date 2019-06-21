@@ -10,6 +10,7 @@
         <table class="table table-bordered">
             <tr>
                 <th>Hospital</th>
+                <th>Day</th>
                 <th>Time</th>
                 <th>Current Status</th>
                 <th>Action</th>
@@ -22,6 +23,7 @@
             @foreach ($morning_inactives as $mi)
             <tr>
                 <td> {{$mi->hospital->name}} </td>
+                <td> {{$mi->day->name}} </td>
                 <td> {{$mi->morning}} </td>
                 <td> {{$mi->m_status}} </td>
                 <td>
@@ -49,6 +51,7 @@
         <table class="table table-bordered">
             <tr>
                 <th>Hospital</th>
+                <th>Day</th>
                 <th>Time</th>
                 <th>Current Status</th>
                 <th>Action</th>
@@ -61,6 +64,7 @@
             @foreach ($afternoon_inactives as $ai)
             <tr>
                 <td> {{$ai->hospital->name}} </td>
+                <td> {{$ai->day->name}} </td>
                 <td> {{$ai->afternoon}} </td>
                 <td> {{$ai->a_status}} </td>
                 <td>
@@ -86,6 +90,7 @@
         <table class="table table-bordered">
             <tr>
                 <th>Hospital</th>
+                <th>Day</th>
                 <th>Time</th>
                 <th>Current Status</th>
                 <th>Action</th>
@@ -98,6 +103,7 @@
             @foreach ($evening_inactives as $ei)
             <tr>
                 <td> {{$ei->hospital->name}} </td>
+                <td> {{$ei->day->name}} </td>
                 <td> {{$ei->evening}} </td>
                 <td> {{$ei->e_status}} </td>
                 <td>
