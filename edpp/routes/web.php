@@ -95,9 +95,14 @@ Route::get('/doctor', 'DoctorController@dashboard');
 Route::get('/doctor/all-hospitals', 'DoctorController@allHospitals');
 Route::get('/doctor/working-hospitals', 'DoctorController@workingHospitals');
 Route::post('/doctor/working-request/{id}', 'DoctorController@workingRequest');
+//working state
+Route::get('/doctor/working-states', 'DoctorController@allWorkingState');
+Route::get('/doctor/working-states/active', 'DoctorController@activeWorkingStates');
+Route::get('/doctor/working-states/inactive', 'DoctorController@inactiveWorkingStates');
 Route::get('/doctor/set-working-state', 'DoctorController@setWorkingState');
 Route::post('/doctor/save-working-state', 'DoctorController@saveWorkingState');
-Route::get('/doctor/working-states', 'DoctorController@workingStateResult');
+Route::patch('/doctor/workingState/inactive/{id}/{state}', 'DoctorController@stateInactive');
+Route::patch('/doctor/workingState/active/{id}/{state}', 'DoctorController@stateActive');
 
 
 //patient routes
@@ -112,7 +117,7 @@ Route::get('/edpp/home', 'WebController@home');
 Route::get('/edpp/doctors', 'WebController@index');
 Route::get('/edpp/doctors/search-results', 'WebController@doctorSearch');
 Route::get('/edpp/doctors/search-results-by-specialist/{id}', 'WebController@doctorBySpecialist');
-Route::get( '/edpp/doctor/details/{id}', 'WebController@doctorDetailsAndAppointment');
+Route::get('/edpp/doctor/details/{id}', 'WebController@doctorDetailsAndAppointment');
 
 //hospital
 Route::get('/edpp/hospitals', 'WebController@hospitalIndex');

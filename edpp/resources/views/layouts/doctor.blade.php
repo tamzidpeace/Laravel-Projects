@@ -168,11 +168,11 @@
                                 </li>
 
                                 <li>
-                                    <a href="">Active Working States</a>
+                                    <a href="/doctor/working-states/active">Active Working States</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Inactive Working States</a>
+                                    <a href="/doctor/working-states/inactive">Inactive Working States</a>
                                 </li>
 
                                 <li>

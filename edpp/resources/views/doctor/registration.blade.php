@@ -58,7 +58,7 @@
 
                         </div>
 
-                        <div class="form-group">
+                        <div class='form-group'>
                             {!! Form::label('photo', 'Photo') !!}
                             {!! Form::file('photo' , null, ['class' => 'form-control']) !!}
                         </div>

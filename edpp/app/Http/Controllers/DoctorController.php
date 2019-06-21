@@ -118,6 +118,37 @@ class DoctorController extends Controller
         return view('doctor.hospital.working_hospitals', compact('hospitals'));
     }
 
+    //working states
+    public function allWorkingState()
+    {
+        $working_states = working_state::all();
+        return view('doctor.working_state.all_working_states', compact('working_states'));
+    }
+
+    public function activeWorkingStates()
+    {
+        $morning_actives = working_state::where([['m_status', '=', 'active'], ['m_visit_s', '<>', 'null']])->get();
+        $afternoon_actives = working_state::where([['a_status', '=', 'active'], ['a_visit_s', '<>', 'null']])->get();
+        $evening_actives = working_state::where([['e_status', '=', 'active'], ['e_visit_s', '<>', 'null']])->get();
+
+        return view(
+            'doctor.working_state.active_working_states',
+            compact(['morning_actives', 'afternoon_actives', 'evening_actives'])
+        );
+    }
+
+    public function inactiveWorkingStates()
+    {
+        $morning_inactives = working_state::where('m_status', '=', 'inactive')->get();
+        $afternoon_inactives = working_state::where('a_status', '=', 'inactive')->get();
+        $evening_inactives = working_state::where('e_status', '=', 'inactive')->get();
+
+        return view(
+            'doctor.working_state.inactive_working_states',
+            compact(['morning_inactives', 'afternoon_inactives', 'evening_inactives'])
+        );
+    }
+
     public function setWorkingState()
     {
         $user = Auth::user();
@@ -132,6 +163,7 @@ class DoctorController extends Controller
         $this->validate($request, [
             'hospital' => 'required',
             'day' => 'required',
+            'payment' => 'required',
         ]);
 
         $working_state = new working_state;
@@ -163,5 +195,38 @@ class DoctorController extends Controller
         $working_state->save();
 
         return back()->with('success', 'working state saved!');
+    }
+
+    //set working state inactive
+    public function stateInactive($id, $state)
+    {
+
+        $ws = working_state::findOrFail($id);
+
+        if ($state == 'morning')
+            $ws->m_status = 'inactive';
+        elseif ($state == 'afternoon')
+            $ws->a_status = 'inactive';
+        else
+            $ws->e_status = 'inactive';
+
+        $ws->save();
+        return back()->with('info', 'This working state is inactive now!');
+    }
+
+    //set working state active
+    public function stateActive($id, $state)
+    {
+        $ws = working_state::findOrFail($id);
+
+        if ($state == 'morning')
+            $ws->m_status = 'active';
+        elseif ($state == 'afternoon')
+            $ws->a_status = 'active';
+        else
+            $ws->e_status = 'active';
+
+        $ws->save();
+        return back()->with('info', 'This working state is inactive now!');
     }
 }
