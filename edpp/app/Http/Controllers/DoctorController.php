@@ -118,16 +118,16 @@ class DoctorController extends Controller
         return view('doctor.hospital.working_hospitals', compact('hospitals'));
     }
 
-    public function workingState()
+    public function setWorkingState()
     {
         $user = Auth::user();
         $doctor_id = User::find($user->id)->doctor->id;
         $hospitals = Doctor::find($doctor_id)->hospitals->pluck('name', 'id')->all();
         $days = Day::pluck('name', 'id')->all();
-        return view('doctor.booking.working_state', compact('hospitals', 'days'));
+        return view('doctor.working_state.set_working_state', compact('hospitals', 'days'));
     }
 
-    public function workingStateResult(Request $request)
+    public function saveWorkingState(Request $request)
     {
         $this->validate($request, [
             'hospital' => 'required',
@@ -140,11 +140,24 @@ class DoctorController extends Controller
         $working_state->doctor_id = User::find($user->id)->doctor->id;
         $working_state->hospital_id = $request->hospital;
         $working_state->day_id = $request->day;
-        $working_state->morning = $request->morningE . '-' . $request->morningS;
+        $working_state->payment = $request->payment;
+
+        //morning start,end time + max visit amount    
+        $working_state->morning = $request->morningS . '-' . $request->morningE . ' am';
+        $working_state->m_visit_s = $request->morningS;
+        $working_state->m_visit_e = $request->morningE;
         $working_state->m_visit_amount = $request->morningA;
-        $working_state->afternoon = $request->afternoonE . '-' . $request->afternoonS;
+
+        //afternoon start,end time + max visit amount
+        $working_state->afternoon = $request->afternoonS . '-' . $request->afternoonE . ' pm';
+        $working_state->a_visit_s = $request->afternoonS;
+        $working_state->a_visit_e = $request->afternoonE;
         $working_state->a_visit_amount = $request->afternoonA;
-        $working_state->evening = $request->eveningE . '-' . $request->eveningS;
+
+        ////evening start,end time + max visit amount
+        $working_state->evening = $request->eveningS . '-' . $request->eveningE . ' pm';
+        $working_state->e_visit_s = $request->eveningS;
+        $working_state->e_visit_e = $request->eveningE;
         $working_state->e_visit_amount = $request->eveningA;
 
         $working_state->save();

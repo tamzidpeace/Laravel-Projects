@@ -95,8 +95,9 @@ Route::get('/doctor', 'DoctorController@dashboard');
 Route::get('/doctor/all-hospitals', 'DoctorController@allHospitals');
 Route::get('/doctor/working-hospitals', 'DoctorController@workingHospitals');
 Route::post('/doctor/working-request/{id}', 'DoctorController@workingRequest');
-Route::get('/doctor/working-state', 'DoctorController@workingState');
-Route::get('/doctor/working-state/result', 'DoctorController@workingStateResult');
+Route::get('/doctor/set-working-state', 'DoctorController@setWorkingState');
+Route::post('/doctor/save-working-state', 'DoctorController@saveWorkingState');
+Route::get('/doctor/working-states', 'DoctorController@workingStateResult');
 
 
 //patient routes

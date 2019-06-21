@@ -11404,6 +11404,12 @@ button.close {
   text-align: center;
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: #00838f;
+  border-color: #0083A5;
+}
+
 .doctor-head {
   height: 150px;
   background-color: #00838f;

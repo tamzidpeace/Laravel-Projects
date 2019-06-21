@@ -2,14 +2,14 @@
 
 @section('content')
 
-<h1>working state</h1>
+<h1>Set Your Working State</h1>
 
 <div class="row">
     <div class="col-md-10">
         <div class="panel panel-primary">
             <div style="font-weight:bold;" class="panel-heading">Set Your Working State</div>
             <div class="panel-body">
-                {!! Form::open(['action' => 'DoctorController@workingStateResult', 'method' =>'GET'])
+                {!! Form::open(['action' => 'DoctorController@saveWorkingState', 'method' =>'POST'])
                 !!}
 
                 {!! Form::label('hospital', 'Select Hospital') !!}
@@ -19,6 +19,9 @@
                 {!! Form::label('day', 'Select Day') !!}
                 {!! Form::select('day', [ '' => 'choice option'] + $days, null, ['class' => 'form-control'])
                 !!}
+
+                {!! Form::label('payment', 'Appointment Payment Amount(in taka)') !!}
+                {!! Form::number('payment', null, ['class' => 'form-control']) !!}
 
                 <div style="margin-top:20px;" class="form-inline">
                     <div class="form-group">

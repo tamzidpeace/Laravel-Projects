@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/home">Home</a>
+                <a class="navbar-brand" href="/edpp/home">Home</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -153,8 +153,30 @@
                                     <a href="#">Previous Bookings</a>
                                 </li>
 
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        {{-- working state --}}
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Working State<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
                                 <li>
-                                    <a href="/doctor/working-state">Working State</a>
+                                    <a href="/doctor/working-states">All Working States</a>
+                                </li>
+
+                                <li>
+                                    <a href="">Active Working States</a>
+                                </li>
+
+                                <li>
+                                    <a href="">Inactive Working States</a>
+                                </li>
+
+                                <li>
+                                    <a href="/doctor/set-working-state">Set Working State</a>
                                 </li>
 
                             </ul>
