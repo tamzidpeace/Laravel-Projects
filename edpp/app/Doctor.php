@@ -9,7 +9,7 @@ class Doctor extends Model
 {
     //
 
-    use Searchable;
+    //use Searchable;
 
     // public function searchableAs()
     // {

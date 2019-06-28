@@ -66,7 +66,7 @@
             <div class="panel no-border" style="height: 390px;">
 
                 <div class="panel-heading " id="specialist-panel-heading">
-                    <h3 style="font-weight:bold; color:white" class="panel-title">Appointment Booking</h3>
+                    <h3 style="font-weight:bold; color:white" class="panel-title">Hospital & Appointment Booking</h3>
                 </div>
 
                 <div class="panel-content">
