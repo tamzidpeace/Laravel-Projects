@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\DoctorController;
 
 /*
@@ -86,7 +87,12 @@ Route::patch('/hospital/doctor/{id}/accept', 'HospitalController@accept');
 Route::patch('/hospital/doctor/{id}/block', 'HospitalController@block');
 Route::patch('/hospital/doctor/{id}/unblock', 'HospitalController@unblock');
 Route::delete('/hospital/doctor/{id}/reject', 'HospitalController@reject');
-
+//hospital doctor working states routes
+Route::get('/hospital/doctor/working-state/all', 'HospitalDoctorWorkingStateController@allWorkingStates');
+Route::get('/hospital/doctor/working-state/active', 'HospitalDoctorWorkingStateController@activeWorkingStates');
+Route::get('/hospital/doctor/working-state/inactive', 'HospitalDoctorWorkingStateController@inactiveWorkingStates');
+Route::patch('/hospital/doctor/workingState/inactive/{id}/{state}', 'HospitalDoctorWorkingStateController@stateInactive');
+Route::patch('/hospital/doctor/workingState/active/{id}/{state}', 'HospitalDoctorWorkingStateController@stateActive');
 
 //doctor routes
 Route::get('/doctor/registration', 'DoctorController@registration')->middleware(['isNewUser', 'auth']);

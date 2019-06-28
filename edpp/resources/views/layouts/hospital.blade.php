@@ -145,6 +145,32 @@
                             <!-- /.nav-second-level -->
                         </li>
 
+                        {{-- working states --}}
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Working States<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
+                                <li>
+                                    <a href="/hospital/doctor/working-state/all">All Working States</a>
+                                </li>
+
+                                <li>
+                                    <a href="/hospital/doctor/registered-doctors">New Requests</a>
+                                </li>
+
+                                <li>
+                                    <a href="/hospital/doctor/working-state/active">Active States</a>
+                                </li>
+
+                                <li>
+                                    <a href="/hospital/doctor/working-state/inactive">Inactive States</a>
+                                </li>
+                            </ul>
+
+                            <!-- /.nav-second-level -->
+                        </li>
+
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Booking<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
