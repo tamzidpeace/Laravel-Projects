@@ -216,19 +216,22 @@ class DoctorController extends Controller
         $working_state->day_id = $request->day;
         $working_state->payment = $request->payment;
 
-        //morning start,end time + max visit amount    
+        //morning start,end time + max visit amount
+        $working_state->m_status = 'active-request';
         $working_state->morning = $request->morningS . '-' . $request->morningE . ' am';
         $working_state->m_visit_s = $request->morningS;
         $working_state->m_visit_e = $request->morningE;
         $working_state->m_visit_amount = $request->morningA;
 
         //afternoon start,end time + max visit amount
+        $working_state->a_status = 'active-request';
         $working_state->afternoon = $request->afternoonS . '-' . $request->afternoonE . ' pm';
         $working_state->a_visit_s = $request->afternoonS;
         $working_state->a_visit_e = $request->afternoonE;
         $working_state->a_visit_amount = $request->afternoonA;
 
         ////evening start,end time + max visit amount
+        $working_state->e_status = 'active-request';
         $working_state->evening = $request->eveningS . '-' . $request->eveningE . ' pm';
         $working_state->e_visit_s = $request->eveningS;
         $working_state->e_visit_e = $request->eveningE;
@@ -246,11 +249,11 @@ class DoctorController extends Controller
         $ws = working_state::findOrFail($id);
 
         if ($state == 'morning')
-            $ws->m_status = 'inactive';
+            $ws->m_status = 'inactive-request';
         elseif ($state == 'afternoon')
-            $ws->a_status = 'inactive';
+            $ws->a_status = 'inactive-request';
         else
-            $ws->e_status = 'inactive';
+            $ws->e_status = 'inactive-request';
 
         $ws->save();
         return back()->with('info', 'This working state is inactive now!');
@@ -262,11 +265,11 @@ class DoctorController extends Controller
         $ws = working_state::findOrFail($id);
 
         if ($state == 'morning')
-            $ws->m_status = 'active';
+            $ws->m_status = 'active-request';
         elseif ($state == 'afternoon')
-            $ws->a_status = 'active';
+            $ws->a_status = 'active-request';
         else
-            $ws->e_status = 'active';
+            $ws->e_status = 'active-request';
 
         $ws->save();
         return back()->with('info', 'This working state is inactive now!');

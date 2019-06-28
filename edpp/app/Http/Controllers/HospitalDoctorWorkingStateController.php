@@ -22,6 +22,31 @@ class HospitalDoctorWorkingStateController extends Controller
         return view('hospital.working_state.all_working_states', compact('working_states'));
     }
 
+    public function workingStateRequests()
+    {
+        // active requests
+        $morning_active_requests = working_state::where([['m_status', '=', 'active-request'], ['m_visit_s', '<>', 'null']])->get();
+        $afternoon_active_requests = working_state::where([['a_status', '=', 'active-request'], ['a_visit_s', '<>', 'null'],])->get();
+        $evening_active_requests = working_state::where([['e_status', '=', 'active-request'], ['e_visit_s', '<>', 'null'],])->get();
+
+        //inactive requests
+        $morning_inactive_requests = working_state::where([['m_status', '=', 'inactive-request'], ['m_visit_s', '<>', 'null']])->get();
+        $afternoon_inactive_requests = working_state::where([['a_status', '=', 'inactive-request'], ['a_visit_s', '<>', 'null'],])->get();
+        $evening_inactive_requests = working_state::where([['e_status', '=', 'inactive-request'], ['e_visit_s', '<>', 'null'],])->get();
+
+        return view(
+            'hospital.working_state.working_state_requests',
+            compact(
+                'morning_active_requests',
+                'afternoon_active_requests',
+                'evening_active_requests',
+                'morning_inactive_requests',
+                'afternoon_inactive_requests',
+                'evening_inactive_requests'
+            )
+        );
+    }
+
     public function activeWorkingStates()
     {
 
@@ -78,5 +103,4 @@ class HospitalDoctorWorkingStateController extends Controller
         $ws->save();
         return back()->with('info', 'This working state is inactive now!');
     }
-
 }

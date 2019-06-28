@@ -156,7 +156,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/hospital/doctor/registered-doctors">New Requests</a>
+                                    <a href="/hospital/doctor/working-state/requests">New Requests</a>
                                 </li>
 
                                 <li>
