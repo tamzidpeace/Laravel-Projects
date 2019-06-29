@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-md-10">
-        <h3>Morning Actives States</h3>
+        <h3>Morning Inactives States</h3>
         <table class="table table-bordered">
             <tr>
                 <th>Doctor</th>
@@ -48,7 +48,7 @@
 {{-- afternoon --}}
 <div class="row">
     <div class="col-md-10">
-        <h3>Afternoon Actives States</h3>
+        <h3>Afternoon Inactives States</h3>
         <table class="table table-bordered">
             <tr>
                 <th>Doctor</th>
@@ -88,7 +88,7 @@
 {{-- evening --}}
 <div class="row">
     <div class="col-md-10">
-        <h3>Evening Actives States</h3>
+        <h3>Evening Inactives States</h3>
         <table class="table table-bordered">
             <tr>
                 <th>Doctor</th>

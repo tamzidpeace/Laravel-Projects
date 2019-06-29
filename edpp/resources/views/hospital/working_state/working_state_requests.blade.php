@@ -17,6 +17,7 @@
 
             @php
             $state = 'morning';
+            $r_state = 'm-reject';
             @endphp
 
             @foreach ($morning_active_requests as $ma)
@@ -26,7 +27,7 @@
                 <td> {{$ma->morning}} </td>
                 <td> {{$ma->m_status}} </td>
                 <td>
-
+                    {{-- accept button --}}
                     {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateActive', $ma->id, $state],
                     'method' =>
                     'patch']) !!}
@@ -37,7 +38,14 @@
 
                 </td>
                 <td>
+                    {{-- reject button --}}
+                    {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateReject', $ma->id, $r_state],
+                    'method' =>
+                    'patch']) !!}
 
+                    {!! Form::submit('Reject', ['class' => 'form-control btn-danger']) !!}
+
+                    {!! Form::close() !!}
                 </td>
             </tr>
 
@@ -58,6 +66,7 @@
 
             @php
             $state = 'morning';
+            $r_state = 'a-reject';
             @endphp
 
             @foreach ($morning_inactive_requests as $ma)
@@ -78,7 +87,14 @@
 
                 </td>
                 <td>
+                    {{-- reject button --}}
+                    {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateReject', $ma->id, $r_state],
+                    'method' =>
+                    'patch']) !!}
 
+                    {!! Form::submit('Reject', ['class' => 'form-control btn-danger']) !!}
+
+                    {!! Form::close() !!}
                 </td>
             </tr>
 
@@ -105,6 +121,7 @@
 
             @php
             $state = 'afternoon';
+            $r_state = 'e-reject'
             @endphp
 
             @foreach ($afternoon_active_requests as $aa)
@@ -124,6 +141,14 @@
                     {!! Form::close() !!}
                 </td>
                 <td>
+                    {{-- reject button --}}
+                    {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateReject', $aa->id, $r_state],
+                    'method' =>
+                    'patch']) !!}
+
+                    {!! Form::submit('Reject', ['class' => 'form-control btn-danger']) !!}
+
+                    {!! Form::close() !!}
 
                 </td>
 
@@ -146,6 +171,7 @@
 
             @php
             $state = 'afternoon';
+            $r_state = 'a-reject';
             @endphp
 
             @foreach ($afternoon_inactive_requests as $aa)
@@ -165,7 +191,14 @@
                     {!! Form::close() !!}
                 </td>
                 <td>
+                    {{-- reject button --}}
+                    {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateReject', $aa->id, $r_state],
+                    'method' =>
+                    'patch']) !!}
 
+                    {!! Form::submit('Reject', ['class' => 'form-control btn-danger']) !!}
+
+                    {!! Form::close() !!}
                 </td>
 
             </tr>
@@ -192,6 +225,7 @@
 
             @php
             $state = 'evening';
+            $r_state = 'e-reject';
             @endphp
 
             @foreach ($evening_active_requests as $ea)
@@ -210,7 +244,14 @@
                     {!! Form::close() !!}
                 </td>
                 <td>
+                    {{-- reject button --}}
+                    {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateReject', $ea->id, $r_state],
+                    'method' =>
+                    'patch']) !!}
 
+                    {!! Form::submit('Reject', ['class' => 'form-control btn-danger']) !!}
+
+                    {!! Form::close() !!}
                 </td>
             </tr>
 
@@ -228,11 +269,12 @@
                 <th>Action</th>
                 <th>Action</th>
             </tr>
-        
+
             @php
             $state = 'evening';
+            $r_state = 'e-reject';
             @endphp
-        
+
             @foreach ($evening_inactive_requests as $ea)
             <tr>
                 <td> {{$ea->doctor->name}} </td>
@@ -243,18 +285,26 @@
                     {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateInactive', $ea->id, $state],
                     'method' =>
                     'patch']) !!}
-        
+
                     {!! Form::submit('Accept', ['class' => 'form-control btn-success']) !!}
-        
+
                     {!! Form::close() !!}
                 </td>
                 <td>
-        
+                    {{-- reject button --}}
+                    {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateReject', $ea->id, $r_state],
+                    'method' =>
+                    'patch']) !!}
+
+                    {!! Form::submit('Reject', ['class' => 'form-control btn-danger']) !!}
+
+                    {!! Form::close() !!}
+
                 </td>
             </tr>
-        
+
             @endforeach
-        
+
         </table>
     </div>
 </div>

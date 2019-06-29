@@ -103,4 +103,21 @@ class HospitalDoctorWorkingStateController extends Controller
         $ws->save();
         return back()->with('info', 'This working state is inactive now!');
     }
+
+    //set working state reject
+    public function stateReject($id, $r_state)
+    {
+
+        $ws = working_state::findOrFail($id);
+
+        if ($r_state == 'm-reject')
+            $ws->m_status = 'm-reject';
+        elseif ($r_state == 'a-reject')
+            $ws->a_status = 'a-reject';
+        else
+            $ws->e_status = 'e-reject';
+
+        $ws->save();
+        return back()->with('info', 'This working state is rejected!');
+    }
 }
