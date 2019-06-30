@@ -176,6 +176,10 @@
                                 </li>
 
                                 <li>
+                                    <a href="/doctor/working-states/rejected">Rejected Working States</a>
+                                </li>
+
+                                <li>
                                     <a href="/doctor/set-working-state">Set Working State</a>
                                 </li>
 

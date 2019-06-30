@@ -12,6 +12,11 @@ class HospitalDoctorWorkingStateController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        return $this->middleware(['isHospital', 'auth']);
+    }
+
     //doctor woking states
     public function allWorkingStates()
     {
@@ -24,15 +29,18 @@ class HospitalDoctorWorkingStateController extends Controller
 
     public function workingStateRequests()
     {
+        $user_id = Auth::user()->id;
+        $hospital_id = User::find($user_id)->hospital->id;
+
         // active requests
-        $morning_active_requests = working_state::where([['m_status', '=', 'active-request'], ['m_visit_s', '<>', 'null']])->get();
-        $afternoon_active_requests = working_state::where([['a_status', '=', 'active-request'], ['a_visit_s', '<>', 'null'],])->get();
-        $evening_active_requests = working_state::where([['e_status', '=', 'active-request'], ['e_visit_s', '<>', 'null'],])->get();
+        $morning_active_requests = working_state::where([['m_status', '=', 'active-request'], ['m_visit_s', '<>', 'null'], ['hospital_id', '=', $hospital_id]])->get();
+        $afternoon_active_requests = working_state::where([['a_status', '=', 'active-request'], ['a_visit_s', '<>', 'null'], ['hospital_id', '=', $hospital_id]])->get();
+        $evening_active_requests = working_state::where([['e_status', '=', 'active-request'], ['e_visit_s', '<>', 'null'], ['hospital_id', '=', $hospital_id]])->get();
 
         //inactive requests
-        $morning_inactive_requests = working_state::where([['m_status', '=', 'inactive-request'], ['m_visit_s', '<>', 'null']])->get();
-        $afternoon_inactive_requests = working_state::where([['a_status', '=', 'inactive-request'], ['a_visit_s', '<>', 'null'],])->get();
-        $evening_inactive_requests = working_state::where([['e_status', '=', 'inactive-request'], ['e_visit_s', '<>', 'null'],])->get();
+        $morning_inactive_requests = working_state::where([['m_status', '=', 'inactive-request'], ['m_visit_s', '<>', 'null'], ['hospital_id', '=', $hospital_id]])->get();
+        $afternoon_inactive_requests = working_state::where([['a_status', '=', 'inactive-request'], ['a_visit_s', '<>', 'null'],  ['hospital_id', '=', $hospital_id]])->get();
+        $evening_inactive_requests = working_state::where([['e_status', '=', 'inactive-request'], ['e_visit_s', '<>', 'null'], ['hospital_id', '=', $hospital_id]])->get();
 
         return view(
             'hospital.working_state.working_state_requests',
@@ -50,9 +58,12 @@ class HospitalDoctorWorkingStateController extends Controller
     public function activeWorkingStates()
     {
 
-        $morning_actives = working_state::where([['m_status', '=', 'active'], ['m_visit_s', '<>', 'null']])->get();
-        $afternoon_actives = working_state::where([['a_status', '=', 'active'], ['a_visit_s', '<>', 'null'],])->get();
-        $evening_actives = working_state::where([['e_status', '=', 'active'], ['e_visit_s', '<>', 'null'],])->get();
+        $user_id = Auth::user()->id;
+        $hospital_id = User::find($user_id)->hospital->id;
+
+        $morning_actives = working_state::where([['m_status', '=', 'active'], ['m_visit_s', '<>', 'null'], ['hospital_id', '=', $hospital_id]])->get();
+        $afternoon_actives = working_state::where([['a_status', '=', 'active'], ['a_visit_s', '<>', 'null'], ['hospital_id', '=', $hospital_id]])->get();
+        $evening_actives = working_state::where([['e_status', '=', 'active'], ['e_visit_s', '<>', 'null'], ['hospital_id', '=', $hospital_id]])->get();
         return view(
             'hospital.working_state.active_working_states',
             compact('morning_actives', 'afternoon_actives', 'evening_actives')
@@ -61,9 +72,12 @@ class HospitalDoctorWorkingStateController extends Controller
 
     public function inactiveWorkingStates()
     {
-        $morning_inactives = working_state::where('m_status', '=', 'inactive')->get();
-        $afternoon_inactives = working_state::where('a_status', '=', 'inactive')->get();
-        $evening_inactives = working_state::where('e_status', '=', 'inactive')->get();
+        $user_id = Auth::user()->id;
+        $hospital_id = User::find($user_id)->hospital->id;
+
+        $morning_inactives = working_state::where([['m_status', '=', 'inactive'], ['hospital_id', '=', $hospital_id]])->get();
+        $afternoon_inactives = working_state::where([['a_status', '=', 'inactive'], ['hospital_id', '=', $hospital_id]])->get();
+        $evening_inactives = working_state::where([['e_status', '=', 'inactive'], ['hospital_id', '=', $hospital_id]])->get();
 
         return view(
             'hospital.working_state.inactive_working_states',
@@ -74,10 +88,12 @@ class HospitalDoctorWorkingStateController extends Controller
     //rejected working states
     public function rejectedWorkingStates()
     {
+        $user_id = Auth::user()->id;
+        $hospital_id = User::find($user_id)->hospital->id;
 
-        $m_rejected = working_state::where('m_status', '=', 'm-reject')->get();
-        $a_rejected = working_state::where('a_status', '=', 'a-reject')->get();
-        $e_rejected = working_state::where('e_status', '=', 'e-reject')->get();
+        $m_rejected = working_state::where([['m_status', '=', 'm-reject'], ['hospital_id', '=', $hospital_id]])->get();
+        $a_rejected = working_state::where([['a_status', '=', 'a-reject'], ['hospital_id', '=', $hospital_id]])->get();
+        $e_rejected = working_state::where([['e_status', '=', 'e-reject'], ['hospital_id', '=', $hospital_id]])->get();
 
         return view(
             'hospital.working_state.rejected_working_states',

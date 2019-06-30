@@ -110,6 +110,7 @@ Route::get('/doctor/working-state/edit/{id}', 'DoctorController@editWorkingState
 Route::patch('/doctor/working-state/update/{id}', 'DoctorController@updateWorkingState');
 Route::get('/doctor/working-states/active', 'DoctorController@activeWorkingStates');
 Route::get('/doctor/working-states/inactive', 'DoctorController@inactiveWorkingStates');
+Route::get('/doctor/working-states/rejected', 'DoctorController@rejectedWorkingStates');
 Route::get('/doctor/set-working-state', 'DoctorController@setWorkingState');
 Route::post('/doctor/save-working-state', 'DoctorController@saveWorkingState');
 Route::patch('/doctor/workingState/inactive/{id}/{state}', 'DoctorController@stateInactive');

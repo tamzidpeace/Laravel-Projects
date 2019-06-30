@@ -181,14 +181,29 @@ class DoctorController extends Controller
 
     public function inactiveWorkingStates()
     {
-        $morning_inactives = working_state::where('m_status', '=', 'inactive')->get();
-        $afternoon_inactives = working_state::where('a_status', '=', 'inactive')->get();
-        $evening_inactives = working_state::where('e_status', '=', 'inactive')->get();
+        $user = Auth::user();
+        $doctor_id = User::find($user->id)->doctor->id;
+
+        $morning_inactives = working_state::where([['m_status', '=', 'inactive'], ['doctor_id', '=', $doctor_id]])->get();
+        $afternoon_inactives = working_state::where([['a_status', '=', 'inactive'], ['doctor_id', '=', $doctor_id]])->get();
+        $evening_inactives = working_state::where([['e_status', '=', 'inactive'], ['doctor_id', '=', $doctor_id]])->get();
 
         return view(
             'doctor.working_state.inactive_working_states',
             compact(['morning_inactives', 'afternoon_inactives', 'evening_inactives'])
         );
+    }
+
+    // rejected working states
+    public function rejectedWorkingStates() {
+        $user = Auth::user();
+        $doctor_id = User::find($user->id)->doctor->id;
+
+        $morning_rejected = working_state::where([['m_status', '=', 'm-reject'], ['doctor_id', '=', $doctor_id]])->get();
+        $afternoon_rejected = working_state::where([['a_status', '=', 'a-reject'], ['doctor_id', '=', $doctor_id]])->get();
+        $evening_rejected = working_state::where([['e_status', '=', 'e-reject'], ['doctor_id', '=', $doctor_id]])->get();
+
+        return view('doctor.working_state.rejected_working_states', compact('morning_rejected', 'afternoon_rejected', 'evening_rejected'));
     }
 
     public function setWorkingState()
