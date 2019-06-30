@@ -71,6 +71,20 @@ class HospitalDoctorWorkingStateController extends Controller
         );
     }
 
+    //rejected working states
+    public function rejectedWorkingStates()
+    {
+
+        $m_rejected = working_state::where('m_status', '=', 'm-reject')->get();
+        $a_rejected = working_state::where('a_status', '=', 'a-reject')->get();
+        $e_rejected = working_state::where('e_status', '=', 'e-reject')->get();
+
+        return view(
+            'hospital.working_state.rejected_working_states',
+            compact('m_rejected', 'a_rejected', 'e_rejected')
+        );
+    }
+
     //set working state inactive
     public function stateInactive($id, $state)
     {

@@ -166,6 +166,10 @@
                                 <li>
                                     <a href="/hospital/doctor/working-state/inactive">Inactive States</a>
                                 </li>
+
+                                <li>
+                                    <a href="/hospital/doctor/working-state/rejected">Rejected States</a>
+                                </li>
                             </ul>
 
                             <!-- /.nav-second-level -->

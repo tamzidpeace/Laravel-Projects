@@ -92,6 +92,7 @@ Route::get('/hospital/doctor/working-state/all', 'HospitalDoctorWorkingStateCont
 Route::get('/hospital/doctor/working-state/requests', 'HospitalDoctorWorkingStateController@workingStateRequests');
 Route::get('/hospital/doctor/working-state/active', 'HospitalDoctorWorkingStateController@activeWorkingStates');
 Route::get('/hospital/doctor/working-state/inactive', 'HospitalDoctorWorkingStateController@inactiveWorkingStates');
+Route::get('/hospital/doctor/working-state/rejected', 'HospitalDoctorWorkingStateController@rejectedWorkingStates');
 Route::patch('/hospital/doctor/workingState/inactive/{id}/{state}', 'HospitalDoctorWorkingStateController@stateInactive');
 Route::patch('/hospital/doctor/workingState/active/{id}/{state}', 'HospitalDoctorWorkingStateController@stateActive');
 Route::patch('/hospital/doctor/workingState/reject/{id}/{r_state}', 'HospitalDoctorWorkingStateController@stateReject');
