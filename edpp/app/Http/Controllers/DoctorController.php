@@ -164,6 +164,52 @@ class DoctorController extends Controller
         return redirect('/doctor/working-states')->with('success', 'Working State Updated!');
     }
 
+    public function singleUpdateWorkingState(Request $request, $id, $state)
+    {
+        $working_state = working_state::findOrFail($id);
+
+        $working_state->payment = $request->payment;
+
+        //morning start,end time + max visit amount
+        if ($state == 'morning') {
+            $working_state->morning = $request->morningS . '-' . $request->morningE . ' am';
+            $working_state->m_visit_s = $request->morningS;
+            $working_state->m_visit_e = $request->morningE;
+            $working_state->m_visit_amount = $request->morningA;
+            if ($working_state->m_status == 'm-active-reject')
+                $working_state->m_status = 'active-request';
+            else
+                $working_state->m_status = 'inactive-request';
+        }
+
+        //afternoon start,end time + max visit amount
+        elseif ($state == 'afternoon') {
+            $working_state->afternoon = $request->afternoonS . '-' . $request->afternoonE . ' pm';
+            $working_state->a_visit_s = $request->afternoonS;
+            $working_state->a_visit_e = $request->afternoonE;
+            $working_state->a_visit_amount = $request->afternoonA;
+            if ($working_state->a_status == 'a-active-reject')
+                $working_state->a_status = 'active-request';
+            else
+                $working_state->a_status = 'inactive-request';
+        }
+
+        ////evening start,end time + max visit amount
+        else {
+            $working_state->evening = $request->eveningS . '-' . $request->eveningE . ' pm';
+            $working_state->e_visit_s = $request->eveningS;
+            $working_state->e_visit_e = $request->eveningE;
+            $working_state->e_visit_amount = $request->eveningA;
+            if ($working_state->e_status == 'e-active-reject')
+                $working_state->e_status = 'active-request';
+            else
+                $working_state->e_status = 'inactive-request';
+        }
+
+        $working_state->save();
+        return redirect('/doctor/working-states')->with('success', 'requested');
+    }
+
     public function activeWorkingStates()
     {
         $user = Auth::user();
@@ -195,15 +241,29 @@ class DoctorController extends Controller
     }
 
     // rejected working states
-    public function rejectedWorkingStates() {
+    public function rejectedWorkingStates()
+    {
         $user = Auth::user();
         $doctor_id = User::find($user->id)->doctor->id;
 
-        $morning_rejected = working_state::where([['m_status', '=', 'm-reject'], ['doctor_id', '=', $doctor_id]])->get();
-        $afternoon_rejected = working_state::where([['a_status', '=', 'a-reject'], ['doctor_id', '=', $doctor_id]])->get();
-        $evening_rejected = working_state::where([['e_status', '=', 'e-reject'], ['doctor_id', '=', $doctor_id]])->get();
+        $morning_rejected = working_state::where([['m_status', '=', 'm-active-reject'], ['doctor_id', '=', $doctor_id]])
+            ->orWhere([['m_status', '=', 'm-inactive-reject'], ['doctor_id', '=', $doctor_id]])->get();
+
+        $afternoon_rejected = working_state::where([['a_status', '=', 'a-active-reject'], ['doctor_id', '=', $doctor_id]])
+            ->orWhere([['a_status', '=', 'a-inactive-reject'], ['doctor_id', '=', $doctor_id]])->get();
+
+        $evening_rejected = working_state::where([['e_status', '=', 'e-active-reject'], ['doctor_id', '=', $doctor_id]])
+            ->orWhere([['e_status', '=', 'e-inactive-reject'], ['doctor_id', '=', $doctor_id]])->get();
 
         return view('doctor.working_state.rejected_working_states', compact('morning_rejected', 'afternoon_rejected', 'evening_rejected'));
+    }
+
+    //singleRejected
+    public function singleRejected($id, $state)
+    {
+        $ws = working_state::find($id);
+
+        return view('doctor.working_state.single_edit', compact('ws', 'state'));
     }
 
     public function setWorkingState()

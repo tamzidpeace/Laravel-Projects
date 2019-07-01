@@ -121,7 +121,7 @@
 
             @php
             $state = 'afternoon';
-            $r_state = 'e-reject'
+            $r_state = 'a-reject'
             @endphp
 
             @foreach ($afternoon_active_requests as $aa)

@@ -91,9 +91,12 @@ class HospitalDoctorWorkingStateController extends Controller
         $user_id = Auth::user()->id;
         $hospital_id = User::find($user_id)->hospital->id;
 
-        $m_rejected = working_state::where([['m_status', '=', 'm-reject'], ['hospital_id', '=', $hospital_id]])->get();
-        $a_rejected = working_state::where([['a_status', '=', 'a-reject'], ['hospital_id', '=', $hospital_id]])->get();
-        $e_rejected = working_state::where([['e_status', '=', 'e-reject'], ['hospital_id', '=', $hospital_id]])->get();
+        $m_rejected = working_state::where([['m_status', '=', 'm-active-reject'], ['hospital_id', '=', $hospital_id]])
+            ->orWhere([['m_status', '=', 'm-inactive-reject'], ['hospital_id', '=', $hospital_id]])->get();
+        $a_rejected = working_state::where([['a_status', '=', 'a-active-reject'], ['hospital_id', '=', $hospital_id]])
+            ->orWhere([['a_status', '=', 'a-inactive-reject'], ['hospital_id', '=', $hospital_id]])->get();
+        $e_rejected = working_state::where([['e_status', '=', 'e-active-reject'], ['hospital_id', '=', $hospital_id]])
+            ->orWhere([['e_status', '=', 'e-inactive-reject'], ['hospital_id', '=', $hospital_id]])->get();
 
         return view(
             'hospital.working_state.rejected_working_states',
@@ -140,12 +143,18 @@ class HospitalDoctorWorkingStateController extends Controller
 
         $ws = working_state::findOrFail($id);
 
-        if ($r_state == 'm-reject')
-            $ws->m_status = 'm-reject';
-        elseif ($r_state == 'a-reject')
-            $ws->a_status = 'a-reject';
+        if ($r_state == 'm-reject' && $ws->m_status == 'active-request')
+            $ws->m_status = 'm-active-reject';
+        elseif ($r_state == 'm-reject' && $ws->m_status == 'inactive-request')
+            $ws->m_status = 'm-inactive-reject';
+        elseif ($r_state == 'a-reject' && $ws->a_status == 'active-request')
+            $ws->a_status = 'a-active-reject';
+        elseif ($r_state == 'a-reject' && $ws->a_status == 'inactive-request')
+            $ws->a_status = 'a-inactive-reject';
+        elseif ($r_state == 'e-reject' && $ws->e_status == 'active-request')
+            $ws->e_status = 'e-active-reject';
         else
-            $ws->e_status = 'e-reject';
+            $ws->e_status = 'e-inactive-reject';
 
         $ws->save();
         return back()->with('info', 'This working state is rejected!');

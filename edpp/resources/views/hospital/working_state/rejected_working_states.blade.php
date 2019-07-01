@@ -27,7 +27,7 @@
                 <td> {{$ma->morning}} </td>
                 <td> {{$ma->m_status}} </td>
                 <td>
-
+                    @if ($ma->m_status == 'm-active-reject')
                     {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateActive', $ma->id, $state],
                     'method' =>
                     'patch']) !!}
@@ -35,6 +35,16 @@
                     {!! Form::submit('Accept', ['class' => 'form-control btn-success']) !!}
 
                     {!! Form::close() !!}
+                    @else
+                    {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateInactive', $ma->id, $state],
+                    'method' =>
+                    'patch']) !!}
+
+                    {!! Form::submit('Accept', ['class' => 'form-control btn-success']) !!}
+
+                    {!! Form::close() !!}
+                    @endif
+
 
                 </td>
             </tr>
@@ -70,6 +80,7 @@
                 <td> {{$aa->a_status}} </td>
                 {{-- inactive button --}}
                 <td>
+                    @if ($aa->a_status == 'a-active-reject')
                     {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateActive', $aa->id, $state],
                     'method' =>
                     'patch']) !!}
@@ -77,6 +88,17 @@
                     {!! Form::submit('Accept', ['class' => 'form-control btn-sueecss']) !!}
 
                     {!! Form::close() !!}
+                    @else
+                    {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateInactive', $aa->id, $state],
+                    'method' =>
+                    'patch']) !!}
+
+                    {!! Form::submit('Accept', ['class' => 'form-control btn-sueecss']) !!}
+
+                    {!! Form::close() !!}
+                    @endif
+
+
                 </td>
             </tr>
 
@@ -110,13 +132,23 @@
                 <td> {{$ea->evening}} </td>
                 <td> {{$ea->e_status}} </td>
                 <td>
-                    {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateActive', $ea->id, $state],
-                    'method' =>
-                    'patch']) !!}
-
-                    {!! Form::submit('Accept', ['class' => 'form-control btn-success']) !!}
-
-                    {!! Form::close() !!}
+                    @if ($ea->e_status == 'e-active-reject')
+                        {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateActive', $ea->id, $state],
+                        'method' =>
+                        'patch']) !!}
+                        
+                        {!! Form::submit('Accept', ['class' => 'form-control btn-success']) !!}
+                        
+                        {!! Form::close() !!}
+                    @else
+                        {!! Form::open(['action' => ['HospitalDoctorWorkingStateController@stateInactive', $ea->id, $state],
+                        'method' =>
+                        'patch']) !!}
+                        
+                        {!! Form::submit('Accept', ['class' => 'form-control btn-success']) !!}
+                        
+                        {!! Form::close() !!}
+                    @endif
                 </td>
             </tr>
 

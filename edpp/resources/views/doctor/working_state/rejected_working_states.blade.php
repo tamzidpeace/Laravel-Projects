@@ -27,14 +27,12 @@
                 <td> {{$ma->morning}} </td>
                 <td> {{$ma->m_status}} </td>
                 <td>
+                    {!! Form::open(['action' => ['DoctorController@singleRejected', $ma->id, $state], 'method' =>
+                    'get']) !!}
 
-                    {!! Form::open(['action' => ['DoctorController@stateInactive', $ma->id, $state], 'method' =>
-                    'patch']) !!}
-
-                    {!! Form::submit('Inactive', ['class' => 'form-control btn-danger']) !!}
+                    {!! Form::submit('Edit', ['class' => 'form-control btn-info']) !!}
 
                     {!! Form::close() !!}
-
                 </td>
             </tr>
 
@@ -69,13 +67,12 @@
                 <td> {{$aa->a_status}} </td>
                 {{-- inactive button --}}
                 <td>
-                    {!! Form::open(['action' => ['DoctorController@stateInactive', $aa->id, $state], 'method' =>
-                    'patch']) !!}
+                    {!! Form::open(['action' => ['DoctorController@singleRejected', $aa->id, $state], 'method' =>
+                    'get']) !!}
 
-                    {!! Form::submit('Inactive', ['class' => 'form-control btn-danger']) !!}
+                    {!! Form::submit('Edit', ['class' => 'form-control btn-info']) !!}
 
-                    {!! Form::close() !!}
-                </td>
+                    {!! Form::close() !!} </td>
             </tr>
 
             @endforeach
@@ -108,12 +105,12 @@
                 <td> {{$ea->evening}} </td>
                 <td> {{$ea->e_status}} </td>
                 <td>
-                    {!! Form::open(['action' => ['DoctorController@stateInactive', $ea->id, $state], 'method' =>
-                    'patch']) !!}
+                    {!! Form::open(['action' => ['DoctorController@singleRejected', $ea->id, $state], 'method' =>
+                    'get']) !!}
 
-                    {!! Form::submit('Inactive', ['class' => 'form-control btn-danger']) !!}
+                    {!! Form::submit('Edit', ['class' => 'form-control btn-info']) !!}
 
-                    {!! Form::close() !!}
+                    {!! Form::close() !!} </td>
                 </td>
             </tr>
 
