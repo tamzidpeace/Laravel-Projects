@@ -21,6 +21,7 @@
                 <div class="panel-body">
                     <h4>Name: {{$patient->name}} </h4>
                     <h4>Email: {{$patient->email}} </h4>
+                    <h4>Blood Group: {{ $patient->bloodGroup->name }} </h4>
                     <h4>Phone: {{$patient->phone}}</h4>
                     <h4>Address: {{$patient->address}} </h4>
                     <h4>Status: {{$patient->status}} </h4>
