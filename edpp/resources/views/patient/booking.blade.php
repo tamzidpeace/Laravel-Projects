@@ -58,12 +58,14 @@
 
                         <div class="form-group">
                             {!! Form::label('doctor', 'Doctor : ' . $doctor->name) !!}
-
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('hospital', 'Hospital : ' . $hospital->name) !!}
+                        </div>
 
+                        <div class="form-group">
+                            {!! Form::label('cost', 'Appointment Cost :' . " " . $ab->payment . ' (in taka)') !!}
                         </div>
 
                         <div class="form-group">

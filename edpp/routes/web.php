@@ -96,6 +96,12 @@ Route::get('/hospital/doctor/working-state/rejected', 'HospitalDoctorWorkingStat
 Route::patch('/hospital/doctor/workingState/inactive/{id}/{state}', 'HospitalDoctorWorkingStateController@stateInactive');
 Route::patch('/hospital/doctor/workingState/active/{id}/{state}', 'HospitalDoctorWorkingStateController@stateActive');
 Route::patch('/hospital/doctor/workingState/reject/{id}/{r_state}', 'HospitalDoctorWorkingStateController@stateReject');
+//hospital booking
+Route::get('/hospital/appointments/pending', 'HospitalController@pendingAppointments');
+Route::get('/hospital/appointments/', 'HospitalController@appointments');
+
+
+
 
 //doctor routes
 Route::get('/doctor/registration', 'DoctorController@registration')->middleware(['isNewUser', 'auth']);

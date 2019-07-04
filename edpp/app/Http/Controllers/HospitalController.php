@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Hospital;
 use App\Doctor;
+use App\Appointment;
 
 class HospitalController extends Controller
 {
@@ -147,4 +148,26 @@ class HospitalController extends Controller
 
         return back()->with('success', 'Doctor Unblocked');
     }
+
+    //booking operations
+    public function appointments() {
+        
+        $hospital_id = Auth::user()->hospital->id;
+        $appointments = Appointment::where([['hospital_id', $hospital_id],])->get();
+
+        return view('hospital.appointment.all_appointments', compact('appointments'));
+    }
+
+    public function pendingAppointments() {
+        //
+        $hospital_id = Auth::user()->hospital->id;
+        $pending_appointments = Appointment::where([['hospital_id', $hospital_id], ['status', 'pending']])->get();
+
+        return view('hospital.appointment.pending_appointments', compact('pending_appointments'));
+    }
+
+
+
+
+    //end of booking operation
 }

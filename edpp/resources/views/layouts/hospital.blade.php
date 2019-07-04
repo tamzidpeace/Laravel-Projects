@@ -176,23 +176,23 @@
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Booking<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Appointment<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 
                                 <li>
-                                    <a href="#">All Booking</a>
+                                    <a href="/hospital/appointments/">All Apppointments</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Incoming Booking</a>
+                                    <a href="#">Incoming Apppointments</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Fast Booking</a>
+                                    <a href="#">Previous Apppointments</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Pending Requests</a>
+                                    <a href="/hospital/appointments/pending">Pending Appointments</a>
                                 </li>
 
                             </ul>

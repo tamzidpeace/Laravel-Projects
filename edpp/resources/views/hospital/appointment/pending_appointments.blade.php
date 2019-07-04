@@ -1,0 +1,39 @@
+@extends('layouts.hospital')
+
+
+@section('content')
+
+<h2><strong>Pending Appointments</strong></h2>
+
+<table class="table table-bordered">
+    <tr class="info">
+        <th>#</th>
+        <th>Doctor</th>
+        <th>Patient</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Date</th>
+        <th>Period</th>
+        <th>Status</th>
+        <th>Action</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach ($pending_appointments as $pa)
+    <tr>
+        <td> {{$pa->id}} </td>
+        <td> {{$pa->doctor->name}} </td>
+        <td> {{$pa->patient_name}} </td>
+        <td> {{$pa->patient_email}} </td>
+        <td> {{$pa->patient_phone}} </td>
+        <td> {{$pa->date}} </td>
+        <td> {{$pa->period}} </td>
+        <td> {{$pa->status}} </td>
+        <td> <a class="btn btn-success btn-block" href="#">Accept</a> </td>
+        <td> <a class="btn btn-danger btn-block" href="#">Reject</a> </td>
+    </tr>
+    @endforeach
+
+</table>
+
+@endsection

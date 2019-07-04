@@ -14,4 +14,8 @@ class Appointment extends Model
         'blood_group',
         'email',
     ];
+
+    public function doctor() {
+        return $this->belongsTo(Doctor::class);
+    }
 }
