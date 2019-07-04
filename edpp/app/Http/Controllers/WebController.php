@@ -8,10 +8,13 @@ use App\Specialist;
 use App\Hospital;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Day;
 
 class WebController extends Controller
 {
     //
+
+    
     public function index()
     {
         $doctors = Doctor::all();
@@ -42,7 +45,20 @@ class WebController extends Controller
     public function doctorDetailsAndAppointment($id)
     {
         $doctor = Doctor::find($id);
-        return view('web.doctor.doctor_details_and_appointment', compact('doctor'));
+
+        $day = date("l");
+        $days = Day::where('name', '<>', $day)->pluck('name', 'id')->all();
+
+        $m = date("m");
+        $de = date("d");
+        $y = date("Y");
+
+        for ($i = 1; $i <= 6; $i++)
+            $date[$i-1] = date('d-m-y : l', mktime(0, 0, 0, $m, ($de + $i), $y));
+    
+        $period = ['morning', 'afternoon', 'evening'];
+
+        return view('web.doctor.doctor_details_and_appointment', compact('doctor', 'days', 'date', 'period'));
     }
 
     //hospital
@@ -65,7 +81,8 @@ class WebController extends Controller
             return view('web.hospital.hospital_search', compact('hospitals'));
     }
 
-    public function hospitalDetails($id) {
+    public function hospitalDetails($id)
+    {
 
         $hospital = Hospital::find($id);
         return view('web.hospital.hospital_details', compact('hospital'));
@@ -73,7 +90,8 @@ class WebController extends Controller
 
 
     //home
-    public function home() {
+    public function home()
+    {
         return view('web.others.home');
     }
 
@@ -81,16 +99,15 @@ class WebController extends Controller
     public function contact()
     {
 
-      if( Auth::user()){
-        $user = Auth::user();
-        return view('web.others.contact')->with('user',$user);
-      }
-      else {
-           $user = array("name"=>"","email"=>"");
-           return view('web.others.contact', compact('user'));
+        if (Auth::user()) {
+            $user = Auth::user();
+            return view('web.others.contact')->with('user', $user);
+        } else {
+            $user = array("name" => "", "email" => "");
+            return view('web.others.contact', compact('user'));
 
-           //return $user;
-        //return view('web.others.contact', compact('user'));
+            //return $user;
+            //return view('web.others.contact', compact('user'));
+        }
     }
-  }
 }

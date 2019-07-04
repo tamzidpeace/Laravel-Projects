@@ -122,6 +122,9 @@ Route::patch('/doctor/workingState/active/{id}/{state}', 'DoctorController@state
 //patient routes
 Route::get('/patient/registration', 'PatientController@registration')->middleware(['isNewUser', 'auth']);
 Route::post('/patient/registration', 'PatientController@store')->middleware(['isNewUser', 'auth']);
+//appointment booking
+Route::get('/patient/appointment-booking-info/{doctor_id}', 'PatientController@bookAppointmentInfo');
+Route::post('/patient/appointment-booking/', 'PatientController@bookAppointment');
 
 
 //web routes

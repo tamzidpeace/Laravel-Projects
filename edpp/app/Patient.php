@@ -35,4 +35,8 @@ class Patient extends Model
     {
         return $this->belongsTo(BloodGroup::class);
     }
+
+    public function gender() {
+        return $this->belongsTo(Gender::class);
+    }
 }

@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Patient;
 use App\BloodGroup;
 use App\Gender;
+use App\working_state;
+use App\Doctor;
+use App\Hospital;
+use App\Day;
+use App\Appointment;
 
 class PatientController extends Controller
 {
@@ -59,8 +64,130 @@ class PatientController extends Controller
         $patient->status = 'pending-patient';
         $patient->photo = $image_file_name;
 
+
         $patient->save();
 
         return redirect('/home')->with('success', 'Your request for patient role has been submitted, please wait for confirmation');
+    }
+
+    // appointment booking
+    public function bookAppointmentInfo(Request $request, $doctor_id)
+    {
+
+        $m = date("m");
+        $de = date("d");
+        $y = date("Y");
+
+        for ($i = 1; $i <= 6; $i++)
+            $date[$i - 1] = date('d-m-y : l', mktime(0, 0, 0, $m, ($de + $i), $y));
+
+        $period = ['morning', 'afternoon', 'evening'];
+
+        $pd = $period[$request->period];
+        $dt = $date[$request->date];
+        $da = Day::find($request->day)->name;
+
+
+        $booking = new Patient();
+
+        $patient = Auth::user()->patient;
+        $doctor = Doctor::find($doctor_id);
+        $hospital = Hospital::find($request->hospital);
+
+        $booking->patient_id = $patient->id;
+        $booking->doctor_id = $doctor_id;
+        $booking->hospial_id = $request->hospital;
+        $booking->period = $period[$request->period];
+        $booking->day = $request->day;
+        $booking->date = $date[$request->date];
+
+        $wsm = working_state::where([
+            ['doctor_id', $doctor_id],
+            ['hospital_id', $request->hospital],
+            ['day_id', $request->day],
+            ['m_status', 'active'],
+            ['m_visit_amount', '<>', 'null']
+        ])->get()->first();
+
+        $wsa = working_state::where([
+            ['doctor_id', $doctor_id],
+            ['hospital_id', $request->hospital],
+            ['day_id', $request->day],
+            ['a_status', 'active'],
+            ['a_visit_amount', '<>', 'null']
+        ])->get()->first();
+
+        $wse = working_state::where([
+            ['doctor_id', $doctor_id],
+            ['hospital_id', $request->hospital],
+            ['day_id', $request->day],
+            ['e_status', 'active'],
+            ['e_visit_amount', '<>', 'null']
+        ])->get()->first();
+
+
+
+        if ($wsm == null && $wsa == null && $wse == null) {
+            return back()->with('warning', 'Sorry, Appointment not available!');
+        } else {
+            if ($period[$request->period] == 'morning') {
+                //
+                $ab = working_state::where([['m_visit_amount_b', '<', $wsm->m_visit_amount],])->get()->first();
+
+                if ($ab == null) {
+                    return back()->with('warning', 'Sorry, Appointment not available!');
+                } else {
+                    return view('patient.booking', compact('booking', 'ab', 'patient', 'doctor', 'hospital', 'dt', 'pd', 'da'));
+                }
+            } elseif ($period[$request->period] == 'afternoon') {
+                //
+                $ab = working_state::where([['a_visit_amount_b', '<', $wsa->m_visit_amount],])->get()->first();
+
+                if ($ab == null) {
+                    return back()->with('warning', 'Sorry, Appointment not available!');
+                } else {
+                    return view('patient.booking', compact('booking', 'ab', 'patient', 'doctor', 'hospital', 'dt', 'pd', 'da'));
+                }
+            } else {
+                //
+                $ab = working_state::where([['e_visit_amount_b', '<', $wse->e_visit_amount],])->get()->first();
+
+                if ($ab == null) {
+                    return back()->with('warning', 'Sorry, Appointment not available!');
+                } else {
+                    return view('patient.booking', compact('booking', 'ab', 'patient', 'doctor', 'hospital', 'dt', 'pd', 'da'));
+                }
+            }
+        }
+    }
+
+    // end of appointment info process
+
+    public function bookAppointment(Request $request)
+    {
+        $appointment = new Appointment;
+
+        $ws = working_state::find($request->ws);
+        $patient_id = Auth::user()->patient->id;
+
+        $appointment->working_state_id = $request->ws;
+        $appointment->patient_id = $patient_id;
+        $appointment->doctor_id = $ws->doctor_id;
+        $appointment->hospital_id = $ws->hospital_id;
+        $appointment->day_id = $ws->day_id;
+        $appointment->patient_name = $request->name;
+        $appointment->patient_sex = $request->sex;
+        $appointment->patient_email = $request->email;
+        $appointment->patient_blood_group = $request->blood_group;
+        $appointment->patient_age = $request->age;
+        $appointment->patient_phone = $request->phone;
+        $appointment->period = $request->period;
+        $appointment->date = $request->date;
+        $appointment->status = 'pending';
+
+        $appointment->save();
+
+        return redirect('edpp/doctors')->with('success', 'Your appointment request has been placed. 
+        You will be notified by email after confirmation.');
     }
 }

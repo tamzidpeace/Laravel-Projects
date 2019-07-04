@@ -27,8 +27,10 @@
                         {!! Form::number('age', 00, ['class' => 'form-control']) !!}
                     </div>
 
+                    
+
                     <div class="form-group">
-                        {!! Form::label('sex', 'Sex') !!}
+                        {!! Form::label('sex', 'Sex ') !!}
                         {!! Form::select('sex', ['' => 'Choice Option'] + $genders, null, ['class' => 'form-control']) !!}
                     </div>
 
