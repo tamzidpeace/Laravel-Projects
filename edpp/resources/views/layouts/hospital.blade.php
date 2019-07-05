@@ -184,11 +184,11 @@
                                 </li>
 
                                 <li>
-                                    <a href="#">Incoming Apppointments</a>
+                                    <a href="/hospital/appointments/booked">Booked Apppointments</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Previous Apppointments</a>
+                                    <a href="/hospital/appointments/previous">Previous Apppointments</a>
                                 </li>
 
                                 <li>

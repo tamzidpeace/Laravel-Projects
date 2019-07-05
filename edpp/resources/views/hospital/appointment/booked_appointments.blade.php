@@ -16,10 +16,9 @@
         <th>Period</th>
         <th>Status</th>
         <th>Action</th>
-        <th>Action</th>
     </tr>
 
-    @foreach ($pending_appointments as $pa)
+    @foreach ($booked_appointments as $pa)
     <tr>
         <td> {{$pa->id}} </td>
         <td> {{$pa->doctor->name}} </td>
@@ -29,24 +28,14 @@
         <td> {{$pa->date}} </td>
         <td> {{$pa->period}} </td>
         <td> {{$pa->status}} </td>
-        <td> {{-- accept button --}}
-            {!! Form::open(['action' => ['HospitalController@acceptAppointment', $pa->id], 'method' =>'patch'])
-            !!}
-
-            <div class="form-group">
-                {!! Form::submit('Accept', ['class' => 'btn btn-success']) !!}
-            </div>
-
-            {!! Form::close() !!}
-        </td>
 
         <td>
             {{-- reject button --}}
-            {!! Form::open(['action' => ['HospitalController@rejectAppointment', $pa->id], 'method' =>'delete'])
+            {!! Form::open(['action' => ['HospitalController@cancelAppointment', $pa->id], 'method' =>'delete'])
             !!}
 
             <div class="form-group">
-                {!! Form::submit('Reject', ['class' => 'btn btn-danger']) !!}
+                {!! Form::submit('Cancel', ['class' => 'btn btn-danger']) !!}
             </div>
 
             {!! Form::close() !!}

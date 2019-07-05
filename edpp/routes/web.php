@@ -96,9 +96,14 @@ Route::get('/hospital/doctor/working-state/rejected', 'HospitalDoctorWorkingStat
 Route::patch('/hospital/doctor/workingState/inactive/{id}/{state}', 'HospitalDoctorWorkingStateController@stateInactive');
 Route::patch('/hospital/doctor/workingState/active/{id}/{state}', 'HospitalDoctorWorkingStateController@stateActive');
 Route::patch('/hospital/doctor/workingState/reject/{id}/{r_state}', 'HospitalDoctorWorkingStateController@stateReject');
-//hospital booking
+//appointment booking hospital admin section
 Route::get('/hospital/appointments/pending', 'HospitalController@pendingAppointments');
 Route::get('/hospital/appointments/', 'HospitalController@appointments');
+Route::patch('/hospital/appointment/accept/{id}', 'HospitalController@acceptAppointment');
+Route::delete('/hospital/appointment/reject/{id}', 'HospitalController@rejectAppointment');
+Route::delete('/hospital/appointment/cancel/{id}', 'HospitalController@cancelAppointment');
+Route::get('/hospital/appointments/booked', 'HospitalController@bookedAppointments');
+Route::get('/hospital/appointments/previous', 'HospitalController@previousAppointments');
 
 
 

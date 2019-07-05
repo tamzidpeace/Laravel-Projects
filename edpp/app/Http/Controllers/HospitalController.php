@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Hospital;
 use App\Doctor;
 use App\Appointment;
+use App\working_state;
 
 class HospitalController extends Controller
 {
@@ -127,7 +128,8 @@ class HospitalController extends Controller
         return back()->with('danger', 'Doctor request rejected');
     }
 
-    public function block($id) {
+    public function block($id)
+    {
         $user = Auth::user();
         $hospital = Hospital::get()->where('user_id', $user->id)->first();
         $doctor = Doctor::findOrFail($id);
@@ -138,7 +140,8 @@ class HospitalController extends Controller
         return back()->with('info', 'Doctor Blocked');
     }
 
-    public function unblock($id) {
+    public function unblock($id)
+    {
         $user = Auth::user();
         $hospital = Hospital::get()->where('user_id', $user->id)->first();
         $doctor = Doctor::findOrFail($id);
@@ -150,15 +153,17 @@ class HospitalController extends Controller
     }
 
     //booking operations
-    public function appointments() {
-        
+    public function appointments()
+    {
+
         $hospital_id = Auth::user()->hospital->id;
         $appointments = Appointment::where([['hospital_id', $hospital_id],])->get();
 
         return view('hospital.appointment.all_appointments', compact('appointments'));
     }
 
-    public function pendingAppointments() {
+    public function pendingAppointments()
+    {
         //
         $hospital_id = Auth::user()->hospital->id;
         $pending_appointments = Appointment::where([['hospital_id', $hospital_id], ['status', 'pending']])->get();
@@ -166,6 +171,74 @@ class HospitalController extends Controller
         return view('hospital.appointment.pending_appointments', compact('pending_appointments'));
     }
 
+    public function acceptAppointment($id)
+    {
+
+        $appointment = Appointment::findOrFail($id);
+        $period = $appointment->period;
+        $working_state = working_state::find($appointment->working_state_id);
+
+        if ($period == 'morning') {
+            $working_state->m_visit_amount_b +=  1;
+        } elseif ($period == 'afternoon') {
+            $working_state->a_visit_amount_b +=  1;
+        } else {
+            $working_state->e_visit_amount_b +=  1;
+        }
+
+        $appointment->status = 'booked';
+
+        $appointment->save();
+        $working_state->save();
+
+        return back()->with('success', 'Appointment Booked Successfully');
+    }
+
+    public function rejectAppointment($id)
+    {
+
+        $appointment = Appointment::findOrFail($id);
+        $appointment->delete();
+
+        return back()->with('warning', 'Appointment Removed');
+    }
+
+    public function bookedAppointments()
+    {
+        $hospital_id = Auth::user()->hospital->id;
+        $booked_appointments = Appointment::where([['hospital_id', $hospital_id], ['status', 'booked']])->get();
+
+        return view('hospital.appointment.booked_appointments', compact('booked_appointments'));
+    }
+
+    public function previousAppointments()
+    {
+        $hospital_id = Auth::user()->hospital->id;
+        $previous_appointments = Appointment::where([['hospital_id', $hospital_id], ['status', 'previous']])->get();
+
+        return view('hospital.appointment.previous_appointments', compact('previous_appointments'));
+    }
+
+    public function cancelAppointment($id)
+    {
+
+        $appointment = Appointment::findOrFail($id);
+        $period = $appointment->period;
+        $working_state = working_state::find($appointment->working_state_id);
+
+        if ($period == 'morning') {
+            $working_state->m_visit_amount_b -=  1;
+        } elseif ($period == 'afternoon') {
+            $working_state->a_visit_amount_b -=  1;
+        } else {
+            $working_state->e_visit_amount_b -=  1;
+        }
+
+        $working_state->save();
+        $appointment->delete();
+
+        return back()->with('warning', 'Appointment Canceled');
+    }
 
 
 
