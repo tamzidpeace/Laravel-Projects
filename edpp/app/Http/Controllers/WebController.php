@@ -8,6 +8,8 @@ use App\Specialist;
 use App\Hospital;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Donation;
+use App\BloodGroup;
 use App\Day;
 
 class WebController extends Controller
@@ -109,5 +111,55 @@ class WebController extends Controller
             //return $user;
             //return view('web.others.contact', compact('user'));
         }
+    }
+    // Donation
+    public function donor()
+    {
+        $donors = Donation::all();
+        return view('donation.donor', compact('donors'));
+    }
+    public function donorform()
+    {
+
+        if (Auth::user()) {
+            $user = Auth::user();
+            $blood_groups = BloodGroup::pluck('name', 'id')->all();
+            return view('donation.donorform', compact('user', 'blood_groups'));
+        } else {
+            $user = array("name" => "", "email" => "");
+            $blood_groups = BloodGroup::pluck('name', 'id')->all();
+            return view('donation.donorform', compact('user', 'blood_groups'));
+        }
+        //return view('donation.donorform');
+        // return view('donation.donorform');
+        //return 123;
+    }
+    public function donorstore(Request  $request)
+    {
+
+
+        $this->validate($request, [
+            'name' => 'required',
+            'bloodgroup' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'photo' => 'required'
+        ]);
+        $donors = new Donation();
+
+        $file = $request->file('photo');
+        $image_file_name = time() . '_' . $file->getClientOriginalName();
+        $file->move('images/donor_image', $image_file_name);
+
+        $donors->name = $request->name;
+        $donors->blood_group_id = $request->bloodgroup;
+        $donors->phone = $request->phone;
+        $donors->address = $request->address;
+        $donors->photo = $image_file_name;
+
+        $donors->save();
+
+        return redirect('/edpp/donation');
+        //return $donors;
     }
 }

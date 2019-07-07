@@ -73,6 +73,8 @@ Route::get('/admin/patient/{id}/details', 'AdminPatientController@details');
 
 // Admin Contact
 Route::get('/admin/contacts', 'ContactController@index');
+// Admin Donation
+Route::get('/admin/donations', 'DonationController@allDonors');
 
 
 //hospital routes
@@ -154,3 +156,7 @@ Route::get('/edpp/hospital/details/{id}', 'WebController@hospitalDetails');
 //contact
 Route::get('/edpp/contact-report', 'WebController@contact');
 Route::post('/edpp/contact-report', 'ContactController@store');
+// Donation
+Route::get('/edpp/donation', 'WebController@donor');
+Route::get('/edpp/donation/donorform', 'WebController@donorform');
+Route::post('/edpp/donation/donorform', 'WebController@donorstore');

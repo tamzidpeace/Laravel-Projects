@@ -210,6 +210,30 @@
                                        </ul>
 
                                    </li>
+                {{-- Donation Section --}}
+            <li>
+                <a href="#"><i class="fa fa-wrench fa-fw"></i>Donation<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="/admin/donations">All Donors</a>
+                    </li>
+
+                    <li>
+                        <a href="/admin/patient/registered-patients">Registered Donors</a>
+                    </li>
+
+                    <li>
+                        <a href="/admin/patient/blocked-patients">Blocked Donors</a>
+                    </li>
+
+                    <li>
+                        <a href="/admin/patient/pending-patients">New Donor Requests</a>
+                    </li>
+
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            {{-- End of Donation Section --}}
 
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>

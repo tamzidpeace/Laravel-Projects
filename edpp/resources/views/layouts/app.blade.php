@@ -49,7 +49,7 @@
                         <li><a href="/edpp/hospitals">Hospital</a></li>
                         <li><a href="/edpp/doctors">Doctor</a></li>
                         <li><a href="#">Emergency</a></li>
-                        <li><a href="#">Donation</a></li>
+                        <li><a href="/edpp/donation">Donation</a></li>
                         <li><a href="/edpp/contact-report">Contact</a></li>
 
                     </ul>
