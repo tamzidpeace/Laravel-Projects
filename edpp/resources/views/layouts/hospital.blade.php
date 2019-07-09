@@ -188,6 +188,10 @@
                                 </li>
 
                                 <li>
+                                    <a href="/hospital/appointments/cancel-request">Cancel Requests</a>
+                                </li>
+
+                                <li>
                                     <a href="/hospital/appointments/previous">Previous Apppointments</a>
                                 </li>
 

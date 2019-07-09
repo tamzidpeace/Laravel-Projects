@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h2><strong>Previous Appointments</strong></h2>
+<h2><strong>Cancel Requested Appointments</strong></h2>
 
 <table class="table table-bordered">
     <tr class="info">
@@ -18,7 +18,7 @@
         <th>Action</th>
     </tr>
 
-    @foreach ($previous_appointments as $pa)
+    @foreach ($appointments as $pa)
     <tr>
         <td> {{$pa->id}} </td>
         <td> {{$pa->doctor->name}} </td>
@@ -30,12 +30,12 @@
         <td> {{$pa->status}} </td>
 
         <td>
-            {{-- remove button --}}
-            {!! Form::open(['action' => ['HospitalController@rejectAppointment', $pa->id], 'method' =>'delete'])
+            {{-- reject button --}}
+            {!! Form::open(['action' => ['HospitalController@cancelAppointment', $pa->id], 'method' =>'delete'])
             !!}
 
             <div class="form-group">
-                {!! Form::submit('Remove', ['class' => 'btn btn-danger']) !!}
+                {!! Form::submit('Cancel', ['class' => 'btn btn-danger']) !!}
             </div>
 
             {!! Form::close() !!}

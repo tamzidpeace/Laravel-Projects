@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorAppointment;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,6 +107,7 @@ Route::delete('/hospital/appointment/reject/{id}', 'HospitalController@rejectApp
 Route::delete('/hospital/appointment/cancel/{id}', 'HospitalController@cancelAppointment');
 Route::get('/hospital/appointments/booked', 'HospitalController@bookedAppointments');
 Route::get('/hospital/appointments/previous', 'HospitalController@previousAppointments');
+Route::get('/hospital/appointments/cancel-request', 'HospitalController@cancelRequests');
 
 
 
@@ -130,6 +132,11 @@ Route::get('/doctor/set-working-state', 'DoctorController@setWorkingState');
 Route::post('/doctor/save-working-state', 'DoctorController@saveWorkingState');
 Route::patch('/doctor/workingState/inactive/{id}/{state}', 'DoctorController@stateInactive');
 Route::patch('/doctor/workingState/active/{id}/{state}', 'DoctorController@stateActive');
+//appointments
+Route::get('/doctor/appointments/all', 'DoctorAppointment@allAppointments');
+Route::get('/doctor/appointments/booked', 'DoctorAppointment@bookedAppointments');
+Route::get('/doctor/appointments/previous', 'DoctorAppointment@previousAppointments');
+Route::patch('/doctor/appointments/cancel-request/{id}', 'DoctorAppointment@cancelRequest');
 
 
 //patient routes

@@ -139,18 +139,18 @@
 
                         {{-- booking section --}}
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Booking<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Appointment<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">Today Bookings</a>
+                                    <a href="/doctor/appointments/all">All Appointments</a>
                                 </li>
 
                                 <li>
-                                    <a href="">Next Booikngs</a>
+                                    <a href="/doctor/appointments/booked">Booked Appointments</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Previous Bookings</a>
+                                    <a href="/doctor/appointments/previous">Previous Appointments</a>
                                 </li>
 
                             </ul>

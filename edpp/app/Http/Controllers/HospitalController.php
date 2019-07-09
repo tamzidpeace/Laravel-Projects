@@ -219,6 +219,13 @@ class HospitalController extends Controller
         return view('hospital.appointment.previous_appointments', compact('previous_appointments'));
     }
 
+    public function cancelRequests()
+    {
+        $appointments = Appointment::where('status', 'cancel-request')->get();
+
+        return view('hospital.appointment.appointment_cancel_request', compact('appointments'));
+    }
+
     public function cancelAppointment($id)
     {
 
