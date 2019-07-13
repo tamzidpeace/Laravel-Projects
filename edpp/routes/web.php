@@ -145,6 +145,7 @@ Route::post('/patient/registration', 'PatientController@store')->middleware(['is
 //appointment booking
 Route::get('/patient/appointment-booking-info/{doctor_id}', 'PatientController@bookAppointmentInfo');
 Route::post('/patient/appointment-booking/', 'PatientController@bookAppointment');
+Route::get('/patient/appointments', 'PatientController@appointments');
 
 
 //web routes

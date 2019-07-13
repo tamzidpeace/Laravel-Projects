@@ -190,4 +190,20 @@ class PatientController extends Controller
         return redirect('edpp/doctors')->with('success', 'Your appointment request has been placed. 
         You will be notified by email after confirmation.');
     }
+
+    public function appointments() {
+
+        $patient_id = Auth::user()->patient->id;
+
+        //pending
+        $appointments_pending = Appointment::where([['patient_id', $patient_id],['status', 'pending']])->get();
+        //booked
+        $appointments = Appointment::where([['patient_id', $patient_id],['status', 'booked']])->get();
+        //previous
+        $appointmentsP = Appointment::where([['patient_id', $patient_id],['status', 'previous']])->get();
+
+        return view('patient.appointments', compact('appointments', 'appointmentsP', 'appointments_pending'));
+    }
+
+    
 }
