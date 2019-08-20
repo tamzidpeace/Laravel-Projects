@@ -11711,3 +11711,7 @@ p.panel-text {
   margin-bottom: 20px;
 }
 
+.feedback-btn {
+  font-weight: bold;
+}
+

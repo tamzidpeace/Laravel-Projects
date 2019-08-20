@@ -86,6 +86,39 @@
         </div>
         {{-- end of hospital contact --}}
     </div>
+
+    {{-- review --}}
+
+    <div class="row">
+        <div class="sidebar">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="sidebar-title">
+                    <h3 style="font-weight:bold; color:white" class="panel-title">Feedback</h3>
+                </div>
+                @if (!Auth::guest())
+                <div class="panel-body">
+                    <h3>Give Us Your Feedback</h3>
+
+                    {!! Form::open(['method' => 'POST', 'action' => 'FeedBackController@hospitalFeedback',]) !!}
+
+                    <div class="form-group">
+                        {!! Form::label('feedback', 'Feedback') !!}
+                        {!! Form::textarea('feedback', null, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group feedback-btn">
+                        {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+                    </div>
+
+                    {!! Form::close() !!}
+
+
+                </div>
+                @endif
+
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection

@@ -168,3 +168,6 @@ Route::post('/edpp/contact-report', 'ContactController@store');
 Route::get('/edpp/donation', 'WebController@donor');
 Route::get('/edpp/donation/donorform', 'WebController@donorform');
 Route::post('/edpp/donation/donorform', 'WebController@donorstore');
+
+//feedback
+Route::post('/edpp/feedback/hospital', 'FeedBackController@hospitalFeedback');
