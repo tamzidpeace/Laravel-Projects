@@ -10,7 +10,9 @@ use App\HospitalFeedback;
 class FeedBackController extends Controller
 {
     //
-    public function hospitalFeedback(Request $request) {
+    public function hospitalFeedback(Request $request, $id) {
+        
+        
         
         $this->validate($request, [
             'feedback' => 'required',
@@ -19,6 +21,7 @@ class FeedBackController extends Controller
         $hospitalFeedback = new HospitalFeedback;
         
         $user = Auth::user();
+        $hospitalFeedback->hospital_id = $id;
         $hospitalFeedback->name = $user->name;
         $hospitalFeedback->email = $user->email;
         $hospitalFeedback->feedback = $request->feedback;

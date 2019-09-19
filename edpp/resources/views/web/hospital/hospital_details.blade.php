@@ -99,7 +99,7 @@
                 <div class="panel-body">
                     <h3>Give Us Your Feedback</h3>
 
-                    {!! Form::open(['method' => 'POST', 'action' => 'FeedBackController@hospitalFeedback',]) !!}
+                    {!! Form::open(['method' => 'POST', 'action' => ['FeedBackController@hospitalFeedback', $hospital->id]]) !!}
 
                     <div class="form-group">
                         {!! Form::label('feedback', 'Feedback') !!}
@@ -112,6 +112,8 @@
 
                     {!! Form::close() !!}
 
+                    {{-- feedbacks --}}
+                    here
 
                 </div>
                 @endif

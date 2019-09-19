@@ -170,4 +170,4 @@ Route::get('/edpp/donation/donorform', 'WebController@donorform');
 Route::post('/edpp/donation/donorform', 'WebController@donorstore');
 
 //feedback
-Route::post('/edpp/feedback/hospital', 'FeedBackController@hospitalFeedback');
+Route::post('/edpp/feedback/hospital/{id}', 'FeedBackController@hospitalFeedback');
