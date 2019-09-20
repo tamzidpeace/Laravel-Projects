@@ -125,6 +125,61 @@
             </div>
         </div>
     </div>
-    {{-- end of sidebar --}}
+    {{-- end of appointment section --}}
+
+    {{-- start of feedback section --}}
+
+    <div class="row">
+            @if (!Auth::guest())
+            <div class="sidebar">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="sidebar-title">
+                        <h3 style="font-weight:bold; color:white" class="panel-title">Feedback</h3>
+                    </div>
+    
+                    <div class="panel-body">
+                        <h3>Give Us Your Feedback</h3>
+    
+                        {!! Form::open(['method' => 'POST', 'action' => ['FeedBackController@doctorFeedback',
+                        $doctor->id]]) !!}
+    
+                        <div class="form-group">
+                            {!! Form::label('feedback', 'Feedback') !!}
+                            {!! Form::textarea('feedback', null, ['class' => 'form-control']) !!}
+                        </div>
+    
+                        <div class="form-group feedback-btn">
+                            {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+                        </div>
+    
+                        {!! Form::close() !!}
+    
+                        {{-- feedbacks --}}
+    
+                        @if (!Auth::guest())
+    
+                        @foreach ($all_feedback as $fd)
+                        <div style="margin-top:30px; background-color:lightblue; border-radius:5px;">
+                            <p>
+                                <h5>{{$fd->name}}</h5>
+                            </p>
+                            <p>{{$fd->feedback}}</p>
+                            <p>
+                            <h6>{{$fd->created_at}}</h6>
+                            </p>
+                        </div>
+                        @endforeach
+    
+                        @endif
+    
+                    </div>
+                    @endif
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- end of feedback section --}}
 
     @endsection
