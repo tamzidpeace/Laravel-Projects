@@ -21,6 +21,7 @@ class FeedBackController extends Controller
         $hospitalFeedback = new HospitalFeedback;
         
         $user = Auth::user();
+        $hospitalFeedback->user_id = $user->id;
         $hospitalFeedback->hospital_id = $id;
         $hospitalFeedback->name = $user->name;
         $hospitalFeedback->email = $user->email;
@@ -28,6 +29,9 @@ class FeedBackController extends Controller
 
         $hospitalFeedback->save();
         
-        return back()->with('success', 'Thanks for your feedback.');
+        $hf = HospitalFeedback::where('user_id', $user->id)->get();
+        
+        return back()->with('success', 'Thanks for your feedback.')->with('hf', $hf);
+        //return view('web.hospital.hospital_details', compact('hf'));
     }
 }

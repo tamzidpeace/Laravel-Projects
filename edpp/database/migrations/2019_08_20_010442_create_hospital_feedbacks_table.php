@@ -16,6 +16,7 @@ class CreateHospitalFeedbacksTable extends Migration
         Schema::create('hospital_feedbacks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('hospital_id');
+            $table->integer('user_id');
             $table->string('name');
             $table->string('email');
             $table->text('feedback');

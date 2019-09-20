@@ -90,16 +90,18 @@
     {{-- review --}}
 
     <div class="row">
+        @if (!Auth::guest())
         <div class="sidebar">
             <div class="panel panel-default">
                 <div class="panel-heading" id="sidebar-title">
                     <h3 style="font-weight:bold; color:white" class="panel-title">Feedback</h3>
                 </div>
-                @if (!Auth::guest())
+
                 <div class="panel-body">
                     <h3>Give Us Your Feedback</h3>
 
-                    {!! Form::open(['method' => 'POST', 'action' => ['FeedBackController@hospitalFeedback', $hospital->id]]) !!}
+                    {!! Form::open(['method' => 'POST', 'action' => ['FeedBackController@hospitalFeedback',
+                    $hospital->id]]) !!}
 
                     <div class="form-group">
                         {!! Form::label('feedback', 'Feedback') !!}
@@ -113,7 +115,22 @@
                     {!! Form::close() !!}
 
                     {{-- feedbacks --}}
-                    here
+
+                    @if (!Auth::guest())
+
+                    @foreach ($all_feedback as $fd)
+                    <div style="margin-top:30px; background-color:lightblue; border-radius:5px;">
+                        <p>
+                            <h5>{{$fd->name}}</h5>
+                        </p>
+                        <p>{{$fd->feedback}}</p>
+                        <p>
+                        <h6>{{$fd->created_at}}</h6>
+                        </p>
+                    </div>
+                    @endforeach
+
+                    @endif
 
                 </div>
                 @endif

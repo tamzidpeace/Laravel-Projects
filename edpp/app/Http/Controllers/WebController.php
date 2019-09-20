@@ -11,12 +11,13 @@ use App\User;
 use App\Donation;
 use App\BloodGroup;
 use App\Day;
+use App\HospitalFeedback;
 
 class WebController extends Controller
 {
     //
 
-    
+
     public function index()
     {
         $doctors = Doctor::all();
@@ -56,8 +57,8 @@ class WebController extends Controller
         $y = date("Y");
 
         for ($i = 1; $i <= 6; $i++)
-            $date[$i-1] = date('d-m-y : l', mktime(0, 0, 0, $m, ($de + $i), $y));
-    
+            $date[$i - 1] = date('d-m-y : l', mktime(0, 0, 0, $m, ($de + $i), $y));
+
         $period = ['morning', 'afternoon', 'evening'];
 
         return view('web.doctor.doctor_details_and_appointment', compact('doctor', 'days', 'date', 'period'));
@@ -86,8 +87,17 @@ class WebController extends Controller
     public function hospitalDetails($id)
     {
 
+        $user = Auth::user();
+
         $hospital = Hospital::find($id);
-        return view('web.hospital.hospital_details', compact('hospital'));
+        if (!Auth::guest()) {
+            $hospitalFeedback = new HospitalFeedback;
+            $all_feedback = HospitalFeedback::where('user_id', $user->id)->where('hospital_id', $id)->get();
+            return view('web.hospital.hospital_details', compact('hospital', 'all_feedback'));
+        } else {
+
+            return view('web.hospital.hospital_details', compact('hospital'));
+        }
     }
 
 
