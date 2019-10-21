@@ -146,6 +146,7 @@ return array(
     'CreatePatientsTable' => $baseDir . '/database/migrations/2019_06_04_112524_create_patients_table.php',
     'CreateRolesTable' => $baseDir . '/database/migrations/2019_05_26_084110_create_roles_table.php',
     'CreateSpecialistsTable' => $baseDir . '/database/migrations/2019_06_09_091139_create_specialists_table.php',
+    'CreateUsersActivationsTable' => $baseDir . '/database/migrations/2019_10_19_184535_create_users_activations_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateWorkingStatesTable' => $baseDir . '/database/migrations/2019_06_20_162723_create_working_states_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',

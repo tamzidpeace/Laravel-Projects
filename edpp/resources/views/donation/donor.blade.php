@@ -9,7 +9,7 @@
 
     <div class="row">
         {{-- search form --}}
-        {!! Form::open(['action' => 'WebController@doctorSearch', 'method' =>'GET'])
+        {!! Form::open(['action' => 'DonationController@search', 'method' =>'GET'])
         !!}
 
         {{-- testing input group --}}
@@ -31,6 +31,8 @@
 {{-- end of search bar portion --}}
 
 
+
+
 {{-- start of specialist section --}}
 <div class="container">
     <div class="row">
@@ -48,7 +50,7 @@
                        </div>
                        <div class="col-md-3 list-group">
                          <p style="font-family:sans-serif"> <b>{{$donor->name}}</b> </p>
-                         <p style="font-family:sans-serif">Bloodgroup: {{$donor->bloodGroup->name}}</p>
+                         <p style="font-family:sans-serif">Bloodgroup: {{$donor->Bloodgroup->name}}</p>
                          <p style="font-family:sans-serif">Phone: {{$donor->phone}}</p>
                          <p style="font-family:sans-serif">Address: {{$donor->address}}</p>
                        </div>
@@ -60,6 +62,8 @@
             </div>
         </div>
     </div>
+
+    
 
     {{-- sidebar --}}
     <div class="col-md-4">

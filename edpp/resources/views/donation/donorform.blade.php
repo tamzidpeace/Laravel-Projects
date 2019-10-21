@@ -26,7 +26,6 @@
                         <h3 style="font-weight:bold; color:white" class="panel-title">Donation Form</h3>
                     </div>
                     <div class="panel-body">
-
                       {!! Form::open(['method' => 'POST', 'action' => 'WebController@donorstore', 'files'=> true]) !!}
 
                       <div class="form-group">

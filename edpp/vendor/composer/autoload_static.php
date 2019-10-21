@@ -457,6 +457,7 @@ class ComposerStaticInit016c293692620b77d5b7cbe99c85a129
         'CreatePatientsTable' => __DIR__ . '/../..' . '/database/migrations/2019_06_04_112524_create_patients_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2019_05_26_084110_create_roles_table.php',
         'CreateSpecialistsTable' => __DIR__ . '/../..' . '/database/migrations/2019_06_09_091139_create_specialists_table.php',
+        'CreateUsersActivationsTable' => __DIR__ . '/../..' . '/database/migrations/2019_10_19_184535_create_users_activations_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'CreateWorkingStatesTable' => __DIR__ . '/../..' . '/database/migrations/2019_06_20_162723_create_working_states_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',

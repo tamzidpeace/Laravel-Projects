@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 //logout route
 Route::get('/logout', 'Auth\LoginController@logout');
 
@@ -172,3 +173,7 @@ Route::post('/edpp/donation/donorform', 'WebController@donorstore');
 //feedback
 Route::post('/edpp/feedback/hospital/{id}', 'FeedBackController@hospitalFeedback');
 Route::post('/edpp/feedback/doctor/{id}', 'FeedBackController@doctorFeedback');
+// Emergency 
+Route::get('/edpp/emergency','EmergencyController@index');
+Route::get('/search','EmergencyController@search');
+
