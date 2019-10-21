@@ -40,13 +40,16 @@ class DonationController extends Controller
         elseif ($search == 'ab-')
             $blood_group_id = 8;
         else {
-            $blood_group_id = 'none';
+            $blood_group_id = $search;
         }
         
-        $donors = Donation::where('blood_group_id', 'LIKE', '%' . $blood_group_id . '%')->get();
+        $donors = Donation::where('blood_group_id', 'LIKE', '%' . $blood_group_id . '%')
+        ->orWhere('address', 'LIKE', '%' . $blood_group_id . '%')
+        ->get();
 
-        //return $donors;
+        
 
+        
         if (count($donors) > 0)
             return view('donation.donor_search', compact('donors'));
         else

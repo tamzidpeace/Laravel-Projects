@@ -32,7 +32,9 @@ class WebController extends Controller
         $this->validate($request, ['search' => 'required']);
 
         $search = $request->search;
-        $doctors = Doctor::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered-doctor']])->get();
+        $doctors = Doctor::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered-doctor']])
+        ->orWhere('address', 'LIKE', '%' . $search . '%')
+        ->get();
         if (count($doctors) > 0)
             return view('web.doctor.doctor_search', compact('doctors'));
         else
@@ -87,7 +89,10 @@ class WebController extends Controller
         $this->validate($request, ['search' => 'required']);
 
         $search = $request->search;
-        $hospitals = Hospital::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered']])->paginate(5);
+        $hospitals = Hospital::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered']])
+        ->orWhere('address', 'LIKE', '%' . $search . '%')
+        ->paginate(5);
+
         if (count($hospitals) > 0)
             return view('web.hospital.hospital_search', compact('hospitals'));
         else

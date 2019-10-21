@@ -16,7 +16,7 @@
         <div class="doctor-search">
             <div class="input-group">
                 <input style="font-weight:bold;" type="text" name="search" class="form-control"
-                    placeholder="Search for Blood Donor">
+                    placeholder="Search for Blood Donor by Blood Group & Address.">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit"> <span style="font-weight:bold;"
                             class="">Search</span>
