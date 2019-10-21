@@ -74,8 +74,7 @@
                     <p class="panel-text">Users can book appointment as well as checkups for their required date and
                         time.
                     </p>
-                    <a href="#" style="margin-right:10px;" class="btn btn-success read-more pull-right">Read
-                        More</a>
+                    <a href="/edpp/hospitals" style="margin-right:10px;" class="btn btn-success read-more pull-right">Book Appointment</a>
                 </div>
             </div>
         </div>
@@ -104,8 +103,7 @@
                     <p class="panel-text">Patients all prescriptions, medical reports will be
                         stored. test test test
                     </p>
-                    <a href="#" style="margin-right:10px;" class="btn btn-success read-more pull-right">Read
-                        More</a>
+                    <a href="#" style="margin-right:10px;" class="btn btn-success read-more pull-right">Get Emergency Service</a>
                 </div>
             </div>
         </div>
@@ -121,8 +119,7 @@
                     <p class="panel-text">User who is going to donate blood has to register himself by filling the
                         details.
                     </p>
-                    <a href="#" style="margin-right:10px;" class="btn btn-success read-more pull-right">Read
-                        More</a>
+                    <a href="/edpp/donation" style="margin-right:10px;" class="btn btn-success read-more pull-right">Find Blood Donors</a>
                 </div>
             </div>
         </div>
@@ -135,7 +132,7 @@
                     <img style="height: 245px;" class="img-fluid" src="/images/web_image/img/service4.jpg" alt="img">
                     <p class="panel-text">Patients all prescriptions, medical reports will be stored. test test test
                     </p>
-                    <a href="#" style="margin-right:10px;" class="btn btn-success read-more pull-right">Read
+                    <a href="" style="margin-right:10px;" class="btn btn-success read-more pull-right">Read
                         More</a>
                 </div>
             </div>
