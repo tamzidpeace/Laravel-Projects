@@ -167,6 +167,7 @@ Route::get('/edpp/contact-report', 'WebController@contact');
 Route::post('/edpp/contact-report', 'ContactController@store');
 // Donation
 Route::get('/edpp/donation', 'WebController@donor');
+Route::get('/edpp/donation/search', 'DonationController@donorSearch');
 Route::get('/edpp/donation/donorform', 'WebController@donorform');
 Route::post('/edpp/donation/donorform', 'WebController@donorstore');
 

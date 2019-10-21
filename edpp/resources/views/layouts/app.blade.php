@@ -118,7 +118,7 @@
                                 srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
                         <h4 style="margin-top:-10px;">About</h4>
                         <p>Under Development Medical Project.</p>
-                        <p>Developing By <strong>Arafat</strong> With 💓</p>
+                        <p>Developing By <strong>Arafat & Tajuddin</strong> With 💓</p>
                         <!-- Rights-->
                         <p class="rights"><span>©  </span><span
                                 class="copyright-year">2019</span><span> </span><span>EDPP</span><span>. </span><span>No
