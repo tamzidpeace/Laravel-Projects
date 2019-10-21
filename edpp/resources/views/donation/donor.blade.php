@@ -9,7 +9,7 @@
 
     <div class="row">
         {{-- search form --}}
-        {!! Form::open(['action' => 'WebController@doctorSearch', 'method' =>'GET'])
+        {!! Form::open(['action' => 'DonationController@donorSearch', 'method' =>'GET'])
         !!}
 
         {{-- testing input group --}}

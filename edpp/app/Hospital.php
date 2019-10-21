@@ -9,13 +9,13 @@ class Hospital extends Model
     //
 
     protected $fillable = [
-        'user_id',
-        'role_id',
-        'status',
-        'name',
-        'email',
-        'address',
-        'photo',
+            'user_id',
+            'role_id',
+            'status',
+            'name',
+            'email',
+            'address',
+            'photo',
     ];
 
     public function role()
