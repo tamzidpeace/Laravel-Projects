@@ -15,7 +15,7 @@ class EmergencyController extends Controller
 
   public function index()
   {
-    $hospitals = Emergency::where('status', 'active')->get();
+    $hospitals = Emergency::where('status', 'inactive')->get();
 
     return view('emergency.emergency')->with('hospitals', $hospitals);
   }
@@ -30,7 +30,7 @@ class EmergencyController extends Controller
 
   public function emergencyRegistration(Request $request)
   {
-    
+
     $this->validate($request, [
       'name' => 'required',
       'email' => 'required',
@@ -57,7 +57,20 @@ class EmergencyController extends Controller
 
   }
 
-  public function emergencySearch() {
-    return 123;
+  public function emergencySearch(Request $request) {
+    
+    
+    $this->validate($request, ['search' => 'required']);
+
+        $search = $request->search;
+        $es = Emergency::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'active']])
+        ->orWhere([['address', 'LIKE', '%' . $search . '%'], ['status', 'active']])
+        ->get();
+        if (count($es) > 0)
+            return view('emergency.emergency_search', compact('es'));
+        else
+            return view('emergency.emergency_search', compact('es'));
+
+    //return 123;
   }
 }

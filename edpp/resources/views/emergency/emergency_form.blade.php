@@ -6,7 +6,7 @@
 <div class="contact-head">
     {{-- contact bar  for hospital--}}
     <div class="contact">
-        <h1>Donation</h1>
+        <h1>Emergency</h1>
         <h3>Fill-up the Form Below to Serve Emergency Service</h3>
     </div>
 </div>
