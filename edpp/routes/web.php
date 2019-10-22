@@ -78,6 +78,15 @@ Route::get('/admin/contacts', 'ContactController@index');
 // Admin Donation
 Route::get('/admin/donations', 'DonationController@allDonors');
 
+//admin emergency service
+Route::get('/admin/es/all', 'EmergencyController@allES');
+Route::get('/admin/es/new', 'EmergencyController@newES');
+Route::get('/admin/es/registered', 'EmergencyController@registeredES');
+Route::get('/admin/es/blocked', 'EmergencyController@blockedES');
+Route::patch('/admin/es/active/{id}', 'EmergencyController@active');
+Route::patch('/admin/es/inactive/{id}', 'EmergencyController@inactive');
+Route::patch('/admin/es/blocked/{id}', 'EmergencyController@blocked');
+
 
 //hospital routes
 Route::post('/hospital/registration', 'HospitalController@store')->middleware(['isNewUser', 'auth']);
@@ -183,4 +192,6 @@ Route::get('/edpp/emergency','EmergencyController@index');
 Route::get('edpp/emergency/search','EmergencyController@emergencySearch');
 Route::get('/edpp/emergency/emergency-form','EmergencyController@emergencyForm');
 Route::post('/edpp/emergency/registration','EmergencyController@emergencyRegistration');
+
+//
 

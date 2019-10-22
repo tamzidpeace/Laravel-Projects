@@ -198,42 +198,68 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-           <!-- Contact Section -->
+                        <!-- Contact Section -->
 
-                                   <li>
-                                       <a href="#"><i class="fa fa-wrench fa-fw"></i>Contact<span class="fa arrow"></span></a>
-                                       <ul class="nav nav-second-level">
-                                           <li>
-                                               <a href="/admin/contacts">All Reports</a>
-                                           </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Contact<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/contacts">All Reports</a>
+                                </li>
 
-                                       </ul>
+                            </ul>
 
-                                   </li>
-                {{-- Donation Section --}}
-            <li>
-                <a href="#"><i class="fa fa-wrench fa-fw"></i>Donation<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="/admin/donations">All Donors</a>
-                    </li>
+                        </li>
+                        {{-- Donation Section --}}
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Donation<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/donations">All Donors</a>
+                                </li>
 
-                    <li>
-                        <a href="/admin/patient/registered-patients">Registered Donors</a>
-                    </li>
+                                <li>
+                                    <a href="/admin/patient/registered-patients">Registered Donors</a>
+                                </li>
 
-                    <li>
-                        <a href="/admin/patient/blocked-patients">Blocked Donors</a>
-                    </li>
+                                <li>
+                                    <a href="/admin/patient/blocked-patients">Blocked Donors</a>
+                                </li>
 
-                    <li>
-                        <a href="/admin/patient/pending-patients">New Donor Requests</a>
-                    </li>
+                                <li>
+                                    <a href="/admin/patient/pending-patients">New Donor Requests</a>
+                                </li>
 
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
-            {{-- End of Donation Section --}}
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        {{-- End of Donation Section --}}
+
+
+                        {{-- emergency Section --}}
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Emergency<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/es/all">All ES</a>
+                                </li>
+
+                                <li>
+                                    <a href="/admin/es/new">New ES Requests</a>
+                                </li>
+
+                                <li>
+                                    <a href="/admin/es/registered">Registered ES</a>
+                                </li>
+
+                                <li>
+                                    <a href="/admin/es/blocked">Blocked and Inactive ES</a>
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        {{-- End of emergency Section --}}
 
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>

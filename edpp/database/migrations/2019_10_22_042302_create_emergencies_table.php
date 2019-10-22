@@ -15,10 +15,11 @@ class CreateEmergenciesTable extends Migration
     {
         Schema::create('emergencies', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('name');
             $table->string('address');
             $table->string('email')->unique();
-            $table->string('status')->default('inactive');
+            $table->string('status')->default('requested');
             $table->string('photo')->nullable();
             $table->string('phone')->unique();
             $table->string('about')->nullable();
