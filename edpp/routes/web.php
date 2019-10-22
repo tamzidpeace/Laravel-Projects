@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 //logout route
 Route::get('/logout', 'Auth\LoginController@logout');
 
@@ -151,6 +152,7 @@ Route::get('/patient/appointments', 'PatientController@appointments');
 //web routes
 //home
 Route::get('/edpp/home', 'WebController@home');
+
 //doctor
 Route::get('/edpp/doctors', 'WebController@index');
 Route::get('/edpp/doctors/search-results', 'WebController@doctorSearch');
@@ -161,9 +163,11 @@ Route::get('/edpp/doctor/details/{id}', 'WebController@doctorDetailsAndAppointme
 Route::get('/edpp/hospitals', 'WebController@hospitalIndex');
 Route::get('/edpp/hospitals/search-result', 'WebController@hospitalSearch');
 Route::get('/edpp/hospital/details/{id}', 'WebController@hospitalDetails');
+
 //contact
 Route::get('/edpp/contact-report', 'WebController@contact');
 Route::post('/edpp/contact-report', 'ContactController@store');
+
 // Donation
 Route::get('/edpp/donation', 'WebController@donor');
 Route::get('/edpp/donation/search', 'DonationController@donorSearch');
@@ -173,3 +177,10 @@ Route::post('/edpp/donation/donorform', 'WebController@donorstore');
 //feedback
 Route::post('/edpp/feedback/hospital/{id}', 'FeedBackController@hospitalFeedback');
 Route::post('/edpp/feedback/doctor/{id}', 'FeedBackController@doctorFeedback');
+
+// Emergency 
+Route::get('/edpp/emergency','EmergencyController@index');
+Route::get('edpp/emergency/search','EmergencyController@emergencySearch');
+Route::get('/edpp/emergency/emergency-form','EmergencyController@emergencyForm');
+Route::post('/edpp/emergency/registration','EmergencyController@emergencyRegistration');
+

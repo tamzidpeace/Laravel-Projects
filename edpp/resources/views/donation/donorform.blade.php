@@ -7,7 +7,7 @@
     {{-- contact bar  for hospital--}}
     <div class="contact">
         <h1>Donation</h1>
-        <h3>Welcome to Donation Page</h3>
+        <h3>Fill-up the Form Below to be a Donor</h3>
     </div>
 </div>
 {{-- end of top bar portion --}}
@@ -26,7 +26,6 @@
                         <h3 style="font-weight:bold; color:white" class="panel-title">Donation Form</h3>
                     </div>
                     <div class="panel-body">
-
                       {!! Form::open(['method' => 'POST', 'action' => 'WebController@donorstore', 'files'=> true]) !!}
 
                       <div class="form-group">
