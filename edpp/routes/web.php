@@ -45,6 +45,10 @@ Route::patch('/admin/hospital/{id}/block', 'AdminHospitalController@block');
 Route::patch('/admin/hospital/{id}/unblock', 'AdminHospitalController@unblock');
 Route::get('/admin/hospital/{id}/detailes', 'AdminHospitalController@detailes');
 
+//admin hospital booking
+Route::get('/hospital/booking/departments', 'HospitalBookingController@departments');
+Route::post('/hospital/booking/add-department', 'HospitalBookingController@addDepartment');
+
 //admin doctor routes
 Route::get('/admin/doctors', 'AdminDoctorController@allDoctors');
 Route::get('/admin/new-doctors-requests', 'AdminDoctorController@pendingDoctors');

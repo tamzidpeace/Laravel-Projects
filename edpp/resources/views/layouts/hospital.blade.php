@@ -203,6 +203,34 @@
                             <!-- /.nav-second-level -->
                         </li>
 
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Hospital Booking<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
+                                <li>
+                                    <a href="/hospital/booking/departments">Departments</a>
+                                </li>
+
+                                <li>
+                                    <a href="/hospital/appointments/booked">Booked Apppointments</a>
+                                </li>
+
+                                <li>
+                                    <a href="/hospital/appointments/cancel-request">Cancel Requests</a>
+                                </li>
+
+                                <li>
+                                    <a href="/hospital/appointments/previous">Previous Apppointments</a>
+                                </li>
+
+                                <li>
+                                    <a href="/hospital/appointments/pending">Pending Appointments</a>
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
 
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
