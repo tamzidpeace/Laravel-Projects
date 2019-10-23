@@ -77,6 +77,13 @@ Route::get('/admin/patient/{id}/details', 'AdminPatientController@details');
 Route::get('/admin/contacts', 'ContactController@index');
 // Admin Donation
 Route::get('/admin/donations', 'DonationController@allDonors');
+Route::get('/admin/donation/pending-donors', 'AdminDonationController@newDonorsRequest');
+Route::patch('/admin/donation/active/{id}', 'AdminDonationController@active');
+Route::patch('/admin/donation/inactive/{id}', 'AdminDonationController@inactive');
+Route::patch('/admin/donation/blocked/{id}', 'AdminDonationController@blocked');
+Route::get('/admin/donor/registered', 'AdminDonationController@registeredDonor');
+Route::get('/admin/donation/blocked', 'AdminDonationController@blockDonor');
+
 
 //admin emergency service
 Route::get('/admin/es/all', 'EmergencyController@allES');

@@ -13,6 +13,7 @@
                     <th>Bloodgroup</th>
                     <th>Phone</th>
                     <th>Address</th>
+                    <th>Action</th>
                 </tr>
 
                 @foreach ($donors as $donor)
@@ -22,6 +23,7 @@
                     <td>{{$donor->bloodGroup->name}}</td>
                     <td>{{$donor->phone}}</td>
                     <td>{{$donor->address}}</td>
+                    <td>{{$donor->status}}</td>
                 </tr>
 
                 @endforeach

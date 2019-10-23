@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddStatusToDonationsTable' => $baseDir . '/database/migrations/2019_10_23_061006_add_status_to_donations_table.php',
     'Algolia\\AlgoliaSearch\\AccountClient' => $vendorDir . '/algolia/algoliasearch-client-php/src/AccountClient.php',
     'Algolia\\AlgoliaSearch\\Algolia' => $vendorDir . '/algolia/algoliasearch-client-php/src/Algolia.php',
     'Algolia\\AlgoliaSearch\\AnalyticsClient' => $vendorDir . '/algolia/algoliasearch-client-php/src/AnalyticsClient.php',
@@ -79,6 +80,7 @@ return array(
     'App\\HospitalFeedback' => $baseDir . '/app/HospitalFeedback.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\AdminDoctorController' => $baseDir . '/app/Http/Controllers/AdminDoctorController.php',
+    'App\\Http\\Controllers\\AdminDonationController' => $baseDir . '/app/Http/Controllers/AdminDonationController.php',
     'App\\Http\\Controllers\\AdminHospitalController' => $baseDir . '/app/Http/Controllers/AdminHospitalController.php',
     'App\\Http\\Controllers\\AdminPatientController' => $baseDir . '/app/Http/Controllers/AdminPatientController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
