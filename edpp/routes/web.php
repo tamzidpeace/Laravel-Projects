@@ -48,6 +48,8 @@ Route::get('/admin/hospital/{id}/detailes', 'AdminHospitalController@detailes');
 //admin hospital booking
 Route::get('/hospital/booking/departments', 'HospitalBookingController@departments');
 Route::post('/hospital/booking/add-department', 'HospitalBookingController@addDepartment');
+Route::patch('/hospital/booking/edit-department/{id}', 'HospitalBookingController@editDepartment');
+Route::delete('/hospital/booking/remove-department/{id}', 'HospitalBookingController@removeDepartment');
 
 //admin doctor routes
 Route::get('/admin/doctors', 'AdminDoctorController@allDoctors');
