@@ -219,15 +219,15 @@
                                 </li>
 
                                 <li>
-                                    <a href="/admin/patient/registered-patients">Registered Donors</a>
+                                    <a href="/admin/donor/registered">Registered Donors</a>
                                 </li>
 
                                 <li>
-                                    <a href="/admin/patient/blocked-patients">Blocked Donors</a>
+                                    <a href="/admin/donation/blocked">Blocked Donors</a>
                                 </li>
 
                                 <li>
-                                    <a href="/admin/patient/pending-patients">New Donor Requests</a>
+                                    <a href="/admin/donation/pending-donors">New Donor Requests</a>
                                 </li>
 
                             </ul>

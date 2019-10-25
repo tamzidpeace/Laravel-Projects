@@ -48,7 +48,8 @@ Route::get('/admin/hospital/{id}/detailes', 'AdminHospitalController@detailes');
 //admin hospital booking
 Route::get('/hospital/booking/departments', 'HospitalBookingController@departments');
 Route::post('/hospital/booking/add-department', 'HospitalBookingController@addDepartment');
-Route::patch('/hospital/booking/edit-department/{id}', 'HospitalBookingController@editDepartment');
+Route::get('/hospital/booking/edit-department/{id}', 'HospitalBookingController@editDepartment');
+Route::patch('/hospital/booking/edited-department/{id}', 'HospitalBookingController@editedDepartment');
 Route::delete('/hospital/booking/remove-department/{id}', 'HospitalBookingController@removeDepartment');
 
 //admin doctor routes
@@ -83,6 +84,13 @@ Route::get('/admin/patient/{id}/details', 'AdminPatientController@details');
 Route::get('/admin/contacts', 'ContactController@index');
 // Admin Donation
 Route::get('/admin/donations', 'DonationController@allDonors');
+Route::get('/admin/donation/pending-donors', 'AdminDonationController@newDonorsRequest');
+Route::patch('/admin/donation/active/{id}', 'AdminDonationController@active');
+Route::patch('/admin/donation/inactive/{id}', 'AdminDonationController@inactive');
+Route::patch('/admin/donation/blocked/{id}', 'AdminDonationController@blocked');
+Route::get('/admin/donor/registered', 'AdminDonationController@registeredDonor');
+Route::get('/admin/donation/blocked', 'AdminDonationController@blockDonor');
+
 
 //admin emergency service
 Route::get('/admin/es/all', 'EmergencyController@allES');

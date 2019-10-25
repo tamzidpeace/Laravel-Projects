@@ -26,25 +26,27 @@
 <div class="row">
     <div class="col-md-10">
 
-        <table class="table table-hover">
-            <tr>
+        <table class="table table-bordered">
+            <tr class="info">
+                <th>Serial</th>
                 <th>Name</th>
-                <th>Edit Department</th>
-                <th>Remove Department</th>
+                <th>Action</th>
+                <th>Action</th>
             </tr>
+
+            @php
+                $id = 1;
+            @endphp
 
             @foreach ($hos as $h)
             <tr>
-                <td>{{ $h->department_name }}</td>
+                <td> {{$id++}} </td>
+                <td> <strong>{{ $h->department_name }}</strong></td>
 
                 <td>
-                    {{-- edit button --}}
-                    {!! Form::open(['action' => ['HospitalBookingController@editDepartment', $h->id], 'method' =>'patch'])
-                    !!}
+                    {!! Form::open(['action' => ['HospitalBookingController@editDepartment', $h->id], 'method' => 'get']) !!}
 
-                    <div class="form-group">
-                        {!! Form::submit('Edit', ['class' => 'btn btn-info']) !!}
-                    </div>
+                    {!! Form::submit('EDIT', ['class' => 'form-control btn-info']) !!}
 
                     {!! Form::close() !!}
                 </td>
@@ -55,7 +57,7 @@
                     !!}
 
                     <div class="form-group">
-                        {!! Form::submit('Remove', ['class' => 'btn btn-danger']) !!}
+                        {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-block']) !!}
                     </div>
 
                     {!! Form::close() !!}

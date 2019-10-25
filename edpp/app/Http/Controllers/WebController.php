@@ -181,6 +181,8 @@ class WebController extends Controller
         $donors->phone = $request->phone;
         $donors->address = $request->address;
         $donors->photo = $image_file_name;
+        $donors->status = "pending-donor";
+
 
         $donors->save();
 

@@ -51,6 +51,19 @@ class HospitalBookingController extends Controller
     }
 
     public function editDepartment($id) {
-        return 123;
+
+
+        $dpt = HospitalDepartment::find($id);
+        return view('hospital.hospital_booking.edit_department', compact('dpt'));
+    }
+
+    public function editedDepartment(Request $request, $id) {
+
+        $dpt = HospitalDepartment::find($id);
+
+        $dpt->department_name = $request->name;
+        $dpt->save();
+        
+        return redirect('hospital/booking/departments')->with('success', 'Edited Successfully');
     }
 }

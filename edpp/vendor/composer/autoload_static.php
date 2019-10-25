@@ -317,6 +317,7 @@ class ComposerStaticInit016c293692620b77d5b7cbe99c85a129
     );
 
     public static $classMap = array (
+        'AddStatusToDonationsTable' => __DIR__ . '/../..' . '/database/migrations/2019_10_23_061006_add_status_to_donations_table.php',
         'Algolia\\AlgoliaSearch\\AccountClient' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AccountClient.php',
         'Algolia\\AlgoliaSearch\\Algolia' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/Algolia.php',
         'Algolia\\AlgoliaSearch\\AnalyticsClient' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AnalyticsClient.php',
@@ -391,6 +392,7 @@ class ComposerStaticInit016c293692620b77d5b7cbe99c85a129
         'App\\HospitalFeedback' => __DIR__ . '/../..' . '/app/HospitalFeedback.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\AdminDoctorController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminDoctorController.php',
+        'App\\Http\\Controllers\\AdminDonationController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminDonationController.php',
         'App\\Http\\Controllers\\AdminHospitalController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminHospitalController.php',
         'App\\Http\\Controllers\\AdminPatientController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminPatientController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
