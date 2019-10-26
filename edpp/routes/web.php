@@ -209,5 +209,6 @@ Route::get('edpp/emergency/search','EmergencyController@emergencySearch');
 Route::get('/edpp/emergency/emergency-form','EmergencyController@emergencyForm');
 Route::post('/edpp/emergency/registration','EmergencyController@emergencyRegistration');
 
-//
+//Emailvarification 
+Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation');
 
