@@ -25,6 +25,15 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    {{-- date picker --}}
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+
+
+    {{-- end date picker --}}
+
     @yield('styles')
 
 
@@ -204,7 +213,8 @@
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Hospital Booking<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Hospital Booking<span
+                                    class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
 
                                 <li>
@@ -212,7 +222,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/hospital/appointments/booked">Booked Apppointments</a>
+                                    <a href="/hospital/booking/setup-status/">Setup Booking Status</a>
                                 </li>
 
                                 <li>
@@ -358,6 +368,19 @@
     <!-- jQuery -->
     <script src="{{asset('js/libs.js')}}"></script>
 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+    $( "#datepicker" ).datepicker({
+        minDate: -0, maxDate: " +6D",
+      showOn: "button",
+      buttonImage: "/images/calendar.gif",
+      buttonImageOnly: true,
+      buttonText: "Select date"
+    });
+  } );
+    </script>
 
 
     @yield('footer')
