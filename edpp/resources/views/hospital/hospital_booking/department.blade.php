@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1>Handle Hospital Department and Seat</h1>
+<h1>Manage Hospital Department and Seat</h1>
 
 {{-- add department form --}}
 <div class="row specialist">
@@ -40,7 +40,7 @@
 
         {!! Form::close() !!}
 
-        
+
 
         <p><strong>Total Seat: {{$ts}} </strong></p>
         <p><strong>Available Seat: {{$as}}</strong></p>

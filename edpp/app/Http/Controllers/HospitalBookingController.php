@@ -19,6 +19,19 @@ class HospitalBookingController extends Controller
         $user = Auth::user();
         $hospital = Hospital::where('user_id', $user->id)->first();
 
+        $check = HospitalSeat::where('hospital_id', $hospital->id)->get();
+
+        $hs = new HospitalSeat();
+
+        if (count($check) == 0) {
+            $hs->hospital_id = $hospital->id;
+            $hs->total_seat = 0;
+            $hs->available_seat = 0;
+            $hs->booked_seat = 0;
+
+            $hs->save();
+        }
+
         $hos = HospitalDepartment::where('hospital_id', $hospital->id)->get();
 
         $hs = HospitalSeat::where('hospital_id', $hospital->id)->first();
@@ -26,7 +39,6 @@ class HospitalBookingController extends Controller
         $as = $hs->available_seat;
         $bs = $hs->booked_seat;
 
-        
         return view('hospital.hospital_booking.department', compact(['hos', 'ts', 'as', 'bs']));
     }
 

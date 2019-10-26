@@ -27,8 +27,8 @@
 
     {{-- date picker --}}
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    {{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css"> --}}
 
 
 
@@ -368,7 +368,8 @@
     <!-- jQuery -->
     <script src="{{asset('js/libs.js')}}"></script>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    {{-- date picker js --}}
+    {{-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $( function() {
@@ -380,7 +381,7 @@
       buttonText: "Select date"
     });
   } );
-    </script>
+    </script> --}}
 
 
     @yield('footer')
