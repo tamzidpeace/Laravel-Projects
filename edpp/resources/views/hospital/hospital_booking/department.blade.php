@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1>department</h1>
+<h1>Handle Hospital Department</h1>
 
 <div class="row specialist">
     <div class="col-md-8">
@@ -22,5 +22,53 @@
         {!! Form::close() !!}
     </div>
 </div>
-    
+
+<div class="row">
+    <div class="col-md-10">
+
+        <table class="table table-bordered">
+            <tr class="info">
+                <th>Serial</th>
+                <th>Name</th>
+                <th>Action</th>
+                <th>Action</th>
+            </tr>
+
+            @php
+                $id = 1;
+            @endphp
+
+            @foreach ($hos as $h)
+            <tr>
+                <td> {{$id++}} </td>
+                <td> <strong>{{ $h->department_name }}</strong></td>
+
+                <td>
+                    {!! Form::open(['action' => ['HospitalBookingController@editDepartment', $h->id], 'method' => 'get']) !!}
+
+                    {!! Form::submit('EDIT', ['class' => 'form-control btn-info']) !!}
+
+                    {!! Form::close() !!}
+                </td>
+
+                <td>
+                    {{-- remove button --}}
+                    {!! Form::open(['action' => ['HospitalBookingController@removeDepartment', $h->id], 'method' =>'delete'])
+                    !!}
+
+                    <div class="form-group">
+                        {!! Form::submit('Remove', ['class' => 'btn btn-danger btn-block']) !!}
+                    </div>
+
+                    {!! Form::close() !!}
+                </td>
+
+            </tr>
+            @endforeach
+
+        </table>
+
+    </div>
+</div>
+
 @endsection
