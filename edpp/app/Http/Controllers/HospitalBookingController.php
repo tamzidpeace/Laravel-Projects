@@ -74,23 +74,25 @@ class HospitalBookingController extends Controller
         $user = Auth::user();
         $hospital = Hospital::where('user_id', $user->id)->first();
         $hs = HospitalSeat::where('hospital_id', $hospital->id)->first();
-        
+
         return view('hospital.hospital_booking.seat', compact('hs'));
     }
 
     public function seatManage(Request $request)
     {
 
-        $this->validate($request,
-            ['general' => 'required',
-            'cabin_ac' => 'required',
-            'cabin_nac' => 'required',
-            'cost_gen' => 'required',
-            'cost_ac' => 'required',
-            'cost_nac' => 'required',
+        $this->validate(
+            $request,
+            [
+                'general' => 'required',
+                'cabin_ac' => 'required',
+                'cabin_nac' => 'required',
+                'cost_gen' => 'required',
+                'cost_ac' => 'required',
+                'cost_nac' => 'required',
             ]
         );
-        
+
         $user = Auth::user();
         $hospital = Hospital::where('user_id', $user->id)->first();
 
@@ -136,7 +138,7 @@ class HospitalBookingController extends Controller
 
         $check2->general_avail = $check2->general_total - $check2->general_booked;
         $check2->cabin_ac_avail = $check2->cabin_ac_total - $check2->cabin_ac_booked;
-        $check2->general_avail = $check2->cabin_nac_total - $check2->cabin_nac_booked;
+        $check2->cabin_nac_avail = $check2->cabin_nac_total - $check2->cabin_nac_booked;
 
         $check2->save();
 
@@ -146,30 +148,54 @@ class HospitalBookingController extends Controller
             ->with('hs1', $hs1);
     }
 
-    public function checkSeatAvailability(Request $request)
+    public function checkSeatAvailability(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'department' => 'required',
-        //     'date' => 'required',
-        // ]);
+        $this->validate($request, [
+            'department' => 'required',
+            'date' => 'required',
+            'seat' => 'required',
+        ]);
+
+        //date work
         $decision = 0;
-        $date = substr($request->date, 8);
-        $date2 = $request->date;
-        $today = date("d");
+        $date = $request->date;
 
         for ($x = 0; $x < 7; $x++) {
             $ck = date('Y-m-d', strtotime($x . ' day'));
-            if ($ck == $date2) {
+            if ($ck == $date) {
                 $decision = 1;
                 break;
             }
         }
 
-        if ($decision == 1)
-            return 1;
-        else
-            return 0;
+        $date_dec = 0;
 
-        //return $request->date;
+        if ($decision == 1)
+            $date_dec = 1;
+        else
+            $date_dec = 0;
+
+        //return $date_dec;
+
+        //seat work
+        $seat_avail = 0;
+        $seat = $request->seat;
+
+        $hos_seat = HospitalSeat::where('hospital_id', $id)->first();
+        if ($seat == 'gen' && $hos_seat->general_avail > 0) {
+            $seat_avail = 1;
+        } elseif ($seat == 'ac' && $hos_seat->cabin_ac_avail > 0) {
+            $seat_avail = 1;
+        } elseif ($seat == 'nac' && $hos_seat->cabin_nac_avail > 0) {
+            $seat_avail = 1;
+        }
+
+        //return $seat_avail;
+
+        if ($date_dec == 1 && $seat_avail == 1) {
+            return view('web.hospital.hospital_booking');
+        } else {
+            return back()->with('info', 'Sorry, Seat not available. Try different type seat & Seat only available at most 1 week advanced!');
+        }
     }
 }

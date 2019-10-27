@@ -112,11 +112,15 @@ class WebController extends Controller
         //$blood_groups = BloodGroup::pluck('name', 'id')->all();
         $departments = HospitalDepartment::where('hospital_id', $hospital->id)
             ->pluck('department_name', 'id')->all();
+        
+        //seat array
+        $seats = array("gen"=>"General Seat","ac"=>"Cabin(AC)","nac"=>"Cabin(Non-AC)");
 
         if (!Auth::guest()) {
             $hospitalFeedback = new HospitalFeedback;
             $all_feedback = HospitalFeedback::where('user_id', $user->id)->where('hospital_id', $id)->get();
-            return view('web.hospital.hospital_details', compact('hospital', 'all_feedback', 'patient', 'departments'));
+            return view('web.hospital.hospital_details', 
+            compact('hospital', 'all_feedback', 'patient', 'departments', 'seats'));
         } else {
 
             return view('web.hospital.hospital_details', compact('hospital'));

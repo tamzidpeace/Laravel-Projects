@@ -93,44 +93,59 @@
     <div class="row">
         @if (!Auth::guest())
 
-        <div class="sidebar">
-            <div class="panel panel-default">
-                <div class="panel-heading" id="sidebar-title">
-                    <h3 style="font-weight:bold; color:white" class="panel-title">Book Hospital</h3>
+        <div class="col-md-offset-2 col-md-8">
+
+
+
+            <div class="sidebar">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="sidebar-title">
+                        <h3 style="font-weight:bold; color:white" class="panel-title">Book Hospital</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <h3>Book Hospital Seat</h3>
+
+                        {!! Form::open(['method' => 'get', 'action' =>
+                        ['HospitalBookingController@checkSeatAvailability', $hospital->id]])
+                        !!}
+
+                        <div class="form-group">
+                            {!! Form::label('department', 'Department') !!}
+                            {!! Form::select('department', ['' => 'Select Department'] + $departments , null, ['class'
+                            =>
+                            'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('seat', 'Seat') !!}
+                            {!! Form::select('seat', ['' => 'Select Seat'] + $seats , null, ['class' =>
+                            'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('date', 'Date') !!}
+                            {!! Form::date('date', $patient->address, ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group feedback-btn">
+                            {!! Form::submit('Check Availability', ['class' => 'btn btn-primary btn-block']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+
+
+
+                    </div>
+
+
                 </div>
-
-                <div class="panel-body">
-                    <h3>Book Hospital Seat</h3>
-
-                    {!! Form::open(['method' => 'get', 'action' => 'HospitalBookingController@checkSeatAvailability']) !!}
-
-                    <div class="form-group">
-                        {!! Form::label('department', 'Department') !!}
-                        {!! Form::select('department', ['' => 'Select Department'] + $departments , null, ['class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('date', 'Date') !!}
-                        {!! Form::date('date', $patient->address, ['class' => 'form-control']) !!}
-                    </div>
-
-                    <div class="form-group feedback-btn">
-                        {!! Form::submit('Check Availability', ['class' => 'btn btn-primary btn-block']) !!}
-                    </div>
-
-                    {!! Form::close() !!}
-
-
-
-                </div>
-
-
             </div>
+
+
         </div>
-
-
-
         @endif
+
     </div>
 
 
@@ -139,51 +154,53 @@
     {{-- review --}}
 
     <div class="row">
-        @if (!Auth::guest())
-        <div class="sidebar">
-            <div class="panel panel-default">
-                <div class="panel-heading" id="sidebar-title">
-                    <h3 style="font-weight:bold; color:white" class="panel-title">Feedback</h3>
-                </div>
-
-                <div class="panel-body">
-                    <h3>Give Us Your Feedback</h3>
-
-                    {!! Form::open(['method' => 'POST', 'action' => ['FeedBackController@hospitalFeedback',
-                    $hospital->id]]) !!}
-
-                    <div class="form-group">
-                        {!! Form::label('feedback', 'Feedback') !!}
-                        {!! Form::textarea('feedback', null, ['class' => 'form-control']) !!}
+        <div class="col-md-offset-2 col-md-8">
+            @if (!Auth::guest())
+            <div class="sidebar">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="sidebar-title">
+                        <h3 style="font-weight:bold; color:white" class="panel-title">Feedback</h3>
                     </div>
 
-                    <div class="form-group feedback-btn">
-                        {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+                    <div class="panel-body">
+                        <h3>Give Us Your Feedback</h3>
+
+                        {!! Form::open(['method' => 'POST', 'action' => ['FeedBackController@hospitalFeedback',
+                        $hospital->id]]) !!}
+
+                        <div class="form-group">
+                            {!! Form::label('feedback', 'Feedback') !!}
+                            {!! Form::textarea('feedback', null, ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group feedback-btn">
+                            {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+
+                        {{-- feedbacks --}}
+
+                        @if (!Auth::guest())
+
+                        @foreach ($all_feedback as $fd)
+                        <div style="margin-top:30px; background-color:lightblue; border-radius:5px;">
+                            <p>
+                                <h5>{{$fd->name}}</h5>
+                            </p>
+                            <p>{{$fd->feedback}}</p>
+                            <p>
+                                <h6>{{$fd->created_at}}</h6>
+                            </p>
+                        </div>
+                        @endforeach
+
+                        @endif
+
                     </div>
-
-                    {!! Form::close() !!}
-
-                    {{-- feedbacks --}}
-
-                    @if (!Auth::guest())
-
-                    @foreach ($all_feedback as $fd)
-                    <div style="margin-top:30px; background-color:lightblue; border-radius:5px;">
-                        <p>
-                            <h5>{{$fd->name}}</h5>
-                        </p>
-                        <p>{{$fd->feedback}}</p>
-                        <p>
-                            <h6>{{$fd->created_at}}</h6>
-                        </p>
-                    </div>
-                    @endforeach
-
                     @endif
 
                 </div>
-                @endif
-
             </div>
         </div>
     </div>

@@ -71,13 +71,13 @@
                 <p><Strong>General Seat Cost: {{$hs->cost_gen}}</Strong></p>
                 <br>
                 <p><Strong>Total Cabin(AC) Seat: {{$hs->cabin_ac_total}}</Strong> </p>
-                <p><Strong>Cabin(AC) Seat Available: {{$hs->cabin_ac_total}}</Strong></p>
-                <p><Strong>Cabin(AC) Seat Booked: {{$hs->cabin_ac_total}}</Strong></p>
+                <p><Strong>Cabin(AC) Seat Available: {{$hs->cabin_ac_avail}}</Strong></p>
+                <p><Strong>Cabin(AC) Seat Booked: {{$hs->cabin_ac_booked}}</Strong></p>
                 <p><Strong>Cabin(AC) Seat Cost: {{$hs->cost_ac}}</Strong></p>
                 <br>
                 <p><Strong>Total Cabin(Non-AC) Seat: {{$hs->cabin_nac_total}}</Strong> </p>
-                <p><Strong>Cabin(Non-AC) Seat Available: {{$hs->cabin_nac_total}}</Strong></p>
-                <p><Strong>Cabin(Non-AC) Seat Booked: {{$hs->cabin_nac_total}}</Strong></p>
+                <p><Strong>Cabin(Non-AC) Seat Available: {{$hs->cabin_nac_avail}}</Strong></p>
+                <p><Strong>Cabin(Non-AC) Seat Booked: {{$hs->cabin_nac_booked}}</Strong></p>
                 <p><Strong>Cabin(Non-AC) Seat Cost: {{$hs->cost_nac}}</Strong></p>
                 <br>
             </div>
