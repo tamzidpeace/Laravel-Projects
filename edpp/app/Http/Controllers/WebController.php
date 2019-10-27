@@ -13,6 +13,8 @@ use App\BloodGroup;
 use App\Day;
 use App\HospitalFeedback;
 use App\DoctorFeedback;
+use App\HospitalDepartment;
+use App\Patient;
 
 class WebController extends Controller
 {
@@ -33,8 +35,8 @@ class WebController extends Controller
 
         $search = $request->search;
         $doctors = Doctor::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered-doctor']])
-        ->orWhere('address', 'LIKE', '%' . $search . '%')
-        ->get();
+            ->orWhere('address', 'LIKE', '%' . $search . '%')
+            ->get();
         if (count($doctors) > 0)
             return view('web.doctor.doctor_search', compact('doctors'));
         else
@@ -73,7 +75,6 @@ class WebController extends Controller
         } else {
             return view('web.doctor.doctor_details_and_appointment', compact('doctor', 'days', 'date', 'period'));
         }
-
     }
 
     //hospital
@@ -90,8 +91,8 @@ class WebController extends Controller
 
         $search = $request->search;
         $hospitals = Hospital::where([['name', 'LIKE', '%' . $search . '%'], ['status', 'registered']])
-        ->orWhere('address', 'LIKE', '%' . $search . '%')
-        ->paginate(5);
+            ->orWhere('address', 'LIKE', '%' . $search . '%')
+            ->paginate(5);
 
         if (count($hospitals) > 0)
             return view('web.hospital.hospital_search', compact('hospitals'));
@@ -104,11 +105,18 @@ class WebController extends Controller
 
         $user = Auth::user();
 
+        $patient = Patient::where('user_id', $user->id)->first();
+
         $hospital = Hospital::find($id);
+
+        //$blood_groups = BloodGroup::pluck('name', 'id')->all();
+        $departments = HospitalDepartment::where('hospital_id', $hospital->id)
+            ->pluck('department_name', 'id')->all();
+
         if (!Auth::guest()) {
             $hospitalFeedback = new HospitalFeedback;
             $all_feedback = HospitalFeedback::where('user_id', $user->id)->where('hospital_id', $id)->get();
-            return view('web.hospital.hospital_details', compact('hospital', 'all_feedback'));
+            return view('web.hospital.hospital_details', compact('hospital', 'all_feedback', 'patient', 'departments'));
         } else {
 
             return view('web.hospital.hospital_details', compact('hospital'));

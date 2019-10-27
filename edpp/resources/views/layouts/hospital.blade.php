@@ -222,7 +222,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/hospital/booking/setup-status/">Setup Booking Status</a>
+                                    <a href="/hospital/booking/hos-seat">Seat Manage</a>
                                 </li>
 
                                 <li>

@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            
+
 
         </div>
     </div> {{-- end of image part--}}
@@ -87,6 +87,55 @@
         {{-- end of hospital contact --}}
     </div>
 
+    {{-- hospital Booking --}}
+
+
+    <div class="row">
+        @if (!Auth::guest())
+
+        <div class="sidebar">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="sidebar-title">
+                    <h3 style="font-weight:bold; color:white" class="panel-title">Book Hospital</h3>
+                </div>
+
+                <div class="panel-body">
+                    <h3>Book Hospital Seat</h3>
+
+                    {!! Form::open(['method' => 'get', 'action' => 'HospitalBookingController@checkSeatAvailability']) !!}
+
+                    <div class="form-group">
+                        {!! Form::label('department', 'Department') !!}
+                        {!! Form::select('department', ['' => 'Select Department'] + $departments , null, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('date', 'Date') !!}
+                        {!! Form::date('date', $patient->address, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group feedback-btn">
+                        {!! Form::submit('Check Availability', ['class' => 'btn btn-primary btn-block']) !!}
+                    </div>
+
+                    {!! Form::close() !!}
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+        @endif
+    </div>
+
+
+    {{-- end of hospital booking --}}
+
     {{-- review --}}
 
     <div class="row">
@@ -125,7 +174,7 @@
                         </p>
                         <p>{{$fd->feedback}}</p>
                         <p>
-                        <h6>{{$fd->created_at}}</h6>
+                            <h6>{{$fd->created_at}}</h6>
                         </p>
                     </div>
                     @endforeach

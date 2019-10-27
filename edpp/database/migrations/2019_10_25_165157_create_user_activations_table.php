@@ -34,8 +34,8 @@ class CreateUserActivationsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users_activations');
-        Schema::table('users',function(Blueprint $table){
-           $table->dropdown('is_activated');
-        });
+        // Schema::table('users',function(Blueprint $table){
+        //    $table->dropdown('is_activated');
+        // });
     }
 }

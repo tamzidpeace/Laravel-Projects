@@ -7,7 +7,7 @@
 
 {{-- add department form --}}
 <div class="row specialist">
-    <div class="col-md-6">
+    <div class="col-md-8">
         {!! Form::open(['method' => 'POST', 'action' => 'HospitalBookingController@addDepartment']) !!}
 
         <div class="form-group">
@@ -23,34 +23,11 @@
         {!! Form::close() !!}
     </div>
 
-    {{-- Seat amount form --}}
-    <div class="col-md-offset-1 col-md-4">
 
-        {!! Form::open(['method' => 'patch', 'action' => 'HospitalBookingController@seatAmount']) !!}
-
-        <div class="form-group">
-            {!! Form::label('amount', 'Enter total number of seat of hospital') !!}
-            {!! Form::number('amount', null, ['class' => 'form-control']) !!}
-        </div>
-
-
-        <div class="form-group">
-            {!! Form::submit('Save', ['class' => 'btn btn-success btn-block']) !!}
-        </div>
-
-        {!! Form::close() !!}
-
-
-
-        <p><strong>Total Seat: {{$ts}} </strong></p>
-        <p><strong>Available Seat: {{$as}}</strong></p>
-        <p><strong>Booked Seat: {{$bs}}</strong></p>
-
-    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
 
         <table class="table table-bordered">
             <tr class="info">

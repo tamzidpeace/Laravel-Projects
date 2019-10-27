@@ -51,8 +51,8 @@ Route::post('/hospital/booking/add-department', 'HospitalBookingController@addDe
 Route::get('/hospital/booking/edit-department/{id}', 'HospitalBookingController@editDepartment');
 Route::patch('/hospital/booking/edited-department/{id}', 'HospitalBookingController@editedDepartment');
 Route::delete('/hospital/booking/remove-department/{id}', 'HospitalBookingController@removeDepartment');
-Route::patch('/hospital/booking/seat-amout', 'HospitalBookingController@seatAmount');
-Route::get('/hospital/booking/setup-status/', 'HospitalBookingController@setHsBooking');
+Route::get('/hospital/booking/hos-seat', 'HospitalBookingController@hospitalSeat');
+Route::patch('/hospital/booking/seat-manage/', 'HospitalBookingController@seatManage');
 
 //admin doctor routes
 Route::get('/admin/doctors', 'AdminDoctorController@allDoctors');
@@ -172,6 +172,10 @@ Route::post('/patient/registration', 'PatientController@store')->middleware(['is
 Route::get('/patient/appointment-booking-info/{doctor_id}', 'PatientController@bookAppointmentInfo');
 Route::post('/patient/appointment-booking/', 'PatientController@bookAppointment');
 Route::get('/patient/appointments', 'PatientController@appointments');
+
+//hospital booking(patient part)
+
+Route::get('/edpp/hospital/booking/check-avail', 'HospitalBookingController@checkSeatAvailability');
 
 
 //web routes
