@@ -53,6 +53,9 @@ Route::patch('/hospital/booking/edited-department/{id}', 'HospitalBookingControl
 Route::delete('/hospital/booking/remove-department/{id}', 'HospitalBookingController@removeDepartment');
 Route::get('/hospital/booking/hos-seat', 'HospitalBookingController@hospitalSeat');
 Route::patch('/hospital/booking/seat-manage/', 'HospitalBookingController@seatManage');
+Route::get('/hospital/booking/booking-requests', 'HospitalBookingController@bookingRequest');
+Route::patch('/hospital/booking/booking-requests/accept/{id}', 'HospitalBookingController@acceptBookingRequest');
+Route::delete('/hospital/booking/booking-request/reject/{id}', 'HospitalBookingController@rejectBookingRequest');
 
 //admin doctor routes
 Route::get('/admin/doctors', 'AdminDoctorController@allDoctors');

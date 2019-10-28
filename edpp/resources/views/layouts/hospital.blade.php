@@ -226,11 +226,11 @@
                                 </li>
 
                                 <li>
-                                    <a href="/hospital/appointments/cancel-request">Cancel Requests</a>
+                                    <a href="/hospital/booking/booking-requests">Booking Request</a>
                                 </li>
 
                                 <li>
-                                    <a href="/hospital/appointments/previous">Previous Apppointments</a>
+                                    <a href="/hospital/appointments/previous">Adminted Patient</a>
                                 </li>
 
                                 <li>

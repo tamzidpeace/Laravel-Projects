@@ -233,7 +233,7 @@ class HospitalBookingController extends Controller
         $count = count($check_booking_state);
 
         if ($count == 0) {
-            
+
             $hb->save();
 
             return redirect('/edpp/hospitals')
@@ -242,5 +242,60 @@ class HospitalBookingController extends Controller
             return redirect('/edpp/hospitals')
                 ->with('info', 'Sorry, You can not request more than one booking');
         }
+    }
+
+    public function bookingRequest()
+    {
+
+        $user = Auth::user();
+        $hospital = Hospital::where('user_id', $user->id)->first();
+
+        $hs_bookings = HospitalBooking::where([['hospital_id', $hospital->id], ['status', 'pending']])->get();
+
+        //return $hs_bookings;
+        return view('hospital.hospital_booking.booking_request', compact('hs_bookings'));
+    }
+
+    public function acceptBookingRequest($id)
+    {
+
+        $hb = HospitalBooking::find($id);
+        $hs = HospitalSeat::where('hospital_id', $hb->hospital_id)->first();
+
+        $general_booked = $hs->general_booked;
+        $cabin_ac_booked = $hs->cabin_ac_booked;
+        $cabin_nac_booked = $hs->cabin_nac_booked;
+
+        $hb->status = 'confirmed';
+        $hb->save();
+
+        if ($hb->seat == 'General Seat') {
+            $general_booked++;
+            $hs->general_booked = $general_booked;
+            $hs->save();
+        } elseif ($hb->seat == 'Cabin(AC)') {
+            $cabin_ac_booked++;
+            $hs->cabin_ac_booked = $cabin_ac_booked;
+            $hs->save();
+        } else {
+            $cabin_nac_booked++;
+            $hs->cabin_nac_booked = $cabin_nac_booked;
+            $hs->save();
+        }
+
+        $hs->general_avail = $hs->general_total - $hs->general_booked;
+        $hs->cabin_ac_avail = $hs->cabin_ac_total - $hs->cabin_ac_booked;
+        $hs->cabin_nac_avail = $hs->cabin_nac_total - $hs->cabin_nac_booked;
+
+        $hs->save();
+
+        return back()->with('success', 'Patient Booking Confirmed!');
+    }
+
+    public function rejectBookingRequest($id) {
+
+        $hb = HospitalBooking::find($id);
+        $hb->delete();
+        return back()->with('info', 'Booking Request Canceled!');
     }
 }
