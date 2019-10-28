@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Hospital;
+use App\HospitalBooking;
 use App\HospitalDepartment;
 use App\HospitalSeat;
+use App\Patient;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -182,20 +184,63 @@ class HospitalBookingController extends Controller
         $seat = $request->seat;
 
         $hos_seat = HospitalSeat::where('hospital_id', $id)->first();
-        if ($seat == 'gen' && $hos_seat->general_avail > 0) {
+        if ($seat == 'General Seat' && $hos_seat->general_avail > 0) {
             $seat_avail = 1;
-        } elseif ($seat == 'ac' && $hos_seat->cabin_ac_avail > 0) {
+        } elseif ($seat == 'Cabin(AC)' && $hos_seat->cabin_ac_avail > 0) {
             $seat_avail = 1;
-        } elseif ($seat == 'nac' && $hos_seat->cabin_nac_avail > 0) {
+        } elseif ($seat == 'Cabin(Non-AC)' && $hos_seat->cabin_nac_avail > 0) {
             $seat_avail = 1;
         }
 
         //return $seat_avail;
 
+        $department = HospitalDepartment::where('id', $request->department)->first();
+
+        $user = Auth::user();
+        $patient = Patient::where('user_id', $user->id)->first();
+
+
+
         if ($date_dec == 1 && $seat_avail == 1) {
-            return view('web.hospital.hospital_booking');
+            return view('web.hospital.hospital_booking', compact('department', 'patient', 'id'));
         } else {
             return back()->with('info', 'Sorry, Seat not available. Try different type seat & Seat only available at most 1 week advanced!');
+        }
+    }
+
+    public function bookHosSeat(Request $request)
+    {
+
+        $user = Auth::user();
+        $patient = Patient::where('user_id', $user->id)->first();
+
+        $hb = new HospitalBooking();
+
+        $hb->hospital_id = $request->hospital_id;
+        $hb->department_id = $request->dept_id;
+        $hb->patient_id = $patient->id;
+        $hb->seat = $request->seat;
+        $hb->date = $request->date;
+        $hb->patient_name = $request->pname;
+        $hb->patient_phone = $request->pphone;
+        $hb->patient_email = $request->pemail;
+        $hb->patient_address = $request->paddress;
+        $hb->status = 'pending';
+
+        $check_booking_state = HospitalBooking::where([['patient_id',  $patient->id], ['status', 'pending']])
+            ->orWhere([['patient_id',  $patient->id], ['status', 'booked']])->get();
+
+        $count = count($check_booking_state);
+
+        if ($count == 0) {
+            
+            $hb->save();
+
+            return redirect('/edpp/hospitals')
+                ->with('success', 'Your booking request send. Please wait for confirmation');
+        } else {
+            return redirect('/edpp/hospitals')
+                ->with('info', 'Sorry, You can not request more than one booking');
         }
     }
 }

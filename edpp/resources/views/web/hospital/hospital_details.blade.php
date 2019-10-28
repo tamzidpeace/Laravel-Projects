@@ -95,8 +95,6 @@
 
         <div class="col-md-offset-2 col-md-8">
 
-
-
             <div class="sidebar">
                 <div class="panel panel-default">
                     <div class="panel-heading" id="sidebar-title">

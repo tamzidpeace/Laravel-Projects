@@ -176,6 +176,7 @@ Route::get('/patient/appointments', 'PatientController@appointments');
 //hospital booking(patient part)
 
 Route::get('/edpp/hospital/booking/check-avail/{id}', 'HospitalBookingController@checkSeatAvailability');
+Route::post('/eddp/hospital/booking/book-hos-seat', 'HospitalBookingController@bookHosSeat');
 
 
 //web routes
