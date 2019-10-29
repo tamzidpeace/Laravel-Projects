@@ -86,6 +86,7 @@
 
                                     @elseif(Auth::user()->role_id == 4)
                                     <a href="/patient/appointments">Your Appointments</a>
+                                    <a href="/patient/notification">Notifications</a>
                                     @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

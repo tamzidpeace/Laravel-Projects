@@ -99,11 +99,10 @@
                 </div>
                 <div class="panel-content">
                     <img class="img-fluid" src="/images/web_image/img/service2.jpg" alt="img">
-                    <p class="panel-text">Patients all prescriptions, medical reports will be
-                        stored. test test test
+                    <p class="panel-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus quod!
                     </p>
-                    <a href="#" style="margin-right:10px;" class="btn btn-success read-more pull-right">Get Emergency
-                        Service</a>
+                    <a href="/edpp/emergency" style="margin-right:10px;"
+                        class="btn btn-success read-more pull-right">Get EmergencyService</a>
                 </div>
             </div>
         </div>

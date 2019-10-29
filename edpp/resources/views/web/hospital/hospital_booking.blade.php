@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <h3>Book Hospital Seat</h3>
+                    <h3>Seat Available! Please confirm the credential below to book seat.</h3>
 
                     {!! Form::open(['method' => 'post', 'action' =>
                     ['HospitalBookingController@bookHosSeat']])

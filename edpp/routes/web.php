@@ -24,7 +24,8 @@ Auth::routes();
 //logout route
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/edpp/home', 'HomeController@index');
 
 //admin routes
 Route::get('/admin', 'AdminController@index');
@@ -219,4 +220,8 @@ Route::post('/edpp/emergency/registration','EmergencyController@emergencyRegistr
 
 //Emailvarification 
 Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation');
+
+//notification
+Route::get('/patient/notification', 'NotificationController@patientNotification');
+Route::patch('/patient/notification/details/{id}', 'NotificationController@patientNotificationDetails');
 

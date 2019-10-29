@@ -9,6 +9,7 @@ use App\HospitalSeat;
 use App\Patient;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notification;
 use Illuminate\Support\Facades\Auth;
 
 class HospitalBookingController extends Controller
@@ -295,6 +296,31 @@ class HospitalBookingController extends Controller
     public function rejectBookingRequest($id) {
 
         $hb = HospitalBooking::find($id);
+        
+        // notification part
+
+        $patient = Patient::where('id', $hb->patient_id)->first();
+        $receiver = $patient->name;
+        $receiver_user_id = $patient->user_id;
+
+        $user = Auth::user();
+
+        $sender = $user->name;
+        $sender_user_id = $user->id;
+        $message = "Sorry, your booking request has been rejected! Please try again later.";
+
+        $noti = new Notification();
+
+        $noti->sender_user_id = $sender_user_id;
+        $noti->receiver_user_id = $receiver_user_id;
+        $noti->sender = $sender;
+        $noti->receiver = $receiver;
+        $noti->message = $message;
+
+        $noti->save();
+
+        // end of notification part
+
         $hb->delete();
         return back()->with('info', 'Booking Request Canceled!');
     }
