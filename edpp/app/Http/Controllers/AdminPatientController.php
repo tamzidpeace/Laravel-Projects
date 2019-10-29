@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Patient;
 use App\User;
+use App\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPatientController extends Controller
 {
@@ -54,6 +56,29 @@ class AdminPatientController extends Controller
         $patient->save();
         $user->save();
 
+        // notification part
+
+        $receiver = $patient->name;
+        $receiver_user_id = $patient->user_id;
+
+        $user = Auth::user();
+
+        $sender = $user->name;
+        $sender_user_id = $user->id;
+        $message = "Your request for patient role has been accepted!";
+
+        $noti = new Notification();
+
+        $noti->sender_user_id = $sender_user_id;
+        $noti->receiver_user_id = $receiver_user_id;
+        $noti->sender = $sender;
+        $noti->receiver = $receiver;
+        $noti->message = $message;
+
+        $noti->save();
+
+        // end of notification
+
         return back()->with('success', 'Patient registration sccessful!');
     }
 
@@ -91,6 +116,29 @@ class AdminPatientController extends Controller
         $patient->save();
         $user->save();
 
+        // notification part
+
+        $receiver = $patient->name;
+        $receiver_user_id = $patient->user_id;
+
+        $user = Auth::user();
+
+        $sender = $user->name;
+        $sender_user_id = $user->id;
+        $message = "You have been blocked because of rules violation! Contact with authority for future.";
+
+        $noti = new Notification();
+
+        $noti->sender_user_id = $sender_user_id;
+        $noti->receiver_user_id = $receiver_user_id;
+        $noti->sender = $sender;
+        $noti->receiver = $receiver;
+        $noti->message = $message;
+
+        $noti->save();
+
+        // end of notification
+
         return back()->with('info', 'Patient is blocked!');
     }
 
@@ -106,10 +154,34 @@ class AdminPatientController extends Controller
         $patient->save();
         $user->save();
 
+        // notification part
+
+        $receiver = $patient->name;
+        $receiver_user_id = $patient->user_id;
+
+        $user = Auth::user();
+
+        $sender = $user->name;
+        $sender_user_id = $user->id;
+        $message = "Your are unblocked now!";
+
+        $noti = new Notification();
+
+        $noti->sender_user_id = $sender_user_id;
+        $noti->receiver_user_id = $receiver_user_id;
+        $noti->sender = $sender;
+        $noti->receiver = $receiver;
+        $noti->message = $message;
+
+        $noti->save();
+
+        // end of notification
+
         return back()->with('info', 'Patient is unblocked!');
     }
 
-    public function details($id) {
+    public function details($id)
+    {
         $patient = Patient::findOrFail($id);
         return view('admin.patient.patient_details', compact('patient'));
     }
