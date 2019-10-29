@@ -290,13 +290,39 @@ class HospitalBookingController extends Controller
 
         $hs->save();
 
+        // notification part
+        $patient = Patient::where('id', $hb->patient_id)->first();
+        $receiver = $patient->name;
+        $receiver_user_id = $patient->user_id;
+
+        $user = Auth::user();
+
+        $sender = $user->name;
+        $sender_user_id = $user->id;
+        $message = "Your booking has been confirmed! Download booking form for hospital admit.";
+        $file = $id;
+
+        $noti = new Notification();
+
+        $noti->sender_user_id = $sender_user_id;
+        $noti->receiver_user_id = $receiver_user_id;
+        $noti->sender = $sender;
+        $noti->receiver = $receiver;
+        $noti->message = $message;
+        $noti->file = $file;
+
+        $noti->save();
+
+        // end of notification part
+
         return back()->with('success', 'Patient Booking Confirmed!');
     }
 
-    public function rejectBookingRequest($id) {
+    public function rejectBookingRequest($id)
+    {
 
         $hb = HospitalBooking::find($id);
-        
+
         // notification part
 
         $patient = Patient::where('id', $hb->patient_id)->first();
