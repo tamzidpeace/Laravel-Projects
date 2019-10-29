@@ -226,11 +226,11 @@
                                 </li>
 
                                 <li>
-                                    <a href="/hospital/booking/booking-requests">Booking Request</a>
+                                    <a href="/hospital/booking/booking-requests">Booking Requests</a>
                                 </li>
 
                                 <li>
-                                    <a href="/hospital/appointments/previous">Adminted Patient</a>
+                                    <a href="/hospital/booking/confirmed-booking">Confirmed Bookings</a>
                                 </li>
 
                                 <li>

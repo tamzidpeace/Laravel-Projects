@@ -60,7 +60,7 @@
 
     <div class="col-md-offset-1 col-md-5">
 
-
+        @if($hs != null)
 
         <div class="panel panel-info">
             <div class="panel-heading"><strong>Hospital Seat Information</strong></div>
@@ -83,6 +83,10 @@
             </div>
             <div class="panel-footer"></div>
         </div>
+
+        @endif
+
+        
 
 
     </div>

@@ -67,7 +67,7 @@ class PatientController extends Controller
 
         $patient->save();
 
-        return redirect('/home')->with('success', 'Your request for patient role has been submitted, please wait for confirmation');
+        return redirect('/edpp/home')->with('success', 'Your request for patient role has been submitted, please wait for confirmation');
     }
 
     // appointment booking

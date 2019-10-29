@@ -324,4 +324,59 @@ class HospitalBookingController extends Controller
         $hb->delete();
         return back()->with('info', 'Booking Request Canceled!');
     }
+
+    public function confirmedBooking()
+    {
+        $user=Auth::user();
+        $hospital = Hospital::where('user_id', $user->id)->first();
+        //$hospital_id = HospitalBooking::where('id', $user_id)->first();
+
+        $confirmed_bookings=
+        HospitalBooking::where([['hospital_id', $hospital->id], ['status', 'confirmed']])->get();
+
+        //return $confirmed_bookings;
+
+        return view('hospital.hospital_booking.confirmed_booking', compact('confirmed_bookings'));
+    }
+    public function confirmBookingRequest($id)
+    {
+        $cbr = HospitalBooking::find($id);
+        $cbr->status="admitted";
+        $cbr->save();
+        return back()->with('success', 'Patient Admitted');
+
+    }
+
+    public function rejectConfirmedBooking($id)
+    {
+        $rcb=HospitalBooking::find($id);
+        $hs = HospitalSeat::where('hospital_id', $rcb->hospital_id)->first();
+
+        $general_booked = $hs->general_booked;
+        $cabin_ac_booked = $hs->cabin_ac_booked;
+        $cabin_nac_booked = $hs->cabin_nac_booked;
+
+
+        if ($rcb->seat == 'General Seat') {
+            $general_booked--;
+            $hs->general_booked = $general_booked;
+            $hs->save();
+        } elseif ($rcb->seat == 'Cabin(AC)') {
+            $cabin_ac_booked--;
+            $hs->cabin_ac_booked = $cabin_ac_booked;
+            $hs->save();
+        } else {
+            $cabin_nac_booked--;
+            $hs->cabin_nac_booked = $cabin_nac_booked;
+            $hs->save();
+        }
+
+        $hs->general_avail = $hs->general_total - $hs->general_booked;
+        $hs->cabin_ac_avail = $hs->cabin_ac_total - $hs->cabin_ac_booked;
+        $hs->cabin_nac_avail = $hs->cabin_nac_total - $hs->cabin_nac_booked;
+
+        $hs->save();
+        $rcb->delete();
+        return back()->with('info','Booking Cancell Successfully');
+    }
 }

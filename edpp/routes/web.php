@@ -58,6 +58,13 @@ Route::get('/hospital/booking/booking-requests', 'HospitalBookingController@book
 Route::patch('/hospital/booking/booking-requests/accept/{id}', 'HospitalBookingController@acceptBookingRequest');
 Route::delete('/hospital/booking/booking-request/reject/{id}', 'HospitalBookingController@rejectBookingRequest');
 
+Route::get('/hospital/booking/confirmed-booking', 
+	'HospitalBookingController@confirmedBooking');
+Route::patch('/hospital/booking/confirmed-booking/admitted/{id}','HospitalBookingController@confirmBookingRequest');
+Route::delete('/hospital/booking/booking-request/confirmed-reject/{id}', 
+	'HospitalBookingController@rejectConfirmedBooking');
+// end of admin hospital booking
+
 //admin doctor routes
 Route::get('/admin/doctors', 'AdminDoctorController@allDoctors');
 Route::get('/admin/new-doctors-requests', 'AdminDoctorController@pendingDoctors');
@@ -138,6 +145,7 @@ Route::delete('/hospital/appointment/cancel/{id}', 'HospitalController@cancelApp
 Route::get('/hospital/appointments/booked', 'HospitalController@bookedAppointments');
 Route::get('/hospital/appointments/previous', 'HospitalController@previousAppointments');
 Route::get('/hospital/appointments/cancel-request', 'HospitalController@cancelRequests');
+
 
 
 
