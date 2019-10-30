@@ -353,12 +353,12 @@ class HospitalBookingController extends Controller
 
     public function confirmedBooking()
     {
-        $user=Auth::user();
+        $user = Auth::user();
         $hospital = Hospital::where('user_id', $user->id)->first();
         //$hospital_id = HospitalBooking::where('id', $user_id)->first();
 
-        $confirmed_bookings=
-        HospitalBooking::where([['hospital_id', $hospital->id], ['status', 'confirmed']])->get();
+        $confirmed_bookings =
+            HospitalBooking::where([['hospital_id', $hospital->id], ['status', 'confirmed']])->get();
 
         //return $confirmed_bookings;
 
@@ -367,15 +367,14 @@ class HospitalBookingController extends Controller
     public function confirmBookingRequest($id)
     {
         $cbr = HospitalBooking::find($id);
-        $cbr->status="admitted";
+        $cbr->status = "admitted";
         $cbr->save();
         return back()->with('success', 'Patient Admitted');
-
     }
 
     public function rejectConfirmedBooking($id)
     {
-        $rcb=HospitalBooking::find($id);
+        $rcb = HospitalBooking::find($id);
         $hs = HospitalSeat::where('hospital_id', $rcb->hospital_id)->first();
 
         $general_booked = $hs->general_booked;
@@ -403,6 +402,30 @@ class HospitalBookingController extends Controller
 
         $hs->save();
         $rcb->delete();
-        return back()->with('info','Booking Cancell Successfully');
+        return back()->with('info', 'Booking Cancell Successfully');
+    }
+
+
+    public function admittedBookings()
+    {
+        $user = Auth::user();
+        $hospital = Hospital::where('user_id', $user->id)->first();
+        //$hospital_id = HospitalBooking::where('id', $user_id)->first();
+
+        $confirmed_bookings =
+            HospitalBooking::where([['hospital_id', $hospital->id], ['status', 'admitted']])->get();
+
+        return view('hospital.hospital_booking.admitted_bookings', compact('confirmed_bookings'));
+    }
+
+    public function release($id)
+    {
+        $release_booking = HospitalBooking::find($id);
+
+        return view('hospital.hospital_booking.release_cost_calculation', compact('release_booking'));
+    }
+
+    public function releaseAndCostCalculation() {
+        return 123;
     }
 }

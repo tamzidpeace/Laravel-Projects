@@ -234,7 +234,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/hospital/appointments/pending">Pending Appointments</a>
+                                    <a href="/hospital/bookings/admitted-bookings">Admitted Bookings</a>
                                 </li>
 
                             </ul>

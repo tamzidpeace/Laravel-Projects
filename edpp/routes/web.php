@@ -57,12 +57,13 @@ Route::patch('/hospital/booking/seat-manage/', 'HospitalBookingController@seatMa
 Route::get('/hospital/booking/booking-requests', 'HospitalBookingController@bookingRequest');
 Route::patch('/hospital/booking/booking-requests/accept/{id}', 'HospitalBookingController@acceptBookingRequest');
 Route::delete('/hospital/booking/booking-request/reject/{id}', 'HospitalBookingController@rejectBookingRequest');
+Route::get('/hospital/booking/confirmed-booking', 'HospitalBookingController@confirmedBooking');
+Route::patch('/hospital/booking/confirmed-booking/admitted/{id}', 'HospitalBookingController@confirmBookingRequest');
+Route::delete('/hospital/booking/booking-request/confirmed-reject/{id}','HospitalBookingController@rejectConfirmedBooking');
+Route::get('/hospital/bookings/admitted-bookings', 'HospitalBookingController@admittedBookings');
+Route::get('/hospital/bookings/release/{id}', 'HospitalBookingController@release');
+Route::post('/hospital/bookings/release-cost-calculation/', 'HospitalBookingController@releaseAndCostCalculation');
 
-Route::get('/hospital/booking/confirmed-booking', 
-	'HospitalBookingController@confirmedBooking');
-Route::patch('/hospital/booking/confirmed-booking/admitted/{id}','HospitalBookingController@confirmBookingRequest');
-Route::delete('/hospital/booking/booking-request/confirmed-reject/{id}', 
-	'HospitalBookingController@rejectConfirmedBooking');
 // end of admin hospital booking
 
 //admin doctor routes
@@ -165,7 +166,7 @@ Route::patch('/doctor/working-state/single-update/{id}/{state}', 'DoctorControll
 Route::get('/doctor/working-states/active', 'DoctorController@activeWorkingStates');
 Route::get('/doctor/working-states/inactive', 'DoctorController@inactiveWorkingStates');
 Route::get('/doctor/working-states/rejected', 'DoctorController@rejectedWorkingStates');
-Route::get( '/doctor/working-states/single-rejected/{state}/{id}', 'DoctorController@singleRejected');
+Route::get('/doctor/working-states/single-rejected/{state}/{id}', 'DoctorController@singleRejected');
 Route::get('/doctor/set-working-state', 'DoctorController@setWorkingState');
 Route::post('/doctor/save-working-state', 'DoctorController@saveWorkingState');
 Route::patch('/doctor/workingState/inactive/{id}/{state}', 'DoctorController@stateInactive');
@@ -221,10 +222,10 @@ Route::post('/edpp/feedback/hospital/{id}', 'FeedBackController@hospitalFeedback
 Route::post('/edpp/feedback/doctor/{id}', 'FeedBackController@doctorFeedback');
 
 // Emergency 
-Route::get('/edpp/emergency','EmergencyController@index');
-Route::get('edpp/emergency/search','EmergencyController@emergencySearch');
-Route::get('/edpp/emergency/emergency-form','EmergencyController@emergencyForm');
-Route::post('/edpp/emergency/registration','EmergencyController@emergencyRegistration');
+Route::get('/edpp/emergency', 'EmergencyController@index');
+Route::get('edpp/emergency/search', 'EmergencyController@emergencySearch');
+Route::get('/edpp/emergency/emergency-form', 'EmergencyController@emergencyForm');
+Route::post('/edpp/emergency/registration', 'EmergencyController@emergencyRegistration');
 
 //Emailvarification 
 Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation');
@@ -232,4 +233,3 @@ Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation')
 //notification
 Route::get('/patient/notification', 'NotificationController@patientNotification');
 Route::patch('/patient/notification/details/{id}', 'NotificationController@patientNotificationDetails');
-
