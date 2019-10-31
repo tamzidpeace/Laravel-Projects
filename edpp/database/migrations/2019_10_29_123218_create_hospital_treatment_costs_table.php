@@ -15,13 +15,20 @@ class CreateHospitalTreatmentCostsTable extends Migration
     {
         Schema::create('hospital_treatment_costs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('hospital_booking_id')->unsigned();
+            $table->integer('hospital_id')->unsigned();
+            $table->integer('patient_id')->unsigned();
+            $table->integer('hospital_booking_id')->unsigned()->unique();
+            $table->string('patient_name');
+            $table->integer('contact_num');
+            $table->string('admit_date');
+            $table->string('release_date');
             $table->integer('seat');
             $table->integer('medicine')->nullable();
             $table->integer('test')->nullable();
             $table->integer('operation')->nullable();
             $table->integer('others')->nullable();
             $table->integer('total')->nullable();
+            $table->text('file');
             $table->timestamps();
         });
     }

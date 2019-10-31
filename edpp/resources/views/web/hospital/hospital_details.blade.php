@@ -123,7 +123,7 @@
 
                         <div class="form-group">
                             {!! Form::label('date', 'Date') !!}
-                            {!! Form::date('date', $patient->address, ['class' => 'form-control']) !!}
+                            {!! Form::date('date', null, ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group feedback-btn">

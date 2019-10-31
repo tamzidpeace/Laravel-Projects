@@ -61,8 +61,8 @@ Route::get('/hospital/booking/confirmed-booking', 'HospitalBookingController@con
 Route::patch('/hospital/booking/confirmed-booking/admitted/{id}', 'HospitalBookingController@confirmBookingRequest');
 Route::delete('/hospital/booking/booking-request/confirmed-reject/{id}','HospitalBookingController@rejectConfirmedBooking');
 Route::get('/hospital/bookings/admitted-bookings', 'HospitalBookingController@admittedBookings');
-Route::get('/hospital/bookings/release/{id}', 'HospitalBookingController@release');
-Route::post('/hospital/bookings/release-cost-calculation/', 'HospitalBookingController@releaseAndCostCalculation');
+Route::get('/hospital/bookings/release/{id}/', 'HospitalBookingController@release');
+Route::post('/hospital/bookings/release-cost-calculation/{id}', 'HospitalBookingController@releaseAndCostCalculation');
 
 // end of admin hospital booking
 

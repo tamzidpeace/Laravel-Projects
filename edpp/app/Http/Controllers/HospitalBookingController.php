@@ -6,6 +6,7 @@ use App\Hospital;
 use App\HospitalBooking;
 use App\HospitalDepartment;
 use App\HospitalSeat;
+use App\HospitalTreatmentCost;
 use App\Patient;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -420,12 +421,64 @@ class HospitalBookingController extends Controller
 
     public function release($id)
     {
-        $release_booking = HospitalBooking::find($id);
+        $rb = HospitalBooking::find($id);
 
-        return view('hospital.hospital_booking.release_cost_calculation', compact('release_booking'));
+        $admit_date  = $rb->date;
+
+        $release_date = date("Y-m-d");
+
+        $diff = abs(strtotime($release_date) - strtotime($admit_date));
+
+        $years = floor($diff / (365 * 60 * 60 * 24));
+        $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+        $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+
+        $hospital_id = $rb->hospital_id;
+
+        $hospital_seat = HospitalSeat::where('hospital_id', $hospital_id)->first();
+
+        if ($rb->seat == 'General Seat') {
+            $seat_cost = $days * $hospital_seat->cost_gen;
+        } elseif ($rb->seat == 'Cabin(AC)') {
+            $seat_cost = $days * $hospital_seat->cost_ac;
+        } else {
+            $seat_cost = $days * $hospital_seat->cost_nac;
+        }
+
+        return view(
+            'hospital.hospital_booking.release_cost_calculation',
+            compact(['rb', 'days', 'release_date', 'seat_cost'])
+        );
     }
 
-    public function releaseAndCostCalculation() {
-        return 123;
+    public function releaseAndCostCalculation(Request $request, $id)
+    {
+
+        $hb = HospitalBooking::find($id);
+
+        $htc = new HospitalTreatmentCost();
+
+        $htc->hospital_id = $hb->hospital_id;
+        $htc->patient_id = $hb->patient_id;
+        $htc->hospital_booking_id = $id;
+        $htc->patient_name = $request->pname;
+        $htc->contact_num = $request->contact_num;
+        $htc->admit_date = $request->admit_date;
+        $htc->release_date = $request->release_date;
+        $htc->seat = $request->seat_cost;
+        $htc->medicine = $request->medicine;
+        $htc->test = $request->test;
+        $htc->operation = $request->operation;
+        $htc->others = $request->others;
+        $htc->total = $request->total;
+        $htc->file = $id;
+
+        $htc->save();
+
+        $hb->status = "released";
+
+        $hb->save();
+
+        return redirect('/hospital/bookings/admitted-bookings')->with('success', 'Booking activities complete successfully!');
     }
 }
