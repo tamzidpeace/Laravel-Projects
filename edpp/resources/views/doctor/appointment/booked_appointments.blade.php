@@ -7,7 +7,7 @@
 
 <table class="table table-bordered">
     <tr class="info">
-        <th>#</th>
+        <th>Appointment ID</th>
         <th>Doctor</th>
         <th>Hospital</th>
         <th>Email</th>

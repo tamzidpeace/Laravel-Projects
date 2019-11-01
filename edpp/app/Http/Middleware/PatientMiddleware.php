@@ -19,7 +19,7 @@ class PatientMiddleware
         $user = Auth::user();
 
         if (!$user->isPatient()) {
-            return redirect('/home')->with('warning', 'You do not have patient perminssion');
+            return redirect('/edpp/home')->with('warning', 'You do not have patient perminssion');
         }
 
         return $next($request);

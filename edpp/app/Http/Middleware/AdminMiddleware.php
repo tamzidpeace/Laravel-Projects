@@ -19,7 +19,7 @@ class AdminMiddleware
         $user = Auth::user();
         
         if(!$user->isAdmin()) {
-            return redirect('/home')->with('warning', 'Opps! you are not an Admin!');
+            return redirect('/edpp/home')->with('warning', 'Opps! you are not an Admin!');
         }
 
         return $next($request);

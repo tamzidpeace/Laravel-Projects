@@ -20,7 +20,7 @@ class NewUserMiddleware
         $user = Auth::user();
         
         if (!$user->isNewUser()) {
-            return redirect('/home')->with('warning', 'You already have a role!');
+            return redirect('/edpp/home')->with('warning', 'You already have a role!');
         }
 
         return $next($request);

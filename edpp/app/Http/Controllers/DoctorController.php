@@ -75,7 +75,7 @@ class DoctorController extends Controller
 
         $doctor->save();
 
-        return redirect('/home')->with('success', 'Your request for doctor role has been submitted, please wait for confirmation');
+        return redirect('/edpp/home')->with('success', 'Your request for doctor role has been submitted, please wait for confirmation');
     }
 
     public function allHospitals()

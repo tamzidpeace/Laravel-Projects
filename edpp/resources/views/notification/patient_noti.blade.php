@@ -35,7 +35,14 @@
                     @if ($ns->file == null)
                     None
                     @else
-                    <button class="btn btn-info">Download</button>
+
+                    {!! Form::open(['action' => ['NotificationController@downloadForm', $ns->id],
+                    'method' => 'get']) !!}
+
+                    {!! Form::submit('Download', ['class' => 'form-control btn-info btn-block']) !!}
+
+                    {!! Form::close() !!}
+
                     @endif
                 </td>
                 <td>

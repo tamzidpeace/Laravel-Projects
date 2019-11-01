@@ -11,12 +11,18 @@
                 <p>From: {{$noti->sender}}</p>
                 <p>To: me</p>
                 <p>Message: {{$noti->message}}</p>
-                <p>File: 
+                <p>Booking Form:
                     @if ($noti->file == null)
-                        No file available.
+                    No file available.
                     @else
-                    <button class="btn btn-info" type="submit">Download</button>
-                    @endif 
+                    {!! Form::open(['action' => ['NotificationController@downloadForm', $noti->id],
+                    'method' => 'get']) !!}
+                    <div class="col-sm-2" style="margin-left:90px; margin-top: -35px;">
+                        {!! Form::submit('Download', ['class' => 'form-control btn-info ']) !!}
+                    </div>
+
+                    {!! Form::close() !!}
+                    @endif
                 </p>
 
             </div>

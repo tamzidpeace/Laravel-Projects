@@ -15,4 +15,8 @@ class HospitalBooking extends Model
     public function hospital() {
         return $this->belongsTo(Hospital::class);
     }
+
+    public function patient() {
+        return $this->belongsTo(Patient::class);
+    }
 }

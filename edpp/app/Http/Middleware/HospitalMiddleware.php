@@ -21,7 +21,7 @@ class HospitalMiddleware
         $user = Auth::user();
 
         if(!$user->isHospital()) {
-            return redirect('/home')->with('warning', 'You do not have hospital perminssion');
+            return redirect('/edpp/home')->with('warning', 'You do not have hospital perminssion');
         }
         
         return $next($request);

@@ -3,11 +3,31 @@
 
 @section('content')
 
-<h2><strong>Pending Appointments</strong></h2>
+{{-- search form --}}
+{!! Form::open(['action' => ['AdminController@hospitalSearch'], 'method' =>'get'])
+!!}
+
+<div>
+    <h3 class="search-title">Appointments Search</h3>
+</div>
+
+{{-- testing input group --}}
+<div class="col-sm-10">
+    <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="Search by ID, Patient">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit"> <span class="glyphicon glyphicon-search"></span> </button>
+        </span>
+    </div><!-- /input-group -->
+</div>
+
+{!! Form::close() !!} <br> <br>
+
+<h2><strong>All Appointments</strong></h2>
 
 <table class="table table-bordered">
     <tr class="info">
-        <th>#</th>
+        <th>Appointment ID</th>
         <th>Hospital</th>
         <th>Patient</th>
         <th>Email</th>

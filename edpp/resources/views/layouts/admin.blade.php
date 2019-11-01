@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/home">Dashboard</a>
+                <a class="navbar-brand" href="/edpp/home">Home</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -114,8 +114,11 @@
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </span>
+                               
+                                
                             </div>
                             <!-- /input-group -->
+                            
                         </li>
                         <li>
                             <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
@@ -364,7 +367,7 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="/profile"><i class="fa fa-dashboard fa-fw"></i>Profile</a>
+                        {{-- <a href="/profile"><i class="fa fa-dashboard fa-fw"></i>Profile</a> --}}
                     </li>
 
 

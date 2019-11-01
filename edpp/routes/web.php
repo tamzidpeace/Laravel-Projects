@@ -233,3 +233,14 @@ Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivation')
 //notification
 Route::get('/patient/notification', 'NotificationController@patientNotification');
 Route::patch('/patient/notification/details/{id}', 'NotificationController@patientNotificationDetails');
+
+//Appointment Search
+
+
+
+// end of appointment search
+
+
+// form download and view
+
+Route::get('/patient/notification/download/{id}', 'NotificationController@downloadForm');

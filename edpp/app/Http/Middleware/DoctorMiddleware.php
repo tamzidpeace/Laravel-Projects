@@ -20,7 +20,7 @@ class DoctorMiddleware
         $user = Auth::user();
 
         if (!$user->isDoctor()) {
-            return redirect('/home')->with('warning', 'You do not have doctor perminssion!');
+            return redirect('/edpp/home')->with('warning', 'You do not have doctor perminssion!');
         }
         
         return $next($request);
