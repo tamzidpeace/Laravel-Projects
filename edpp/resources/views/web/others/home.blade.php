@@ -58,7 +58,7 @@
 <div class="container">
     <div class="row text-center mt-5">
         <div class="col-md-12">
-            <h1 style="color:#00838f;">Our Best Services</h1>
+            <h1 style="color:#00838f;"><strong>Our Best Services</strong></h1>
         </div>
     </div>
     <div class="row mt-5">
@@ -160,7 +160,7 @@
 <div class="container">
     <div class="row text-center mt-5">
         <div class="col-md-12">
-            <h1 style="color:#00838f;">Want to Join!</h1>
+            <h1 style="color:#00838f;"><strong>Want to Join!</strong></h1>
         </div>
     </div>
 
@@ -244,7 +244,7 @@
 
 <div class="row" style="margin-bottom:20px;">
     <div class="col-md-8 col-md-offset-2" style="text-align:center;">
-        <h1 style="color:#00838f;">About</h1>
+        <h1 style="color:#00838f;"><strong>About</strong></h1>
         <p style="margin:0px 10px; font-weight:bold;">Lorem Ipsum is simply dummy text of the printing and
             typesetting industry.
             Lorem

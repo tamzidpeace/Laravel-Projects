@@ -101,7 +101,7 @@
       <div class="sidebar">
         <div class="panel panel-default">
           <div class="panel-heading" id="sidebar-title">
-            <h3 style="font-weight:bold; color:white" class="panel-title">Advanced Search option</h3>
+            <h3 style="font-weight:bold; color:white" class="panel-title">Health Tips</h3>
           </div>
           <div class="panel-body">
 

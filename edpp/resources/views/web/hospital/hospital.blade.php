@@ -83,7 +83,7 @@
             <div class="sidebar">
                 <div class="panel panel-default">
                     <div class="panel-heading" id="sidebar-title">
-                        <h3 style="font-weight:bold; color:white" class="panel-title">Sidebar(<small>will add advance search</small>)</h3>
+                        <h3 style="font-weight:bold; color:white" class="panel-title">Health Tips</h3>
                     </div>
                     <div class="panel-body">
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse mollitia aliquid officiis
