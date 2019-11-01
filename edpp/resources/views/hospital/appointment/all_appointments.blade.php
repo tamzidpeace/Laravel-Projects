@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h2><strong>Pending Appointments</strong></h2>
+<h2><strong>All Appointments</strong></h2>
 
 <table class="table table-bordered">
     <tr class="info">

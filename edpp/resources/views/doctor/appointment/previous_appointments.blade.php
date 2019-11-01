@@ -15,6 +15,7 @@
         <th>Date</th>
         <th>Period</th>
         <th>Status</th>
+        <th>Action</th>
     </tr>
 
     @foreach ($previous_appointments as $pa)
@@ -27,6 +28,16 @@
         <td> {{$pa->date}} </td>
         <td> {{$pa->period}} </td>
         <td> {{$pa->status}} </td>
+        <td>
+            {!! Form::open(['action' => ['DoctorAppointment@appointmentDetails', $pa->id], 'method' =>'get'])
+            !!}
+
+            <div class="form-group">
+                {!! Form::submit('Details', ['class' => 'btn btn-info']) !!}
+            </div>
+
+            {!! Form::close() !!}
+        </td>
     </tr>
     @endforeach
 

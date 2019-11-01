@@ -28,6 +28,7 @@ class CreateAppointmentsTable extends Migration
             $table->integer('patient_phone');
             $table->string('period');
             $table->string('date');
+            $table->text('prescription')->nullable();
             $table->string('status');
             $table->timestamps();
         });

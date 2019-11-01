@@ -4,7 +4,7 @@
 @section('content')
 
 {{-- search form --}}
-{!! Form::open(['action' => ['AdminController@hospitalSearch'], 'method' =>'get'])
+{!! Form::open(['action' => ['DoctorAppointment@searchAppointments'], 'method' =>'get'])
 !!}
 
 <div>
@@ -14,7 +14,7 @@
 {{-- testing input group --}}
 <div class="col-sm-10">
     <div class="input-group">
-        <input type="text" name="search" class="form-control" placeholder="Search by ID, Patient">
+        <input type="text" name="search" class="form-control" placeholder="Search by appointment ID, patient name">
         <span class="input-group-btn">
             <button class="btn btn-primary" type="submit"> <span class="glyphicon glyphicon-search"></span> </button>
         </span>
@@ -35,6 +35,7 @@
         <th>Date</th>
         <th>Period</th>
         <th>Status</th>
+        <th>Action</th>
     </tr>
 
     @foreach ($appointments as $pa)
@@ -47,6 +48,16 @@
         <td> {{$pa->date}} </td>
         <td> {{$pa->period}} </td>
         <td> {{$pa->status}} </td>
+        <td>
+            {!! Form::open(['action' => ['DoctorAppointment@appointmentDetails', $pa->id], 'method' =>'get'])
+            !!}
+
+            <div class="form-group">
+                {!! Form::submit('Details', ['class' => 'btn btn-info']) !!}
+            </div>
+
+            {!! Form::close() !!}
+        </td>
     </tr>
     @endforeach
 

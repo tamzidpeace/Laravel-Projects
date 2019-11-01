@@ -236,7 +236,8 @@ Route::patch('/patient/notification/details/{id}', 'NotificationController@patie
 
 //Appointment Search
 
-
+Route::get('/doctor/appointments/search', 'DoctorAppointment@searchAppointments');
+Route::get('/doctor/appointments/details/{id}', 'DoctorAppointment@appointmentDetails');
 
 // end of appointment search
 
