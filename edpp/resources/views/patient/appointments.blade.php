@@ -16,7 +16,8 @@
                     </div>
                     <div class="panel-body">
 
-                        @if (count($appointments_pending) <= 0) <div class="alert alert-info alert-dismissible" role="alert">
+                        @if (count($appointments_pending) <= 0) <div class="alert alert-info alert-dismissible"
+                            role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
                             <h3> Currently No Appointment is Pending! </h3>
@@ -38,6 +39,16 @@
                         <p> <strong>Hospital Address: {{$ap->hospital->address}}</strong> </p>
                         <p> <strong>Hospital Phone: {{$ap->hospital->phone}}</strong> </p>
                         <p> <strong>Date: {{$ap->date}}</strong> </p>
+
+                        {!! Form::open(['action' => ['DoctorAppointment@cancelRequest', $ap->id], 'method' =>'patch'])
+                        !!}
+
+                        <div class="form-group">
+                            {!! Form::submit('Cancel Appointment', ['class' => 'btn btn-danger']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+
                     </div>
 
                     @endforeach
@@ -85,6 +96,16 @@
                         <p> <strong>Hospital Address: {{$ap->hospital->address}}</strong> </p>
                         <p> <strong>Hospital Phone: {{$ap->hospital->phone}}</strong> </p>
                         <p> <strong>Date: {{$ap->date}}</strong> </p>
+
+                        {!! Form::open(['action' => ['DoctorAppointment@cancelRequest', $ap->id], 'method' =>'patch'])
+                        !!}
+
+                        <div class="form-group">
+                            {!! Form::submit('Cancel Appointment', ['class' => 'btn btn-danger']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+
                     </div>
 
                     @endforeach
@@ -112,7 +133,7 @@
                         @if (count($appointmentsP) <= 0) <div class="alert alert-info alert-dismissible" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                            <h3> You haven't make any appointment yet! </h3>
+                            <h3> You haven't anyprevious appointment yet! </h3>
 
                     </div>
 
@@ -131,6 +152,19 @@
                         <p> <strong>Hospital Address: {{$ap->hospital->address}}</strong> </p>
                         <p> <strong>Hospital Phone: {{$ap->hospital->phone}}</strong> </p>
                         <p> <strong>Date: {{$ap->date}}</strong> </p>
+                        <p> <strong>Prescription:</strong>
+                            {!! Form::open(['action' => ['DoctorAppointment@completeAppointment', $ap->id], 'method'
+                            =>'get']) !!}
+
+                            <div class="col-sm-offset-4 col-sm-4">
+                                {!! Form::submit('Download Prescription', ['class' => 'form-control btn-primary']) !!}
+                                <br> <br>
+                            </div>
+
+
+                            {!! Form::close() !!}
+
+                        </p>
                     </div>
 
                     @endforeach
