@@ -9,14 +9,14 @@
             <div class="panel-body">
 
                 @php
-                    $ap = $appointment;
+                $ap = $appointment;
                 @endphp
 
                 <p> Appointment ID: {{$ap->id}} </p>
                 <p> Hospital/Chamber: {{$ap->hospital->name}} </p>
                 <p> Doctor: {{$ap->doctor->name}} </p>
                 <p> Patient: {{$ap->patient->name}} </p>
-                <p> Phone: {{$ap->patient->phone}} </p>
+                <p> Contact No: {{$ap->doctor->phone}} </p>
                 <p> Age: {{$ap->patient->age}} </p>
                 <p> Blood Group: {{$ap->patient->bloodGroup->name}} </p>
                 <p> Sex: {{$ap->patient->gender->name}} </p>
@@ -25,12 +25,21 @@
                 @if ($ap->status == 'visited')
 
                 <button type="submit">View Prescribetion</button>
-                        
+
                 @endif
 
-               @if ($ap->status == 'booked')
-               <button type="submit">Prescribe</button>
-               @endif
+                @if ($ap->status == 'booked')
+
+                {!! Form::open(['action' => ['DoctorAppointment@appointmentPrescribe', $ap->id], 'method' =>'get'])
+                !!}
+
+                <div class="form-group">
+                    {!! Form::submit('Prescribe', ['class' => 'btn btn-info btn-block']) !!}
+                </div>
+
+                {!! Form::close() !!}
+
+                @endif
 
             </div>
             <div class="panel-footer"></div>

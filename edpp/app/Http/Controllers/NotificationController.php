@@ -39,12 +39,8 @@ class NotificationController extends Controller
 
         $noti = Notification::find($id);
 
-        
-
         $pdf = PDF::loadView('notification.pdf.booking_form', compact( 'noti'));
         return $pdf->stream('invoice.pdf');
-        return $pdf->download('invoice.pdf');
-
-        return 123;
+        
     }
 }

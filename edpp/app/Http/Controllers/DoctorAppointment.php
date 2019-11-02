@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Appointment;
 use App\Doctor;
+use PDF;
 
 class DoctorAppointment extends Controller
 {
@@ -66,11 +67,52 @@ class DoctorAppointment extends Controller
         return view('doctor.appointment.appointment_search', compact('appointments'));
     }
 
-    public function appointmentDetails($id) {
+    public function appointmentDetails($id)
+    {
 
         $appointment = Appointment::findOrFail($id);
 
         return view('doctor.appointment.appointment_details', compact('appointment'));
+    }
 
+    public function appointmentPrescribe($id)
+    {
+
+        $appointment = Appointment::findOrFail($id);
+
+        $ap = $appointment;
+
+        return view('doctor.appointment.appointment_prescribe', compact('ap'));
+    }
+
+    public function appointmentPrescribeStore(Request $request, $id)
+    {
+
+        $appointment = Appointment::findOrFail($id);
+
+        $appointment->prescription = $request->medicine;
+
+
+
+        $appointment->status = 'previous';
+
+        $appointment->save();
+
+
+
+        return view('doctor.appointment.appointment_prescription_final', compact('id'));
+    }
+
+    public function completeAppointment($id)
+    {
+
+        $appointment = Appointment::findOrFail($id);
+
+        $ap = $appointment;
+
+        $pdf = PDF::loadView('pdf.prescription', compact('ap'));
+
+        return $pdf->stream('prescription.pdf');
+       
     }
 }
