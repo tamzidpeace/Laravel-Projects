@@ -63,6 +63,8 @@ Route::delete('/hospital/booking/booking-request/confirmed-reject/{id}','Hospita
 Route::get('/hospital/bookings/admitted-bookings', 'HospitalBookingController@admittedBookings');
 Route::get('/hospital/bookings/release/{id}/', 'HospitalBookingController@release');
 Route::post('/hospital/bookings/release-cost-calculation/{id}', 'HospitalBookingController@releaseAndCostCalculation');
+Route::get('/hospital/bookings/released', 'HospitalBookingController@releaseBookings');
+Route::get('/hospital/bookings/released/details/{id}', 'HospitalBookingController@releaseDetails');
 
 // end of admin hospital booking
 

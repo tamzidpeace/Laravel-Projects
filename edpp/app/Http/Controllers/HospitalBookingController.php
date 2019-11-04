@@ -481,4 +481,25 @@ class HospitalBookingController extends Controller
 
         return redirect('/hospital/bookings/admitted-bookings')->with('success', 'Booking activities complete successfully!');
     }
+
+    public function releaseBookings() {
+        $user = Auth::user();
+        $hospital = Hospital::where('user_id', $user->id)->first();
+        //$hospital_id = HospitalBooking::where('id', $user_id)->first();
+
+        $released_bookings =
+            HospitalBooking::where([['hospital_id', $hospital->id], ['status', 'released']])->get();
+
+        return view('hospital.hospital_booking.released_bookings', compact('released_bookings'));
+    }
+
+    public function releaseDetails($id) {
+
+        $hb = HospitalBooking::find($id);
+        $cost = HospitalTreatmentCost::where('hospital_id', $id)->first();
+
+        return view('hospital.hospital_booking.release_details', compact('hb', 'cost'));
+    }
+
+
 }

@@ -237,6 +237,10 @@
                                     <a href="/hospital/bookings/admitted-bookings">Admitted Bookings</a>
                                 </li>
 
+                                <li>
+                                    <a href="/hospital/bookings/released">Released Bookings</a>
+                                </li>
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
